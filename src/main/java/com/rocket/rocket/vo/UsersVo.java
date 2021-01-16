@@ -1,4 +1,4 @@
-package vo.user;
+package com.rocket.rocket.vo;
 
 import lombok.Getter;
 import lombok.Setter;
