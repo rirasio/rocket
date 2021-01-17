@@ -9,7 +9,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-class RocketApplicationTests {
+class SecurityApplicationTests {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
