@@ -1,11 +1,11 @@
-package com.rocket.rocket.vo;
+package com.rocket.rocket.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class DoExVo {
+public class DoExDto {
 
 	private String doex_num;
 	
