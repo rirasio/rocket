@@ -1,23 +1,23 @@
-package com.rocket.rocket.vo;
+package com.rocket.rocket.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class ReplyVo {
+public class NoticeDto {
 
-	private String reply_num;
+	private String notice_num;
+	
+	private String title;
 	
 	private String content;
 	
-	private String nickname;
+	private String user_num;
 	
 	private String regDate;
 	
 	private String modiDate;
 	
 	private String delDate;
-	
-	private String comm_num;
 }
