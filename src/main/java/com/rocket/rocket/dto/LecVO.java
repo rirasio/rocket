@@ -1,9 +1,11 @@
 package com.rocket.rocket.dto;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
-public class LecDto {
+public class LecVO {
 
 	private String lec_num;
 	
@@ -13,9 +15,9 @@ public class LecDto {
 	
 	private String ingre;
 	
-	private String regDate;
+	private Date regDate;
 	
-	private String modiDate;
+	private Date modiDate;
 	
 	private String clickCnt;
 	

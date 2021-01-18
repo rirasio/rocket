@@ -1,11 +1,9 @@
 package com.rocket.rocket.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
-public class ClassCtgyDto {
+@Data
+public class ClassCtgyVO {
 
 	private String class_ctgy_num;
 	
