@@ -1,11 +1,9 @@
 package com.rocket.rocket.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
-public class HwDto {
+@Data
+public class HwVO {
 
 	private String hw_num;
 	

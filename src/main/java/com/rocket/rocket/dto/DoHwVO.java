@@ -1,17 +1,17 @@
 package com.rocket.rocket.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import java.util.Date;
 
-@Getter
-@Setter
-public class DoHwDto {
+import lombok.Data;
+
+@Data
+public class DoHwVO {
 
 	private String dohw_num;
 	
-	private String regDate;
+	private Date regDate;
 	
-	private String modiDate;
+	private Date modiDate;
 	
 	private String fileName;
 	

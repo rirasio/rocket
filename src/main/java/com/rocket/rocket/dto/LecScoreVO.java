@@ -1,15 +1,15 @@
 package com.rocket.rocket.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import java.util.Date;
 
-@Getter
-@Setter
-public class LecScoreDto {
+import lombok.Data;
+
+@Data
+public class LecScoreVO {
 
 	private String lec_sc_num;
 	
-	private String lec_sc_date;
+	private Date lec_sc_date;
 	
 	private String lec_num;
 	
