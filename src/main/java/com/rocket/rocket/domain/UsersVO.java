@@ -1,21 +1,23 @@
-package com.rocket.rocket.dto;
+package com.rocket.rocket.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import java.util.Date;
 
-@Getter
-@Setter
-public class UsersDto {
+import lombok.Data;
+
+@Data
+public class UsersVO {
 
 	private String user_num;
 	
 	private String email;
 	
+	private String pw;
+	
 	private String name;
 	
 	private String nickname;
 	
-	private String date;
+	private Date birthday;
 	
 	private String phone;
 	
@@ -23,9 +25,9 @@ public class UsersDto {
 	
 	private byte agree_ue;
 	
-	private String regDate;
+	private Date regDate;
 	
-	private String delDate;
+	private Date delDate;
 	
 	private String intro;
 	
@@ -33,7 +35,7 @@ public class UsersDto {
 	
 	private String pic;
 	
-	private String picType;
+	private byte picType;
 	
 	private String picPath;
 	
