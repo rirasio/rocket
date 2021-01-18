@@ -1,11 +1,11 @@
 package com.rocket.rocket.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import java.util.Date;
 
-@Getter
-@Setter
-public class CommDto {
+import lombok.Data;
+
+@Data
+public class CommVO {
 
 	private String comm_num;
 	
@@ -13,11 +13,11 @@ public class CommDto {
 	
 	private String content;
 	
-	private String regDate;
+	private Date regDate;
 	
-	private String modiDate;
+	private Date modiDate;
 	
-	private String delDate;
+	private Date delDate;
 	
 	private byte exist;
 	

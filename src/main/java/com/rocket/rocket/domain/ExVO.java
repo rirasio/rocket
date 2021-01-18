@@ -1,11 +1,11 @@
 package com.rocket.rocket.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import java.util.Date;
 
-@Getter
-@Setter
-public class ExDto {
+import lombok.Data;
+
+@Data
+public class ExVO {
 
 	private String ex_num;
 	
@@ -15,9 +15,9 @@ public class ExDto {
 	
 	private byte answer;
 	
-	private String modiDate;
+	private Date modiDate;
 	
-	private String regDate;
+	private Date regDate;
 	
 	private String lec_num;
 }

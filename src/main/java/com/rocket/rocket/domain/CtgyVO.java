@@ -1,11 +1,9 @@
 package com.rocket.rocket.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
-public class CtgyDto {
+@Data
+public class CtgyVO {
 
 	private String ctgy_title;
 	
