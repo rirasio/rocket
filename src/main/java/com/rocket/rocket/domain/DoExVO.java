@@ -1,4 +1,4 @@
-package com.rocket.rocket.dto;
+package com.rocket.rocket.domain;
 
 import lombok.Data;
 
