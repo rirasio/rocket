@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>registerHw</title>
+</head>
+<body>
+	<h1>registerHw</h1>
+	<form action="/hw/registerHw" method="post">
+		title
+		<input type="text" name="title">
+		<br>
+		content
+		<input type="text" name="content">
+		<br>
+		<!-- 		fileName -->
+		<!-- 		<input type="text" name="fileName"> -->
+		<!-- 		<br> -->
+		<!-- 		filePath -->
+		<!-- 		<input type="text" name="filePath"> -->
+		<!-- 		<br> -->
+		lec_num
+		<input type="text" name="lec_num">
+		<br>
+		{{#_csrf}}
+		<input type="hidden" name="{{parameterName}}" value="{{token}}" />
+		{{/_csrf}}
+		<input type="submit" value="submit">
+		<input type="reset" value="reset">
+	</form>
+</body>
+</html>
