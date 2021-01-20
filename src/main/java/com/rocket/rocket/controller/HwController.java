@@ -14,7 +14,7 @@ import lombok.AllArgsConstructor;
 
 @Controller
 @RequestMapping("/hw/*")
-@MapperScan(basePackages = { "mapper" })
+@MapperScan(basePackages = { "com.rocket.rocket.mapper" })
 @AllArgsConstructor
 public class HwController {
 

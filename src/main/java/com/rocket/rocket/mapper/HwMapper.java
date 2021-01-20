@@ -1,4 +1,4 @@
-package mapper;
+package com.rocket.rocket.mapper;
 
 import org.apache.ibatis.annotations.Insert;
 

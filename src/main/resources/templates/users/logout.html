@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Logout prototype</h1>
+    <form action="/users/logout" method="POST">
+       
+		{{#_csrf}}
+		<input type="hidden" name="{{parameterName}}" value="{{token}}" />
+		{{/_csrf}}
+		<button><h3>로그아웃</h3></button>
+    </form>
+
+</body>
+</html>
