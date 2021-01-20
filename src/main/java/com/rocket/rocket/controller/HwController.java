@@ -16,7 +16,9 @@ import com.rocket.rocket.domain.HwVO;
 import com.rocket.rocket.service.HwService;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 @RequestMapping("/hw/*")
 @AllArgsConstructor
@@ -32,7 +34,7 @@ public class HwController {
 	@PostMapping(value = { "/create" })
 	public String create(HwVO hwvo, RedirectAttributes rttr) {
 		hwService.create(hwvo);
-		rttr.addFlashAttribute("result", hwvo.getHw_num());
+		rttr.addFlashAttribute("result", hwvo.getHw_Num());
 		return "test";
 	}
 
@@ -40,6 +42,7 @@ public class HwController {
 	public void read(@RequestParam("hw_Num") String hw_Num,
 			@RequestAttribute(value = "cri", required = false) Criteria cri, Model model) {
 		model.addAttribute("hw", hwService.read(hw_Num));
+		log.info("hwvo: ");
 	}
 
 	@PostMapping("/update")
@@ -47,7 +50,8 @@ public class HwController {
 		if (hwService.update(hwvo)) {
 			rttr.addAttribute("result", "success");
 		}
-		return "redirect:/lec?lec_num=" + hwvo.getLec_num();// class num 필요함
+		log.info("hwvo: " + hwvo);
+		return "redirect:/lec?lec_num=" + hwvo.getLec_Num();// class num 필요함
 	}
 
 	@PostMapping("/delete")
