@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.rocket.rocket.domain.LecVO;
-import com.rocket.rocket.service.lec.LecService;
+import com.rocket.rocket.service.LecService;
 
 import lombok.AllArgsConstructor;
 
 @Controller
-@RequestMapping("/lecture")
+@RequestMapping("/lec")
 @AllArgsConstructor
 public class LecController {
 
@@ -23,19 +23,19 @@ public class LecController {
 	@GetMapping("/list")
 	public String list(Model model) {
 		model.addAttribute("list", service.getList());
-		return "lecture/list";
+		return "lec/list";
 	}
 	
 	@GetMapping(value = {"/register"})
 	public String registerLec() {
-		return "lecture/register";
+		return "lec/register";
 	}
 	
 	@PostMapping(value = {"/register"})
 	public String registerLec(LecVO lecvo, RedirectAttributes rttr) {
 		service.register(lecvo);
 		rttr.addFlashAttribute("result", lecvo.getLec_num());
-		return "redirect:/lecture/list";
+		return "redirect:/lec/list";
 	}
 	
 	@GetMapping({"/get", "/modify"})
@@ -53,7 +53,7 @@ public class LecController {
 		if (service.modify(lecvo)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		return "redirect:/lecture/list";
+		return "redirect:/lec/list";
 	}
 	
 	@PostMapping("/remove")
@@ -61,7 +61,7 @@ public class LecController {
 		if (service.remove(lec_num)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		return "redirect:/lecture/list";
+		return "redirect:/lec/list";
 	}
 
 }
