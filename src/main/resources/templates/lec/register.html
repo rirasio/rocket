@@ -1,0 +1,34 @@
+{{>layout/header}}
+
+<h1>강의 등록</h1>
+
+<div class="col-md-12">
+   <div class="col-md-4">
+       <form role="form" action="/lec/register" method="post">
+           <div class="form-group">
+               <label for="title">제목</label>
+               <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요">
+           </div>
+           <div class="form-group">
+               <label for="video">영상 소스</label>
+               <input type="text" class="form-control" id="video" name="video" placeholder="url을 입력하세요">
+           </div>
+           <div class="form-group">
+               <label for="ingre">내용</label>
+               <textarea class="form-control" id="ingre" name="ingre" placeholder="렉처의 개요를 입력하세요"></textarea>
+           </div>
+           <div class="form-group">
+               <label for="lorder">순번</label>
+               <textarea class="form-control" id="lorder" name="lorder" placeholder="강의 순서"></textarea>
+           </div>
+           {{#_csrf}}
+		   <input type="hidden" name="{{parameterName}}" value="{{token}}" />
+		   {{/_csrf}}
+           <a href="/lec/list" role="button" class="btn btn-secondary">글 취소</a>
+       	   <button type="submit" class="btn btn-default">등록</button>
+       </form>
+       
+   </div>
+</div>
+
+{{>layout/footer}}
