@@ -14,10 +14,8 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
-import com.rocket.rocket.configuration.DatabaseConfiguration;
-
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
-@MapperScan
+@MapperScan(basePackages = { "com.rocket.rocket.mapper" })
 public class SecurityApplication {
 
 	public static void main(String[] args) {

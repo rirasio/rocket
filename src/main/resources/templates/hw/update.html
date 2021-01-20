@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>read</title>
+</head>
+<body>
+	<h1>read</h1>
+	<form action="/hw/update" method="post">
+		<label>title</label>
+		<input type="text" name="title" value="{{hwvo.title}}">
+		<br>
+		<label>content</label>
+		<input type="text" name="content" value="{{hwvo.content}}">
+		<br>
+		<label>file</label>
+		<input type="file" name="file" multiple="multiple">
+		<br>
+		<label>lec_num</label>
+		<input type="text" name="lec_num" value="{{hwvo.lec_num}}">
+		<br>
+		{{#_csrf}}
+		<input type="hidden" name="{{parameterName}}" value="{{token}}" />
+		{{/_csrf}}
+		<input type="submit" value="submit">
+		<input type="reset" value="reset">
+	</form>
+</body>
+</html>
