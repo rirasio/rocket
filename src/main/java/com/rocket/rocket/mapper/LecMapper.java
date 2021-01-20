@@ -1,4 +1,4 @@
-package com.rocket.rocket.mapper.lec;
+package com.rocket.rocket.mapper;
 
 import java.util.List;
 

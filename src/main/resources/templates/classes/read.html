@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Classes</title>
+</head>
+<body>
+<h1>클래스</h1>
+<form action="/classes/update" method="get">
+		<input type="hidden" name="class_num" value="{{class.class_num}}">
+		<label>클래스 명</label>
+		<input type="text" name="title" value="{{class.title}}">
+		<br>
+		<label>클래스 내용</label>
+		<textarea name="intro">{{class.intro}}</textarea>
+		<br>
+		<label>썸네일</label>
+		<input type="file" name="thumbnail" multiple="multiple">
+		<br>
+		<label>커리큘럼</label>
+		<input type="file" name="curriculum" multiple="multiple">
+		<br>
+		{{#_csrf}}
+		<input type="hidden" name="{{parameterName}}" value="{{token}}" />
+		{{/_csrf}}
+		<input type="submit" value="update">
+		<input type="reset" value="reset">
+
+	</form>
+</body>
+</html>
