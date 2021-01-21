@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>create</title>
+</head>
+<body>
+	<h1>새 클래스 만들기</h1>
+	<form action="/classes/create" method="post">
+		<label>클래스 명</label>
+		<input type="text" name="title">
+		<br>
+		
+		<div>
+		<input type="checkbox" value=""> java
+		<input type="checkbox" value=""> oracle
+		<input type="checkbox" value=""> spring
+		<input type="checkbox" value=""> JSP
+		<input type="checkbox" value=""> HTML
+		</div>
+		
+		<label>클래스 인트로</label>
+		<input type="text" name="intro">
+		<br>
+		<label>썸네일</label>
+		<input type="file" name="thumbnail" multiple="multiple">
+		<br>
+		<label>커리큘럼</label>
+		<input type="file" name="curriculum" multiple="multiple">
+		<br>
+		{{#_csrf}}
+		<input type="hidden" name="{{parameterName}}" value="{{token}}" />
+		{{/_csrf}}
+		
+		<input type="submit" value="submit">
+		<input type="reset" value="reset">
+	</form>
+</body>
+</html>

@@ -65,7 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		// http.formLogin().loginPage("/customLogin").loginProcessingUrl("/login");
 
-		// http.csrf().ignoringAntMatchers("/**");
+		//http.csrf().ignoringAntMatchers("/**");
 
 	}
 	//권한 아이디 테스트
