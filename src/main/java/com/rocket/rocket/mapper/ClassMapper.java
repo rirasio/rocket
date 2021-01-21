@@ -19,7 +19,7 @@ public interface ClassMapper {
 	@ResultType(ClassVO.class)
 	public ClassVO select(String class_Num);
 
-	@Update("update class set title = #{title}, intro = #{intro}, regdate = #{regdate}, modidate = sysdate, filename = null, filetype = null, filePath = null, thumbname = null, thumbtype = null, thumbPath = null where class_num = #{class_num}")
+	@Update("update class set title = #{title}, intro = #{intro} where class_num = #{class_num}")
 	public int update(ClassVO classVO);
 
 	@Delete("delete from class where class_num = #{class_num}")

@@ -10,11 +10,11 @@ import com.rocket.rocket.domain.Criteria;
 import com.rocket.rocket.mapper.ClassMapper;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @AllArgsConstructor
-@Log4j2
+@Slf4j
 public class ClassServiceImpl implements ClassService {
 
 	@Setter(onMethod_ = @Autowired)

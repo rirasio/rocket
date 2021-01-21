@@ -13,20 +13,21 @@ import com.rocket.rocket.configuration.SecurityConfig;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
 @WebAppConfiguration
 @ContextConfiguration(classes = { SecurityApplication.class, DatabaseConfiguration.class, SecurityConfig.class })
-@Log4j2
+@Slf4j
 class HwControllerTests {
 
-	@Setter(onMethod_ = @Autowired)
+	@Setter(onMethod_ = @Autowired) 
 	private WebApplicationContext ctx;
 
 	private MockMvc mockMvc;
 
 	@Test
 	void testRead() throws Exception {
-		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/hw/read").param("hw_num", "hw_1")).andReturn()
+		log.info(null, mockMvc.perform(MockMvcRequestBuilders.get("/hw/read").param("hw_num", "hw_1")).andReturn()
 				.getModelAndView().getModelMap());
 	}
 
