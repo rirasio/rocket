@@ -42,10 +42,10 @@
 		<button type="submit" data-oper='delete' class="btn btn-danger">Delete</button>
 		<button type="submit" data-oper='list' class="btn btn-info">List</button>
 
-		
 		{{#_csrf}}
 		<input type="hidden" name="{{parameterName}}" value="{{token}}" />
 		{{/_csrf}}
+		
 		
 
 	</form>
