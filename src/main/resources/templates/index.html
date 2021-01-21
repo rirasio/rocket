@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>index.html</title>
-</head>
-<body>
+
+{{>layout/header}}
+
 	<h1>index.html</h1>
 
 	<a href="users/logout"> logout</a>
@@ -22,5 +18,24 @@
 		<input type="submit">
 	</form>
 	<a href="pages/blank.html">aaa</a>
-</body>
-</html>
+	
+	<br><br><br>
+	<a href="classes/create">classes/create</a><br>
+	
+	<br>
+	<form action="classes/read">
+		<label>read</label>
+		<input type="text" name="class_num">
+		<input type="submit">
+	</form>
+	<br>
+	<form action="classes/delete" method="post">
+		<label>delete</label>
+		<input type="text" name="class_num">
+	
+		<input type="submit" value="삭제">
+	</form>
+	<a href="classes/list">classes/list</a><br>
+	
+	
+{{>layout/footer}}

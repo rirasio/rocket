@@ -1,0 +1,81 @@
+ {{>layout/header}}
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<div class="card-header py-3">
+	<h6 class="m-0 font-weight-bold text-primary">클래스</h6>
+</div>
+
+
+<div class="card-body">
+	<form role="form" action="/classes/update" method="post">
+		
+		
+		
+		<input type="hidden" name="class_num" value="{{class.class_num}}">
+		<label>클래스 명</label>
+		<input type="text" name="title" value="{{class.title}}">
+		<br> <label>클래스 내용</label>
+		<input type="text" name="intro" value="{{class.intro}}">
+		<br>
+		<input type="hidden" name="regdate" value="{{class.regDate}}">
+		<input type="hidden" name="modidate" value="{{class.modiDate}}">
+		<label>썸네일</label>
+		<input type="file" name="thumbnail" multiple="multiple">
+		<br> <label>커리큘럼</label>
+		<input type="file" name="curriculum" multiple="multiple">
+		<br>
+
+		<input type="hidden" name="filename" value="{{class.fileName}}">
+		<input type="hidden" name="filetype" value="{{class.fileType}}">
+		<input type="hidden" name="filepath" value="{{class.filePath}}">
+		<input type="hidden" name="thumbname" value="{{class.thumbName}}">
+		<input type="hidden" name="thumbtype" value="{{class.thumbType}}">
+		<input type="hidden" name="thumbpath" value="{{class.thumbPath}}">
+
+
+
+
+		<button type="submit" data-oper='update' class="btn btn-default">Update</button>
+		<button type="submit" data-oper='delete' class="btn btn-danger">Delete</button>
+		<button type="submit" data-oper='list' class="btn btn-info">List</button>
+
+		
+		{{#_csrf}}
+		<input type="hidden" name="{{parameterName}}" value="{{token}}" />
+		{{/_csrf}}
+		
+
+	</form>
+</div>
+
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		var formObj = $("form");
+
+		$('button').on("click", function(e) {
+			e.preventDefault();
+
+			var operation = $(this).data("oper");
+
+			console.log(operation);
+
+			if (operation === 'delete') {
+				formObj.attr("action", "/classes/delete");
+			} else if (operation === 'list') {
+				formObj.attr("action", "/classes/list").attr("method", "get");
+			} else if (operation === 'update') {
+				formObj.attr("action", "/classes/update");
+
+			}
+			formObj.submit();
+		});
+
+	});
+</script>
+{{>layout/footer}}
