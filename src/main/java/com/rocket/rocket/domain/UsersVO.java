@@ -17,7 +17,7 @@ public class UsersVO {
 	
 	private String nickname;
 	
-	private Date birthday;
+	private String birthday;
 	
 	private String phone;
 	

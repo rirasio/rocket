@@ -1,0 +1,45 @@
+{{>layout/header}}
+
+	<h1>Sign Up ProtoType</h1>
+	<form action="/users/userSign" method="post">
+		<label>이메일(id)</label>
+		<input type="text" name="email" placeholder="id">
+		<br>
+		<label>패스워드</label>
+		<input type="password" name="pw" placeholder="password">
+		<br>
+		<label>이름</label>
+		<input type="text" name="name" placeholder="이름">
+		<br>
+		<label>닉네임</label>
+		<input type="text" name="nickname" placeholder="별명">
+		<br>
+		<label>생년월일</label>
+		<input type="text" name="birthday" placeholder="ex) 19990102">
+		<br>
+		<label>전화번호(폰번호)</label>
+		<input type="text" name="phone">
+		<br>
+		<label>필수정보</label>
+		<input type="radio" name="agree_e" value="1">
+		<label>선택정보정보</label>
+		<input type="radio" name="agree_ue" value="1" >
+		<br>
+		<label>자기소개</label>
+		<textarea name="intro">자기소개를 해주세요</textarea>
+		<br>
+		<label>프로필사진</label>
+		<input type="file" name="pic">
+		<!-- pictype,picpath는 프로필사진 기능 구현안해서 임시로넣음 -->
+		<input type="hidden" name="picType" value="0">
+		<input type="hidden" name="picPath" value="0">
+		<br>
+		<input type="submit" value="submit">
+		<input type="reset" value="reset">
+		<input type="hidden" name="_csrf" value="{{#_csrf}}token{{/_csrf}}" />
+<!--		{{#_csrf}} -->
+<!-- 		<input type="hidden" name="{{parameterName}}" value="{{token}}" /> -->
+<!-- 		{{/_csrf}} -->
+	</form>
+	
+{{>layout/footer}}
