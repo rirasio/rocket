@@ -11,7 +11,7 @@ import com.rocket.rocket.domain.LecVO;
 
 public interface LecMapper {
 	
-	@Select("select * from lec order by lorder")
+	@Select("SELECT lec_num, lorder, title FROM lec WHERE class_num = 'class_1' ORDER BY lorder")
 	public List<LecVO> getList();
 	
 	@Select("select * from lec where lec_num = #{lec_num}")
