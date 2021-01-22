@@ -5,6 +5,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 
+//패스워드 인코더를 안쓰고 로그인하고자 하면 context.xml이나 cofig파일에 의존성 주입
 @Slf4j
 public class CustomNoOpPasswordEncoder implements PasswordEncoder {
 

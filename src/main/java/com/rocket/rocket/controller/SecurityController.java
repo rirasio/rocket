@@ -29,44 +29,32 @@ public class SecurityController {
 	@Autowired
 	SecurityMapper securityMapper;
 	
-	//유저권한별 마이페이지
-	@RequestMapping("/users/admin")
+	//유저권한별 마이페이지-------------------
+	@RequestMapping("/admin")
 	public String user() {
 		return "/users/adminPage";
 	}
 
-	@RequestMapping("/users/teacher")
+	@RequestMapping("/teacher")
 	public String teacher() {
 		return "/users/teacherPage";
 	}
 	
-	@RequestMapping("/users/subs")
+	@RequestMapping("/subs")
 	public String subs() {
 		return "/users/subsPage";
 	}
 
-	@RequestMapping("/users/student")
+	@RequestMapping("/student")
 	public String student() {
 		return "/users/studentPage";
 	}	
-	
-	@RequestMapping("/access_denide")
-	public String accessDenied() {
-		return "/users/access_denide";
-	}
-	
-	
-	@RequestMapping("/users/logout")
-	public void logout() {
-		log.info("logout실행");
 
-	}
-	
 	//로그인 관련-------------------------------------------------------
-	@GetMapping("/users/login")
+	@GetMapping("/login")
 	public void login(String error, String logout, Model model ) {
-		log.info("error"+error);
-		log.info("logout"+logout);
+		log.info("error : "+error);
+		log.info("logout : "+logout);
 		
 		if (error !=null) {
 			model.addAttribute("error", "login Error check your account");
@@ -76,11 +64,19 @@ public class SecurityController {
 		}
 	}
 	
-	@GetMapping("/users/access_denied")
+	@GetMapping("/access_denied")
 	public void accessDenied(Authentication auth, Model model) {
 		log.info("access Denied : " + auth);
 		model.addAttribute("msg", "403 access_denied입니다.(from model)");
 	}
+	
+	
+	@RequestMapping("/logout")
+	public void logout() {
+		log.info("logout실행");
+
+	}
+	
 	
 	
 }

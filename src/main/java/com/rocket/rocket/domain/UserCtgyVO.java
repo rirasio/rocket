@@ -5,9 +5,9 @@ import lombok.Data;
 @Data
 public class UserCtgyVO {
 
-	private String user_ctgy_num;
+	private int user_ctgy_num;
 	
 	private String ctgy_title;
 	
-	private String user_num;
+	private int user_num;
 }

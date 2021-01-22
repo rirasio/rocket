@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class ExVO {
 
-	private String ex_num;
+	private int ex_num;
 	
 	private String title;
 	
@@ -19,5 +19,5 @@ public class ExVO {
 	
 	private Date regDate;
 	
-	private String lec_num;
+	private int lec_num;
 }

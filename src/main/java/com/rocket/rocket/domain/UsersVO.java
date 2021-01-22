@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class UsersVO {
 
-	private String user_num;
+	private int user_num;
 	
 	private String email;
 	
@@ -17,7 +17,7 @@ public class UsersVO {
 	
 	private String nickname;
 	
-	private Date birthday;
+	private String birthday;
 	
 	private String phone;
 	

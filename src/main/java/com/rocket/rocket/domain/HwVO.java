@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class HwVO {
 
-	private String hw_Num;
+	private int hw_Num;
 	
 	private String title;
 	
@@ -17,5 +17,5 @@ public class HwVO {
 	
 	private String filePath;
 	
-	private String lec_Num;
+	private int lec_Num;
 }

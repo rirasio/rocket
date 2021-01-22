@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Select;
 
 import com.rocket.rocket.domain.UserRoleVO;
 
-
+//회원권한인증
 @Mapper
 public interface SecurityMapper {
 	

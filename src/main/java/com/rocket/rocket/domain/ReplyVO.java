@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class ReplyVO {
 
-	private String reply_num;
+	private int reply_num;
 	
 	private String content;
 	
@@ -19,5 +19,5 @@ public class ReplyVO {
 	
 	private Date delDate;
 	
-	private String comm_num;
+	private int comm_num;
 }
