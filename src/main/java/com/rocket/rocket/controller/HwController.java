@@ -20,29 +20,27 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping("/hw/*")
+@RequestMapping("/hw")
 @AllArgsConstructor
 public class HwController {
 
 	private HwService hwService;
 
 	@GetMapping(value = { "/create" })
-	public String create() {
-		return "hw/create";
+	public void create() {
 	}
 
 	@PostMapping(value = { "/create" })
 	public String create(HwVO hwvo, RedirectAttributes rttr) {
 		hwService.create(hwvo);
 		rttr.addFlashAttribute("result", hwvo.getHw_Num());
-		return "test";
+		return "/lec/list";
 	}
 
 	@GetMapping({ "/read", "/update" })
 	public void read(@RequestParam("hw_Num") String hw_Num,
 			@RequestAttribute(value = "cri", required = false) Criteria cri, Model model) {
 		model.addAttribute("hw", hwService.read(hw_Num));
-		log.info("hwvo: ");
 	}
 
 	@PostMapping("/update")
@@ -50,16 +48,17 @@ public class HwController {
 		if (hwService.update(hwvo)) {
 			rttr.addAttribute("result", "success");
 		}
-		log.info("hwvo: " + hwvo);
-		return "redirect:/lec?lec_num=" + hwvo.getLec_Num();// class num 필요함
+		log.info("update hwvo: " + hwvo);
+		return "redirect:/lec/get?lec_num=" + hwvo.getLec_Num();// class num 필요함
 	}
 
 	@PostMapping("/delete")
-	public String delete(@RequestParam("hw_Num") String hw_Num, @RequestAttribute("cri") Criteria cri,
+	public String delete(@RequestParam("hw_Num") String hw_Num, @ModelAttribute("cri") Criteria cri,
 			RedirectAttributes rttr) {
 		if (hwService.delete(hw_Num)) {
+			log.info("delete hw_Num: " + hw_Num);
 			rttr.addFlashAttribute("result", "success");
 		}
-		return "redirect:/lec?lec_num=";// lec 게시판
+		return "redirect:/lec/list";// lec 게시판
 	}
 }

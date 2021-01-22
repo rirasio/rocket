@@ -1,8 +1,7 @@
-{{>layout/header}}
+<h1>index.html</h1>
 
 <title>index.html</title>
 	<h1>index.html</h1>
-
 	---------------------------------------------
 	<h3>로이 작업들</h3>
 	<a href="users/admin">admin 페이지</a><br>	
@@ -11,33 +10,46 @@
 	<a href="users/update"> 회원수정</a><br>
 	---------------------------------------------
 	<br>
-	<a href="hw/create">hw/create</a>
-	<br>
-	<form action="hw/read">
-		<label>read</label>
+	---------------------------------------------------------------------------
+나옹 작업들
+<form action="hw/read">
+	<fieldset>
+		<legend>hw</legend>
+		<label>hw/create</label>
+		<input type="submit" formaction="hw/create" value="hw/create">
+		<br>
+		<label>hw/read</label>
 		<input type="text" name="hw_Num">
-		<input type="submit">
-	</form>
-	<br>
-	<form action="hw/delete" method="post">
-		<label>delete</label>
-		<input type="text" name="hw_Num">
-		<input type="submit">
-	</form>
-	<a href="pages/blank.html">aaa</a>
-	
+		<input type="submit" formaction="hw/read">
+	</fieldset>
+</form>
+<br>
+<form action="dohw/list">
+	<fieldset>
+		<legend>dohw</legend>
+		<label>user_num</label>
+		<input type="text" name="user_num" value="users_1">
+		<br>
+		<label>hw_num</label>
+		<input type="text" name="hw_num" value="hw_1">
+		<br>
+		<label>dohw_num</label>
+		<input type="text" name="dohw_num" value="dohw_1">
+		<br>
+		<input type="submit" formaction="dohw/create" value="dohw/create">
+		<input type="submit" formaction="dohw/read" value="dohw/read">
+		<input type="submit" formaction="dohw/list" value="dohw/list">
+	</fieldset>
+</form>
+<br>
+<form action="lec/list">
+	<fieldset>
+		<legend>lec</legend>
+		<label>lec/list</label>
+		<input type="text" name="lec_num" placeholder="class_num">
+		<input type="submit" value="submit">
+	</fieldset>
+</form>
+---------------------------------------------------------------------------
 
-	<br><br><br>
-	<a href="classes/create">classes/create</a><br>
-	
-	<br>
-	<form action="classes/read">
-		<label>read</label>
-		<input type="text" name="class_num">
-		<input type="submit">
-	</form>
-	<br>
-	<a href="classes/list">classes/list</a><br>
-	
-	
 {{>layout/footer}}

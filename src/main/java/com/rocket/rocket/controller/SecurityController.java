@@ -26,8 +26,6 @@ import oracle.jdbc.proxy.annotation.Pre;
 @AllArgsConstructor
 public class SecurityController {
 
-	
-
 	@Autowired
 	SecurityMapper securityMapper;
 	
