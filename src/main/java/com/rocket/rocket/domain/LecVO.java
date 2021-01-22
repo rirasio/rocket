@@ -24,4 +24,5 @@ public class LecVO {
 	private String class_num;
 	
 	private int lorder;
+	
 }

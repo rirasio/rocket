@@ -43,11 +43,6 @@ public class LecController {
 		model.addAttribute("lecture", service.get(lec_num));
 	}
 	
-//	@GetMapping("/modify")
-//	public String modify() {
-//		return "lecture/modifyForm";
-//	}
-	
 	@PostMapping("/modify")
 	public String modify(LecVO lecvo, RedirectAttributes rttr) {
 		if (service.modify(lecvo)) {
