@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class DoHwVO {
 
-	private String dohw_num;
+	private int dohw_num;
 	
 	private Date regDate;
 	
@@ -19,7 +19,7 @@ public class DoHwVO {
 	
 	private String filePath;
 	
-	private String user_num;
+	private int user_num;
 	
-	private String hw_num;
+	private int hw_num;
 }

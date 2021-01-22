@@ -15,8 +15,10 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -86,9 +88,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		// http.formLogin().loginPage("/customLogin").loginProcessingUrl("/login");
 
-		 //http.csrf().ignoringAntMatchers("/**");
-		
-		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
+
+		//http.csrf().ignoringAntMatchers("/**");
+		http.sessionManagement()
+        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
 
 	}
 	//권한 아이디 테스트
