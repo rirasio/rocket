@@ -21,11 +21,11 @@
                <label for="lorder">순번</label>
                <textarea class="form-control" id="lorder" name="lorder" placeholder="강의 순서"></textarea>
            </div>
+           <a href="/lec/list" role="button" class="btn btn-secondary">글 취소</a>
+       	   <button type="submit" class="btn btn-default">등록</button>
            {{#_csrf}}
 		   <input type="hidden" name="{{parameterName}}" value="{{token}}" />
 		   {{/_csrf}}
-           <a href="/lec/list" role="button" class="btn btn-secondary">글 취소</a>
-       	   <button type="submit" class="btn btn-default">등록</button>
        </form>
        
    </div>

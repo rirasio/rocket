@@ -1,0 +1,49 @@
+{{>layout/header}}
+
+	<h1>UserUpdate ProtoType</h1>
+	<form action="/users/update" method="post">
+		<label>이메일(id)</label>
+		<input type="text" name="email" value="{{users.email}}" readonly="readonly">
+		<!-- <input type="text" name="email" value="이메일" readonly="readonly"> -->
+		<br>
+		<label>패스워드</label>
+		<input type="password" name="pw"  value="{{users.pw}}" >
+		<!-- <input type="password" name="pw"  value="pw" > -->
+		<br>
+		<label>이름</label>
+		<input type="text" name="name" placeholder="이름변경 시 고객센터에 연락주세요" readonly="readonly">
+		<br>
+		<label>닉네임</label>
+		<input type="text" name="nickname" value="{{users.nickname}}">
+		<!-- <input type="text" name="nickname" value="nickname"> -->
+		<br>
+		<label>생년월일</label>
+		<input type="text" name="birthday"   value="{{users.birthday}}" readonly="readonly">
+		<br>
+		<label>전화번호(폰번호)</label>
+		<input type="text" name="phone" value="{{users.phone}}" readonly="readonly">
+		<br>
+		<label>필수정보</label>
+		<input type="radio" name="agree_e" value="1">
+		<label>선택정보정보</label>
+		<input type="radio" name="agree_ue" value="1" >
+		<br>
+		<label>자기소개</label>
+		<textarea name="intro">{{users.phone}}</textarea>
+		<br>
+		
+		<label>프로필사진(미완성)</label>
+		<input type="file" name="pic">
+		<!-- pictype,picpath는 프로필사진 기능 구현안해서 임시로넣음 -->
+		<input type="hidden" name="picType" value="0">
+		<input type="hidden" name="picPath" value="0">
+		<br>
+		<input type="submit" value="submit">
+		<input type="reset" value="reset">
+		<input type="hidden" name="_csrf" value="{{#_csrf}}token{{/_csrf}}" />
+<!--		{{#_csrf}} -->
+<!-- 		<input type="hidden" name="{{parameterName}}" value="{{token}}" /> -->
+<!-- 		{{/_csrf}} -->
+	</form>
+	
+{{>layout/footer}}
