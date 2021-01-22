@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class LecVO {
 
-	private String lec_num;
+	private int lec_num;
 	
 	private String title;
 	
@@ -21,7 +21,7 @@ public class LecVO {
 	
 	private String clickCnt;
 	
-	private String class_num;
+	private int class_num;
 	
 	private int lorder;
 }

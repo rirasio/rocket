@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class ClassVO {
 
-	private String class_num;
+	private int class_num;
 	
 	private String title;
 	

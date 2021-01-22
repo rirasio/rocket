@@ -3,6 +3,8 @@ package com.rocket.rocket.controller;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -22,8 +24,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.rocket.rocket.domain.ClassCtgyVO;
 import com.rocket.rocket.domain.ClassVO;
 import com.rocket.rocket.domain.Criteria;
+import com.rocket.rocket.domain.MakeVO;
 import com.rocket.rocket.service.ClassService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -36,7 +40,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ClassController {
 
 	private ClassService classService;
-	
+
 //	@GetMapping("/list")
 //	public void list (Criteria cri, Model model) {
 //		
@@ -49,26 +53,33 @@ public class ClassController {
 //		
 //		
 //	}
-	
-	
+
 	@GetMapping(value = { "/list" })
-	public String list() {
+	public String list(Model model) {
+
 		log.info("list page");
+		model.addAttribute("list", classService.getList());
 		return "classes/list";
 	}
-	
+
 	@GetMapping(value = { "/create" })
 	public String create() {
 		log.info("create page");
 		return "classes/create";
 	}
-
-
+	
+	
 	@PostMapping(value = { "/create" })
-	public String create(ClassVO classVO, RedirectAttributes rttr) {
-		classService.create(classVO);
+	public String create(ClassVO classVO, ClassCtgyVO classCtgyVO, MakeVO makeVO, RedirectAttributes rttr) {
+
 		rttr.addFlashAttribute("result", classVO.getClass_num());
+
+		classService.createClass(classVO);
+//		classService.createClassCtgy(classCtgyVO);
+//		classService.createMake(makeVO);
+
 		log.info("create complete");
+
 		return "index";
 	}
 
@@ -78,38 +89,27 @@ public class ClassController {
 		log.info("read page");
 		model.addAttribute("class", classService.read(class_num));
 	}
-	
-	
+
 	@PostMapping("/update")
 	public String update(ClassVO classVO, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 		if (classService.update(classVO)) {
 			rttr.addAttribute("result", "success");
 		}
 		log.info("update complete");
-		String cn = classVO.getClass_num();
+		int cn = classVO.getClass_num();
 		return "redirect:/classes/read?class_num=" + cn;
 	}
 
 	@PostMapping("/delete")
-	public String delete(@RequestParam("class_num") String class_num, @RequestAttribute(value = "cri", required = false) Criteria cri, RedirectAttributes rttr) {
+	public String delete(@RequestParam("class_num") String class_num,
+			@RequestAttribute(value = "cri", required = false) Criteria cri, RedirectAttributes rttr) {
 		if (classService.delete(class_num)) {
 			rttr.addFlashAttribute("result", "success");
 		}
 		log.info("delete complete");
 		return "redirect:/classes/list";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	@GetMapping("/uploadForm")
 	public void uploadForm() {
 
@@ -320,5 +320,5 @@ public class ClassController {
 //		
 //		return new ResponseEntity<String> ("deleted", HttpStatus.OK);
 //	}
-	
+
 }

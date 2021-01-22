@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class CommVO {
 
-	private String comm_num;
+	private int comm_num;
 	
 	private String nickname;
 	
@@ -21,9 +21,9 @@ public class CommVO {
 	
 	private byte exist;
 	
-	private String user_num;
+	private int user_num;
 	
-	private String lec_num;
+	private int lec_num;
 	
-	private String class_num;
+	private int class_num;
 }

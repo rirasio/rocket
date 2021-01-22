@@ -7,13 +7,13 @@ import lombok.Data;
 @Data
 public class NoticeVO {
 
-	private String notice_num;
+	private int notice_num;
 	
 	private String title;
 	
 	private String content;
 	
-	private String user_num;
+	private int user_num;
 	
 	private Date regDate;
 	
