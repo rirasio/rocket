@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class PayVO {
 
-	private String pay_num;
+	private int pay_num;
 	
 	private Long payPrice;
 	
@@ -15,7 +15,7 @@ public class PayVO {
 	
 	private Date payExpire;
 	
-	private String sub_num;
+	private int sub_num;
 	
-	private String user_num;
+	private int user_num;
 }

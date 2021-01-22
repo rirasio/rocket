@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class UsersVO {
 
-	private String user_num;
+	private int user_num;
 	
 	private String email;
 	
