@@ -1,29 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>create</title>
-</head>
-<body>
-	<h1>create</h1>
-	<form action="/hw/create" method="post">
-		<label>title</label>
-		<input type="text" name="title">
-		<br>
-		<label>content</label>
-		<input type="text" name="content">
-		<br>
-		<label>file</label>
-		<input type="file" name="file" multiple="multiple">
-		<br>
-		<label>lec_num</label>
-		<input type="text" name="lec_Num">
-		<br>
-		{{#_csrf}}
-		<input type="hidden" name="{{parameterName}}" value="{{token}}" />
-		{{/_csrf}}
-		<input type="submit" value="submit">
-		<input type="reset" value="reset">
-	</form>
-</body>
-</html>
+{{>layout/header}}
+<h1>hw/create</h1>
+
+<div class="col-md-12">
+	<div class="col-md-4">
+		<form role="form" action="/hw/create" method="post">
+			<div class="form-group">
+				<label>title</label>
+				<input type="text" class="form-control" name="title">
+			</div>
+			<div class="form-group">
+				<label>content</label>
+				<input type="text" class="form-control" name="content">
+			</div>
+			<div class="form-group">
+				<label>file</label>
+				<br>
+				<input type="file" name="file" multiple="multiple">
+			</div>
+			<div class="form-group">
+				<label>lec_Num</label>
+				<input type="text" class="form-control" name="lec_Num">
+			</div>
+			{{#_csrf}}
+			<input type="hidden" name="{{parameterName}}" value="{{token}}" />
+			{{/_csrf}}
+			<input type="submit" class="btn btn-info" value="submit">
+			<input type="reset" class="btn btn-warning" value="reset">
+		</form>
+	</div>
+</div>
+{{>layout/footer}}

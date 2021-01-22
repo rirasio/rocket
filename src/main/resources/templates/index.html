@@ -1,26 +1,43 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>index.html</title>
-</head>
-<body>
-	<h1>index.html</h1>
+{{>layout/header}}
+<h1>index.html</h1>
 
-	<a href="users/logout"> logout</a>
-	<a href="hw/create">hw/create</a>
-	<br>
-	<form action="hw/read">
-		<label>read</label>
+<form action="hw/read">
+	<fieldset>
+		<legend>hw</legend>
+		<label>hw/create</label>
+		<input type="submit" formaction="hw/create" value="hw/create">
+		<br>
+		<label>hw/read</label>
 		<input type="text" name="hw_Num">
-		<input type="submit">
-	</form>
-	<br>
-	<form action="hw/delete" method="post">
-		<label>delete</label>
-		<input type="text" name="hw_Num">
-		<input type="submit">
-	</form>
-	<a href="pages/blank.html">aaa</a>
-</body>
-</html>
+		<input type="submit" formaction="hw/read">
+	</fieldset>
+</form>
+<br>
+<form action="dohw/list">
+	<fieldset>
+		<legend>dohw</legend>
+		<label>user_num</label>
+		<input type="text" name="user_num" value="users_1">
+		<br>
+		<label>hw_num</label>
+		<input type="text" name="hw_num" value="hw_1">
+		<br>
+		<label>dohw_num</label>
+		<input type="text" name="dohw_num" value="dohw_1">
+		<br>
+		<input type="submit" formaction="dohw/create" value="dohw/create">
+		<input type="submit" formaction="dohw/read" value="dohw/read">
+		<input type="submit" formaction="dohw/list" value="dohw/list">
+	</fieldset>
+</form>
+<br>
+<form action="lec/list">
+	<fieldset>
+		<legend>lec</legend>
+		<label>lec/list</label>
+		<input type="text" name="lec_num" placeholder="class_num">
+		<input type="submit" value="submit">
+	</fieldset>
+</form>
+
+{{>layout/footer}}

@@ -1,29 +1,44 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>read</title>
-</head>
-<body>
-	<h1>update</h1>
-	<form action="/hw/update" method="post">
-		<label>title</label>
-		<input type="text" name="title" value="{{hw.title}}">
-		<br>
-		<label>content</label>
-		<input type="text" name="content" value="{{hw.content}}">
-		<br>
-		<label>file</label>
-		<input type="file" name="file" multiple="multiple">
-		<br>
-		<label>lec_Num</label>
-		<input type="text" name="lec_Num" value="{{hw.lec_Num}}">
-		<br>
-		{{#_csrf}}
-		<input type="hidden" name="{{parameterName}}" value="{{token}}" />
-		{{/_csrf}}
-		<input type="submit" value="submit">
-		<input type="reset" value="reset">
-	</form>
-</body>
-</html>
+{{>layout/header}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<h1>update</h1>
+<div class="col-md-12">
+	<div class="col-md-4">
+		<form id="operForm" action="/hw/update" method="post">
+			<div class="form-group">
+				<label>title</label>
+				<input type="text" class="form-control" name="title" value="{{hw.title}}">
+			</div>
+			<div class="form-group">
+				<label>content</label>
+				<input type="text" class="form-control" name="content" value="{{hw.content}}">
+			</div>
+			<div class="form-group">
+				<label>file</label>
+				<input type="file" name="file" multiple="multiple">
+			</div>
+			<div class="form-group">
+				<label>lec_Num</label>
+				<input type="text" class="form-control" name="lec_Num" value="{{hw.lec_Num}}">
+			</div>
+
+			<input type="submit" class="btn btn-info" value="submit">
+			<input type="reset" class="btn btn-warning" value="reset">
+			<button class="btn btn-danger" data-oper='delete'>delete</button>
+
+			<input type="hidden" name="hw_Num" value="{{hw.hw_Num}}">
+			{{#_csrf}}
+			<input type="hidden" name="{{parameterName}}" value="{{token}}" />
+			{{/_csrf}}
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		var operForm = $("#operForm");
+		$("button[data-oper='delete']").on("click", function(e) {
+			operForm.attr("action", "/hw/delete").submit();
+		});
+	});
+</script>
+{{>layout/footer}}

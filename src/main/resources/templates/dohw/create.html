@@ -1,0 +1,23 @@
+{{>layout/header}}
+<h1>dohw/create</h1>
+
+<div class="col-md-12">
+	<div class="col-md-4">
+		<form role="form" action="/dohw/create" method="post">
+			<div class="form-group">
+				<input type="file" name="file">
+			</div>
+
+
+			<input type="hidden" name="user_num" value="{{dohwvo.user_num}}">
+
+			<input type="hidden" name="hw_num" value="{{hw_num}}">
+			{{#_csrf}}
+			<input type="hidden" name="{{parameterName}}" value="{{token}}" />
+			{{/_csrf}}
+			<input type="submit" class="btn btn-info" value="submit">
+			<input type="reset" class="btn btn-warning" value="reset">
+		</form>
+	</div>
+</div>
+{{>layout/footer}}

@@ -12,7 +12,7 @@ import lombok.ToString;
 public class Criteria {
 
 	private int pageNum, amount;
-	private String ctgy;
+	
 
 	public Criteria() {
 		this(1, 5);
