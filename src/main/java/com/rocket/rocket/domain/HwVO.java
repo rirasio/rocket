@@ -5,17 +5,11 @@ import lombok.Data;
 @Data
 public class HwVO {
 
-	private String hw_Num;
+	private Long num;
 	
 	private String title;
 	
 	private String content;
 	
-	private String fileName;
-	
-	private byte fileType;
-	
-	private String filePath;
-	
-	private String lec_Num;
+	private Long lec_num;
 }

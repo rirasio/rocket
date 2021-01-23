@@ -7,25 +7,17 @@ import lombok.Data;
 @Data
 public class ClassVO {
 
-	private String class_num;
+	private Long num;
 	
 	private String title;
 	
 	private String intro;
 	
-	private Date regDate;
+	private Date regdate;
 	
-	private Date modiDate;
+	private Date modidate;
 	
-	private String fileName;
+	private String ctgy_title;
 	
-	private byte fileType;
-	
-	private String filePath;
-	
-	private String thumbName;
-	
-	private byte thumbType;
-	
-	private String thumbPath;
+	private String email;
 }

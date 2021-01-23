@@ -7,17 +7,19 @@ import lombok.Data;
 @Data
 public class ReplyVO {
 
-	private String reply_num;
+	private Long num;
 	
 	private String content;
 	
 	private String nickname;
 	
-	private Date regDate;
+	private Date regdate;
 	
-	private Date modiDate;
+	private Date modidate;
 	
-	private Date delDate;
+	private Date deldate;
 	
-	private String comm_num;
+	private Long comm_num;
+	
+	private String email;
 }

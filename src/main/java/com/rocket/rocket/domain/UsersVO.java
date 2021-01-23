@@ -6,8 +6,6 @@ import lombok.Data;
 
 @Data
 public class UsersVO {
-
-	private String user_num;
 	
 	private String email;
 	
@@ -17,7 +15,7 @@ public class UsersVO {
 	
 	private String nickname;
 	
-	private Date birthday;
+	private String birthday;
 	
 	private String phone;
 	
@@ -25,18 +23,14 @@ public class UsersVO {
 	
 	private byte agree_ue;
 	
-	private Date regDate;
+	private Date regdate;
 	
-	private Date delDate;
+	private Date deldate;
 	
 	private String intro;
 	
 	private String mbti;
 	
-	private String pic;
-	
-	private byte picType;
-	
-	private String picPath;
+	private byte enabled;
 	
 }

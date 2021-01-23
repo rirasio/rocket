@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class LecVO {
 
-	private String lec_num;
+	private Long num;
 	
 	private String title;
 	
@@ -15,13 +15,13 @@ public class LecVO {
 	
 	private String ingre;
 	
-	private Date regDate;
+	private Date regdate;
 	
-	private Date modiDate;
+	private Date modidate;
 	
-	private String clickCnt;
+	private String clickcnt;
 	
-	private String class_num;
+	private Long class_num;
 	
 	private int lorder;
 	

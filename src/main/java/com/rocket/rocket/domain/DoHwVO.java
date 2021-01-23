@@ -7,19 +7,13 @@ import lombok.Data;
 @Data
 public class DoHwVO {
 
-	private String dohw_num;
+	private Long num;
 	
-	private Date regDate;
+	private Date regdate;
 	
-	private Date modiDate;
+	private Date modidate;
 	
-	private String fileName;
+	private Long hw_num;
 	
-	private byte fileType;
-	
-	private String filePath;
-	
-	private String user_num;
-	
-	private String hw_num;
+	private String email;
 }

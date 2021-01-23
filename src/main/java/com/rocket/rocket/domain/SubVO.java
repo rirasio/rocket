@@ -5,9 +5,9 @@ import lombok.Data;
 @Data
 public class SubVO {
 
-	private String sub_num;
+	private Long num;
 	
-	private Long price;
+	private int price;
 	
 	private String type;
 }
