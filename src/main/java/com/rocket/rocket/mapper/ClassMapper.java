@@ -7,8 +7,6 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.ResultType;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.rocket.rocket.domain.ClassVO;
 import com.rocket.rocket.domain.Criteria;
 import com.rocket.rocket.domain.CtgyVO;
@@ -19,7 +17,6 @@ public interface ClassMapper {
 	
 	@Insert("insert into class values (seq_class.nextval, #{title}, #{intro}, sysdate, sysdate, #{ctgy_title}, 'qqruqq@naver.com')")
 	public void insertClass(ClassVO classVO);
-
 
 	@Select("select * from class where num = #{num}")
 	@ResultType(ClassVO.class)

@@ -4,13 +4,16 @@ import java.util.List;
 
 import com.rocket.rocket.domain.ClassVO;
 import com.rocket.rocket.domain.Criteria;
+import com.rocket.rocket.domain.CtgyVO;
 
 public interface ClassService {
 	
 	
 	
 	public void createClass(ClassVO classVO);
-
+	
+	public CtgyVO ctgyread();
+	
 	public ClassVO read(Long num);
 
 	public boolean update(ClassVO classVO);
