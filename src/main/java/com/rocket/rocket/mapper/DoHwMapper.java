@@ -13,21 +13,21 @@ import com.rocket.rocket.domain.DoHwVO;
 
 public interface DoHwMapper {
 
-	@Insert("insert into dohw values ('dohw_' || seq_dohw.nextval, sysdate, sysdate, 1, 1, 1, #{user_num}, #{hw_num})")
+	@Insert("insert into dohw values (seq_dohw.nextval, sysdate, sysdate, 1, 1, 1, #{user_num}, #{hw_num})")
 	public void insert(DoHwVO doHwVO);
 
-	@Select("select * from dohw where dohw_num = #{dohw_num}")
+	@Select("select * from dohw where num = #{num}")
 	@ResultType(DoHwVO.class)
-	public DoHwVO select(String dohw_num);
+	public DoHwVO select(long num);
 
-	@Update("update dohw set modiDate = sysdate, fileName = 'updatedName', fileType = 0, filePath = 'updatedPath' where dohw_num = #{dohw_num}")
+	@Update("update dohw set modidate = sysdate, fileName = 'updatedName', fileType = 0, filePath = 'updatedPath' where num = #{num}")
 	public int update(DoHwVO dohwvo);
 
-	@Delete("delete from dohw where dohw_num = #{dohw_num}")
-	public int delete(String dohw_num);
+	@Delete("delete from dohw where num = #{num}")
+	public int delete(long num);
 
 //	@Select("select * from (select rownum rn, dohw.* from dohw where hw_num = #{hw_num}) where rn BETWEEN ((#{cri.pageNum} - 1) * #{cri.amount}	+ 1) and #{cri.pageNum} * #{cri.amount}")
-	@Select("select * from dohw order by dohw_num desc")
+	@Select("select * from dohw order by num desc")
 	@ResultType(DoHwVO.class)
 	public List<DoHwVO> readList();
 

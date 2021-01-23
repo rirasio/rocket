@@ -7,11 +7,11 @@ public interface HwService {
 
 	public void create(HwVO hwvo);
 
-	public HwVO read(String hw_Num);
+	public HwVO read(long num);
 
 	public boolean update(HwVO hwvo);
 
-	public boolean delete(String hw_Num);
+	public boolean delete(long num);
 
 	public int getTotal(Criteria cri);
 

@@ -11,13 +11,13 @@ public interface DoHwService {
 
 	public void create(DoHwVO dohwvo);
 
-	public DoHwVO read(String dohw_num);
+	public DoHwVO read(long num);
 
 	public boolean update(DoHwVO dohwvo);
 
-	public boolean delete(String dohw_num);
+	public boolean delete(long num);
 
-	public List<DoHwVO> readList(@RequestParam("hw_num") String hw_num, Criteria cri);
+	public List<DoHwVO> readList(@RequestParam("hw_num") long hw_num, Criteria cri);
 
 	public int getTotal(Criteria cri);
 

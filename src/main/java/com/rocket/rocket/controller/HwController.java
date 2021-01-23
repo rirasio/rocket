@@ -38,9 +38,9 @@ public class HwController {
 	}
 
 	@GetMapping({ "/read", "/update" })
-	public void read(@RequestParam("hw_Num") String hw_Num,
-			@RequestAttribute(value = "cri", required = false) Criteria cri, Model model) {
-		model.addAttribute("hw", hwService.read(hw_Num));
+	public void read(@RequestParam("num") long num, @RequestAttribute(value = "cri", required = false) Criteria cri,
+			Model model) {
+		model.addAttribute("hw", hwService.read(num));
 	}
 
 	@PostMapping("/update")
@@ -49,14 +49,15 @@ public class HwController {
 			rttr.addAttribute("result", "success");
 		}
 		log.info("update hwvo: " + hwvo);
+
 		return "redirect:/lec/get?lec_num=" + hwvo.getNum();// class num 필요함
 	}
 
 	@PostMapping("/delete")
-	public String delete(@RequestParam("hw_Num") String hw_Num, @ModelAttribute("cri") Criteria cri,
+	public String delete(@RequestParam("num") long num, @ModelAttribute("cri") Criteria cri,
 			RedirectAttributes rttr) {
-		if (hwService.delete(hw_Num)) {
-			log.info("delete hw_Num: " + hw_Num);
+		if (hwService.delete(num)) {
+			log.info("delete hw_num: " + num);
 			rttr.addFlashAttribute("result", "success");
 		}
 		return "redirect:/lec/list";// lec 게시판

@@ -28,7 +28,7 @@ public class DoHwController {
 	private DoHwService dohwService;
 
 	@GetMapping(value = { "/create" })
-	public void create(DoHwVO dohwvo, @RequestParam("hw_num") String hw_num, Model model) {
+	public void create(DoHwVO dohwvo, @RequestParam("hw_num") long hw_num, Model model) {
 		model.addAttribute("dohwvo", dohwvo);
 		model.addAttribute("hw_num", hw_num);
 	}
@@ -41,9 +41,9 @@ public class DoHwController {
 	}
 
 	@GetMapping({ "/read", "/update" })
-	public void read(@RequestParam("dohw_num") String dohw_num,
-			@RequestAttribute(value = "cri", required = false) Criteria cri, Model model) {
-		model.addAttribute("dohw", dohwService.read(dohw_num));
+	public void read(@RequestParam("num") long num, @RequestAttribute(value = "cri", required = false) Criteria cri,
+			Model model) {
+		model.addAttribute("dohw", dohwService.read(num));
 	}
 
 	@PostMapping("/update")
@@ -55,16 +55,16 @@ public class DoHwController {
 	}
 
 	@PostMapping("/delete")
-	public String delete(@RequestParam("dohw_num") String dohw_num, @ModelAttribute(value = "cri") Criteria cri,
+	public String delete(@RequestParam("num") long num, @ModelAttribute(value = "cri") Criteria cri,
 			RedirectAttributes rttr) {
-		if (dohwService.delete(dohw_num)) {
+		if (dohwService.delete(num)) {
 			rttr.addFlashAttribute("result", "success");
 		}
 		return "redirect:/";// lec 게시판
 	}
 
 	@GetMapping("/list")
-	public void list(@RequestParam("hw_num") String hw_num, Criteria cri, Model model) {
+	public void list(@RequestParam("hw_num") long hw_num, Criteria cri, Model model) {
 		model.addAttribute("list", dohwService.readList(hw_num, cri));
 		int total = dohwService.getTotal(cri);
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
