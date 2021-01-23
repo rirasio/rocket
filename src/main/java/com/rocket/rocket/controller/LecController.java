@@ -39,7 +39,7 @@ public class LecController {
 	}
 	
 	@GetMapping({"/get", "/modify"})
-	public void get(@RequestParam("lec_num") String lec_num, Model model) {
+	public void get(@RequestParam("num") String lec_num, Model model) {
 		model.addAttribute("lecture", service.get(lec_num));
 	}
 	
@@ -52,7 +52,7 @@ public class LecController {
 	}
 	
 	@PostMapping("/remove")
-	public String remove(@RequestParam("lec_num") String lec_num, RedirectAttributes rttr) {
+	public String remove(@RequestParam("num") String lec_num, RedirectAttributes rttr) {
 		if (service.remove(lec_num)) {
 			rttr.addFlashAttribute("result", "success");
 		}

@@ -26,9 +26,9 @@ public class LecServiceImpl implements LecService {
 	}
 
 	@Override
-	public LecVO get(String lec_num) {
-		mapper.updateHitCount(lec_num);
-		return mapper.select(lec_num);
+	public LecVO get(String num) {
+		mapper.updateHitCount(num);
+		return mapper.select(num);
 	}
 
 	@Override
@@ -37,8 +37,8 @@ public class LecServiceImpl implements LecService {
 	}
 
 	@Override
-	public boolean remove(String lec_num) {
-		return mapper.delete(lec_num) == 1;
+	public boolean remove(String num) {
+		return mapper.delete(num) == 1;
 	}
 
 	@Override
