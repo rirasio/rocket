@@ -32,7 +32,7 @@ public class SubController {
 	@PostMapping(value = { "/create" })
 	public String create(SubVO subvo, RedirectAttributes rttr) {
 		service.create(subvo);
-		rttr.addFlashAttribute("result", subvo.getSub_num());
+		rttr.addFlashAttribute("result", subvo.getNum());
 		return "test";
 	}
 
@@ -47,7 +47,7 @@ public class SubController {
 		if (service.update(subvo)) {
 			rttr.addAttribute("result", "success");
 		}
-		return "redirect:/sub?sub_num=" + subvo.getSub_num();// class num 필요함
+		return "redirect:/sub?sub_num=" + subvo.getNum();// class num 필요함
 	}
 
 	@PostMapping("/delete")

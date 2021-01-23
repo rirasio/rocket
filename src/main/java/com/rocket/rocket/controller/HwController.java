@@ -49,7 +49,8 @@ public class HwController {
 			rttr.addAttribute("result", "success");
 		}
 		log.info("update hwvo: " + hwvo);
-		return "redirect:/lec/get?lec_num=" + hwvo.getLec_num();// class num 필요함
+
+		return "redirect:/lec/get?lec_num=" + hwvo.getNum();// class num 필요함
 	}
 
 	@PostMapping("/delete")
