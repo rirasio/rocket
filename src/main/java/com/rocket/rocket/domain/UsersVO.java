@@ -32,7 +32,7 @@ public class UsersVO {
 	
 	private String mbti;
 	
-	private byte enabled;
+	private boolean enabled;
 	
 	private List<UserRoleVO> authList;
 	

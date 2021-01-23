@@ -64,8 +64,8 @@ public class UserController {
 
 	//회원삭제
 	@PostMapping("/delete")
-	public String delete(@RequestParam("users_Num") String users_Num, RedirectAttributes rttr) {
-		if (usersService.delete(users_Num)) {
+	public String delete(@RequestParam("email") String email, RedirectAttributes rttr) {
+		if (usersService.delete(email)) {
 			rttr.addFlashAttribute("result", "success");
 		}
 		return "redirect:/";

@@ -10,5 +10,7 @@ public class UserRoleVO {
 	private byte auth_num;
 
 	private String email;
+	
+	private String auth;//ROLE 테이블
 
 }
