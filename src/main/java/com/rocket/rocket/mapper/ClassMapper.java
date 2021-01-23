@@ -21,11 +21,11 @@ public interface ClassMapper {
 	@Insert("insert into class values (seq_class.nextval, #{title}, #{intro}, sysdate, sysdate, null, null, null, null, null, null)")
 	public void insertClass(ClassVO classVO);
 
-//	@Insert("insert into class_ctgy values (SEQ_CLASS_CTGY.nextval, 'class_1', 'HTML')")
-//	public void insertClass_ctgy(ClassCtgyVO classCtgyVO);
-//
-//	@Insert("insert into make values (SEQ_MAKE.nextval, 'users_2', 'class_1')")
-//	public void insertMake(MakeVO makeVO);
+	@Insert("insert into class_ctgy values (seq_class_ctgy.nextval, seq_class.currval, #{ctgy_title})")
+	public void insertClass_ctgy(ClassCtgyVO classCtgyVO);
+
+	@Insert("insert into make values (SEQ_MAKE.nextval, 2, seq_class.currval)")
+	public void insertMake(MakeVO makeVO);
 
 	@Select("select * from class where class_num = #{class_num}")
 	@ResultType(ClassVO.class)
