@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.rocket.rocket.domain.ClassCtgyVO;
 import com.rocket.rocket.domain.ClassVO;
 import com.rocket.rocket.domain.Criteria;
+import com.rocket.rocket.domain.CtgyVO;
 import com.rocket.rocket.domain.MakeVO;
 
 public interface ClassMapper {
@@ -30,6 +31,14 @@ public interface ClassMapper {
 	@Select("select * from class where class_num = #{class_num}")
 	@ResultType(ClassVO.class)
 	public ClassVO select(String class_Num);
+	
+	@Select("select * from class ctgy")
+	@ResultType(CtgyVO.class)
+	public CtgyVO select();
+	
+	
+	
+	
 
 	@Update("update class set title = #{title}, intro = #{intro} where class_num = #{class_num}")
 	public int update(ClassVO classVO);
