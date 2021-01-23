@@ -1,4 +1,4 @@
-package com.rocket.rocket.mapper;
+package com.rocket.rocket.mapper;  
 
 import java.util.List;
 
@@ -11,11 +11,11 @@ import org.apache.ibatis.annotations.Update;
 import com.rocket.rocket.domain.SubVO;
 
 public interface SubMapper {
-	@Insert("insert into sub values (seq_sub.nextval, #{price}, #{type}, 1, 1, #{num})")
+	@Insert("insert into sub values (num\\.nextval, #{price}, #{type}, 1, 1, #{num})")
 	public void insert(SubVO subvo);
 
 
-	@Select("select * from sub where sub_num = #{sub_num}")
+	@Select("select * from sub where num = #{num}")
 	@ResultType(SubVO.class)
 	public SubVO select(long num);
 

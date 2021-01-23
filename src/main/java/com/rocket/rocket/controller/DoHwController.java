@@ -28,9 +28,9 @@ public class DoHwController {
 	private DoHwService dohwService;
 
 	@GetMapping(value = { "/create" })
-	public void create(DoHwVO dohwvo, @RequestParam("hw_num") long hw_num, Model model) {
+	public void create(DoHwVO dohwvo, @RequestParam("num") long num, Model model) {
 		model.addAttribute("dohwvo", dohwvo);
-		model.addAttribute("hw_num", hw_num);
+		model.addAttribute("num", num);
 	}
 
 	@PostMapping(value = { "/create" })
@@ -64,10 +64,10 @@ public class DoHwController {
 	}
 
 	@GetMapping("/list")
-	public void list(@RequestParam("hw_num") long hw_num, Criteria cri, Model model) {
-		model.addAttribute("list", dohwService.readList(hw_num, cri));
+	public void list(@RequestParam("num") long num, Criteria cri, Model model) {
+		model.addAttribute("list", dohwService.readList(num, cri));
 		int total = dohwService.getTotal(cri);
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
-		model.addAttribute("hw_num", hw_num);
+		model.addAttribute("num", num);
 	}
 }
