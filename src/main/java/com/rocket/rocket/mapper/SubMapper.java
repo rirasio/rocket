@@ -11,15 +11,15 @@ import org.apache.ibatis.annotations.Update;
 import com.rocket.rocket.domain.SubVO;
 
 public interface SubMapper {
-	@Insert("insert into sub values ('sub_' || seq_sub.nextval, #{price}, #{type}, 1, 1, #{num})")
+	@Insert("insert into sub values (seq_sub.nextval, #{price}, #{type}, 1, 1, #{num})")
 	public void insert(SubVO subvo);
 
 
-	@Select("select * from hw where sub_num = #{sub_num}")
+	@Select("select * from sub where sub_num = #{sub_num}")
 	@ResultType(SubVO.class)
 	public SubVO select(long num);
 
-	@Update("update hw set title = #{title}, content = #{content} where num = #{num}")
+	@Update("update sub set title = #{title}, content = #{content} where num = #{num}")
 	public int update(SubVO subvo);
 
 	@Delete("delete from sub where num = #{num}")
