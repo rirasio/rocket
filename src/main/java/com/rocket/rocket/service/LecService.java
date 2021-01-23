@@ -8,11 +8,11 @@ public interface LecService {
 	
 	public void register(LecVO lecvo);
 	
-	public LecVO get(String lec_num);
+	public LecVO get(Long num);
 	
 	public boolean modify(LecVO lecvo);
 	
-	public boolean remove(String lec_num);
+	public boolean remove(Long num);
 	
 	public List<LecVO> getList();
 	

@@ -15,7 +15,7 @@ public interface LecMapper {
 	public List<LecVO> getList();
 	
 	@Select("select * from lec where num = #{num}")
-	public LecVO select(String lec_num);
+	public LecVO select(Long num);
 	
 	@Insert("insert into lec values("
 			+ " seq_lec.nextval, #{title}, #{video}, #{ingre},"
@@ -24,14 +24,14 @@ public interface LecMapper {
 	public void insert(LecVO lecvo);
 	
 	@Delete("delete from lec where num = #{num}")
-	public int delete(String lec_num);
+	public int delete(Long num);
 	
 	@Update("update lec set "
 			+ "title= #{title}, video= #{video}, ingre= #{ingre}, modiDate= SYSDATE, lorder= #{lorder} where num = #{num}")
 	public int update(LecVO lecvo);
 	
 	@Update("update lec set clickcnt = clickcnt + 1 where num = #{num}")
-	public int updateHitCount(String lec_num);
+	public int updateHitCount(Long num);
 	
 	
 	

@@ -81,7 +81,7 @@ public class ClassController {
 	}
 
 	@GetMapping({ "/read", "/update" })
-	public void read(@RequestParam("class_num") String class_num,
+	public void read(@RequestParam("num") String class_num,
 			@RequestAttribute(value = "cri", required = false) Criteria cri, Model model) {
 		log.info("read page");
 		model.addAttribute("class", classService.read(class_num));
@@ -94,11 +94,11 @@ public class ClassController {
 		}
 		log.info("update complete");
 		Long cn = classVO.getNum();
-		return "redirect:/classes/read?class_num=" + cn;
+		return "redirect:/classes/read?num=" + cn;
 	}
 
 	@PostMapping("/delete")
-	public String delete(@RequestParam("class_num") String class_num,
+	public String delete(@RequestParam("num") String class_num,
 			@RequestAttribute(value = "cri", required = false) Criteria cri, RedirectAttributes rttr) {
 		if (classService.delete(class_num)) {
 			rttr.addFlashAttribute("result", "success");
