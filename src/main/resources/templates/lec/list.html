@@ -1,0 +1,31 @@
+{{>layout/header}}
+
+<h1>렉처 리스트</h1>
+<div class="col-md-12">
+	<div class="row">
+		<div class="col-md-6">
+			<a href="/lec/register" role="button" class="btn btn-primary">렉처 등록</a>
+		</div>
+	</div>
+</div>
+<!-- 리스트 -->
+<table class="table table-horizontal table-bordered">
+	<thead class="thead-strong">
+
+	  <tr>
+	  	<th>순서</th>
+	  	<td>제목</td>
+	  </tr>
+  	</thead>
+  	<tbody id="tbody">
+  	{{#list}}
+  		<tr>
+  			<td>{{lorder}}</td>
+  			<td><a href="/lec/get?lec_num={{lec_num}}">{{title}}</a></td>
+  		</tr>
+  	{{/list}}
+  	</tbody>
+
+</table>
+
+{{>layout/footer}}

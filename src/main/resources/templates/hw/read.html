@@ -1,0 +1,48 @@
+{{>layout/header}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<h1>read</h1>
+<div class="col-md-12">
+	<div class="col-md-4">
+		<form id="operForm" method="get">
+			<div class="form-group">
+				<label>title</label>
+				<input type="text" class="form-control" name="title" value="{{hw.title}}" readonly="readonly">
+			</div>
+			<div class="form-group">
+				<label>content</label>
+				<textarea name="content" class="form-control" readonly="readonly">{{hw.content}}</textarea>
+			</div>
+			<div class="form-group">
+				<label>file</label>
+				<br>
+				<input type="file" name="file" multiple="multiple">
+			</div>
+			<div class="form-group">
+				<label>lec_Num</label>
+				<input type="text" class="form-control" name="lec_Num" value="{{hw.lec_Num}}" readonly="readonly">
+			</div>
+
+			<button class="btn btn-info" data-oper='update'>Update</button>
+
+			<input type="hidden" name="hw_Num" value="{{hw.hw_Num}}">
+			<input type="hidden" name="title" value="{{hw.title}}">
+			<input type="hidden" name="content" value="{{hw.content}}">
+			<input type="hidden" name="fileName" value="{{hw.fileName}}">
+			<input type="hidden" name="fileType" value="{{hw.fileType}}">
+			<input type="hidden" name="filePath" value="{{hw.Path}}">
+			<input type="hidden" name="lec_Num" value="{{hw.lec_Num}}">
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		var operForm = $("#operForm");
+		$("button[data-oper='update']").on("click", function(e) {
+			console.log("data-oper='update']");
+			operForm.attr("action", "/hw/update").submit();
+		});
+
+	});
+</script>
+{{>layout/footer}}
