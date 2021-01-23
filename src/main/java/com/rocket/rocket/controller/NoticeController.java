@@ -14,7 +14,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.rocket.rocket.domain.Criteria;
 import com.rocket.rocket.domain.HwVO;
+import com.rocket.rocket.domain.NoticeVO;
 import com.rocket.rocket.service.HwService;
+import com.rocket.rocket.service.NoticeService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,43 +27,43 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 public class NoticeController {
 
-	private HwService hwService;
+	private NoticeService noticeService;
 
 	
 	@GetMapping(value = { "/create" })
 	public void create() {
 	}
-
+    
 	@PostMapping(value = { "/create" })
-	public String create(HwVO hwvo, RedirectAttributes rttr) {
-		hwService.create(hwvo);
-		rttr.addFlashAttribute("result", hwvo.getNum());
-		return "/lec/list";
+	public String create(NoticeVO noticevo, RedirectAttributes rttr) {
+		noticeService.create(noticevo);
+		rttr.addFlashAttribute("result", noticevo.getNum());
+		return "/notice/list";
 	}
 
 	@GetMapping({ "/read", "/update" })
 	public void read(@RequestParam("num") long num, @RequestAttribute(value = "cri", required = false) Criteria cri,
 			Model model) {
-		model.addAttribute("hw", hwService.read(num));
+		model.addAttribute("notice", noticeService.read(num));
 	}
 
 	@PostMapping("/update")
-	public String update(HwVO hwvo, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
-		if (hwService.update(hwvo)) {
+	public String update(NoticeVO noticevo, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
+		if (noticeService.update(noticevo)) {
 			rttr.addAttribute("result", "success");
 		}
-		log.info("update hwvo: " + hwvo);
+		log.info("update notice: " + noticevo);
 
-		return "redirect:/lec/get?lec_num=" + hwvo.getNum();// class num 필요함
+		return "redirect:/notice/get?notice_num=" + noticevo.getNum();
 	}
 
 	@PostMapping("/delete")
 	public String delete(@RequestParam("num") long num, @ModelAttribute("cri") Criteria cri,
 			RedirectAttributes rttr) {
-		if (hwService.delete(num)) {
-			log.info("delete hw_num: " + num);
+		if (noticeService.delete(num)) {
+			log.info("delete notice_num: " + num);
 			rttr.addFlashAttribute("result", "success");
 		}
-		return "redirect:/lec/list";// lec 게시판
+		return "redirect:/notice/list";// notice 게시판
 	}
 }
