@@ -31,17 +31,17 @@ public class ClassServiceImpl implements ClassService {
 //		classMapper.insertMake(makeVO);
 	}
 	
-//	@Override
-//	public void createClassCtgy(ClassCtgyVO classCtgyVO) {
-//		log.info("createClassCtgy............");
-//		classMapper.insertClass_ctgy(classCtgyVO);
-//	}
-//	
-//	@Override
-//	public void createMake(MakeVO makeVO) {
-//		log.info("createMake............");
-//		classMapper.insertMake(makeVO);
-//	}
+	@Override
+	public void createClassCtgy(ClassCtgyVO classCtgyVO) {
+		log.info("createClassCtgy............");
+		classMapper.insertClass_ctgy(classCtgyVO);
+	}
+	
+	@Override
+	public void createMake(MakeVO makeVO) {
+		log.info("createMake............");
+		classMapper.insertMake(makeVO);
+	}
 
 	
 	

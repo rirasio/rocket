@@ -12,8 +12,8 @@ public interface ClassService {
 	
 	
 	public void createClass(ClassVO classVO);
-//	public void createClassCtgy(ClassCtgyVO classCtgyVO);
-//	public void createMake(MakeVO makeVO);
+	public void createClassCtgy(ClassCtgyVO classCtgyVO);
+	public void createMake(MakeVO makeVO);
 
 	public ClassVO read(String class_num);
 

@@ -73,10 +73,11 @@ public class ClassController {
 	public String create(ClassVO classVO, ClassCtgyVO classCtgyVO, MakeVO makeVO, RedirectAttributes rttr) {
 
 		rttr.addFlashAttribute("result", classVO.getClass_num());
-
+		
+		
 		classService.createClass(classVO);
-//		classService.createClassCtgy(classCtgyVO);
-//		classService.createMake(makeVO);
+		classService.createClassCtgy(classCtgyVO);
+		classService.createMake(makeVO);
 
 		log.info("create complete");
 

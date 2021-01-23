@@ -1,4 +1,5 @@
-<h1>index.html</h1>
+ {{>layout/header}}
+
 
 <title>index.html</title>
 	<h1>index.html</h1>
@@ -48,6 +49,20 @@
 		<label>lec/list</label>
 		<input type="text" name="lec_num" placeholder="class_num">
 		<input type="submit" value="submit">
+	</fieldset>
+</form>
+
+<br>
+
+<form action="classes/read">
+	<fieldset>
+		<legend>Class</legend>
+		<label>class/create</label>
+		<input type="submit" formaction="classes/create" value="classes/create">
+		<br>
+		<label>class/read</label>
+		<input type="text" name="class_num">
+		<input type="submit" formaction="classes/read">
 	</fieldset>
 </form>
 ---------------------------------------------------------------------------
