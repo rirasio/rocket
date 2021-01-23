@@ -24,10 +24,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.rocket.rocket.domain.ClassCtgyVO;
 import com.rocket.rocket.domain.ClassVO;
 import com.rocket.rocket.domain.Criteria;
-import com.rocket.rocket.domain.MakeVO;
 import com.rocket.rocket.service.ClassService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -70,14 +68,12 @@ public class ClassController {
 	
 	
 	@PostMapping(value = { "/create" })
-	public String create(ClassVO classVO, ClassCtgyVO classCtgyVO, MakeVO makeVO, RedirectAttributes rttr) {
+	public String create(ClassVO classVO, RedirectAttributes rttr) {
 
-		rttr.addFlashAttribute("result", classVO.getClass_num());
+		rttr.addFlashAttribute("result", classVO.getNum());
 		
 		
 		classService.createClass(classVO);
-		classService.createClassCtgy(classCtgyVO);
-		classService.createMake(makeVO);
 
 		log.info("create complete");
 
@@ -97,7 +93,7 @@ public class ClassController {
 			rttr.addAttribute("result", "success");
 		}
 		log.info("update complete");
-		int cn = classVO.getClass_num();
+		Long cn = classVO.getNum();
 		return "redirect:/classes/read?class_num=" + cn;
 	}
 

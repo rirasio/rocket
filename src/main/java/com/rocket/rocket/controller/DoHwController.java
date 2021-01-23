@@ -36,7 +36,7 @@ public class DoHwController {
 	@PostMapping(value = { "/create" })
 	public String create(DoHwVO dohwvo, RedirectAttributes rttr) {
 		dohwService.create(dohwvo);
-		rttr.addFlashAttribute("result", dohwvo.getDohw_num());
+		rttr.addFlashAttribute("result", dohwvo.getNum());
 		return "redirect:/";
 	}
 

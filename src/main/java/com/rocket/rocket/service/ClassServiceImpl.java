@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.rocket.rocket.domain.ClassCtgyVO;
 import com.rocket.rocket.domain.ClassVO;
 import com.rocket.rocket.domain.Criteria;
-import com.rocket.rocket.domain.MakeVO;
 import com.rocket.rocket.mapper.ClassMapper;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
@@ -27,21 +25,10 @@ public class ClassServiceImpl implements ClassService {
 	public void createClass(ClassVO classVO) {
 		log.info("createClass............");
 		classMapper.insertClass(classVO);
-//		classMapper.insertClass_ctgy(classCtgyVO);
-//		classMapper.insertMake(makeVO);
+
 	}
 	
-	@Override
-	public void createClassCtgy(ClassCtgyVO classCtgyVO) {
-		log.info("createClassCtgy............");
-		classMapper.insertClass_ctgy(classCtgyVO);
-	}
-	
-	@Override
-	public void createMake(MakeVO makeVO) {
-		log.info("createMake............");
-		classMapper.insertMake(makeVO);
-	}
+
 
 	
 	
