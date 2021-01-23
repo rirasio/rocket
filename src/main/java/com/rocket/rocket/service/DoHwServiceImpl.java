@@ -24,8 +24,8 @@ public class DoHwServiceImpl implements DoHwService {
 	}
 
 	@Override
-	public DoHwVO read(String dohw_num) {
-		return dohwMapper.select(dohw_num);
+	public DoHwVO read(long num) {
+		return dohwMapper.select(num);
 	}
 
 	@Override
@@ -34,12 +34,12 @@ public class DoHwServiceImpl implements DoHwService {
 	}
 
 	@Override
-	public boolean delete(String dohw_num) {
-		return dohwMapper.delete(dohw_num) == 1 ? true : false;
+	public boolean delete(long num) {
+		return dohwMapper.delete(num) == 1 ? true : false;
 	}
 
 	@Override
-	public List<DoHwVO> readList(@RequestParam("hw_num") String hw_num, Criteria cri) {
+	public List<DoHwVO> readList(@RequestParam("hw_num") long hw_num, Criteria cri) {
 		return dohwMapper.readList();
 	}
 

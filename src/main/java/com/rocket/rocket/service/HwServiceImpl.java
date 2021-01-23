@@ -22,8 +22,8 @@ public class HwServiceImpl implements HwService {
 	}
 
 	@Override
-	public HwVO read(String hw_Num) {
-		return hwMapper.select(hw_Num);
+	public HwVO read(long num) {
+		return hwMapper.select(num);
 	}
 
 	@Override
@@ -32,8 +32,8 @@ public class HwServiceImpl implements HwService {
 	}
 
 	@Override
-	public boolean delete(String hw_Num) {
-		return hwMapper.delete(hw_Num) == 1 ? true : false;
+	public boolean delete(long num) {
+		return hwMapper.delete(num) == 1 ? true : false;
 	}
 
 	@Override

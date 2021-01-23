@@ -12,18 +12,18 @@ import com.rocket.rocket.domain.HwVO;
 
 public interface HwMapper {
 
-	@Insert("insert into hw values ('hw_' || seq_hw.nextval, #{title}, #{content}, 1, 1, 1, #{lec_Num})")
+	@Insert("insert into hw values (seq_hw.nextval, #{title}, #{content}, 1, 1, 1, #{lec_num})")
 	public void insert(HwVO hwvo);
 
-	@Select("select * from hw where hw_num = #{hw_Num}")
+	@Select("select * from hw where num = #{num}")
 	@ResultType(HwVO.class)
-	public HwVO select(String hw_num);
+	public HwVO select(long num);
 
-	@Update("update hw set title = #{title}, content = #{content}, filename = 1, filetype = 1, filePath = 1, lec_num = #{lec_Num} where hw_num = #{hw_Num}")
+	@Update("update hw set title = #{title}, content = #{content}, filename = 1, filetype = 1, filePath = 1, lec_num = #{lec_num} where num = #{num}")
 	public int update(HwVO hwvo);
 
-	@Delete("delete from hw where hw_Num = #{hw_Num}")
-	public int delete(String hw_Num);
+	@Delete("delete from hw where num = #{num}")
+	public int delete(long num);
 
 	@Select("select count(*) from hw")
 	@ResultType(Integer.class)
