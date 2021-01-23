@@ -15,16 +15,16 @@ import com.rocket.rocket.domain.UsersVO;
 
 public interface UserMapper {
 
-	@Insert("insert into users(USER_NUM,EMAIL,PW,NAME,NICKNAME,BIRTHDAY,PHONE,AGREE_E,AGREE_UE,REGDATE,INTRO,PIC,PICTYPE,PICPATH)"
-			+ " values ('users_' || seq_users.nextval, #{email}, #{pw}, #{name}, "
+	@Insert("insert into users(EMAIL,PW,NAME,NICKNAME,BIRTHDAY,PHONE,AGREE_E,AGREE_UE,REGDATE,INTRO,PIC,PICTYPE,PICPATH)"
+			+ " values (#{email}, #{pw}, #{name}, "
 			+ "#{nickname}, #{birthday}, #{phone}, #{agree_e} ,#{agree_ue}, sysdate,#{intro},#{pic},#{picType},#{picPath})")
 	public void insert(UsersVO usersvo);
 
 	@Update("update users set NICKNAME = #{NICKNAME}, PHONE = #{PHONE}, PIC = #{pic}, "
-			+ "picType = #{picType}, picPath = #{picPath}) where USER_NUM = #{USER_NUM}")
+			+ "picType = #{picType}, picPath = #{picPath}) where email = #{email}")
 	public int update(UsersVO usersvo);
 
-	@Insert("insert into users(DELDATE) values(sysdate) where users_Num = #{users_Num}")
+	@Insert("insert into users(DELDATE) values(sysdate) where email = #{email}")
 	public int delete(String usersvo_Num);
 
 }
