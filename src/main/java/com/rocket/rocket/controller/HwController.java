@@ -33,7 +33,7 @@ public class HwController {
 	@PostMapping(value = { "/create" })
 	public String create(HwVO hwvo, RedirectAttributes rttr) {
 		hwService.create(hwvo);
-		rttr.addFlashAttribute("result", hwvo.getHw_Num());
+		rttr.addFlashAttribute("result", hwvo.getNum());
 		return "/lec/list";
 	}
 
@@ -49,7 +49,7 @@ public class HwController {
 			rttr.addAttribute("result", "success");
 		}
 		log.info("update hwvo: " + hwvo);
-		return "redirect:/lec/get?lec_num=" + hwvo.getLec_Num();// class num 필요함
+		return "redirect:/lec/get?lec_num=" + hwvo.getNum();// class num 필요함
 	}
 
 	@PostMapping("/delete")

@@ -39,7 +39,7 @@ public class UserController {
 	@PostMapping(value = { "/userSign" })
 	public String create(UsersVO usersvo, RedirectAttributes rttr) {
 		usersService.create(usersvo);
-		rttr.addFlashAttribute("result", usersvo.getUser_num());
+		rttr.addFlashAttribute("result", usersvo.getEmail());
 		return "/users/login";
 	}
 

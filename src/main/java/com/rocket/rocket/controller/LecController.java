@@ -34,7 +34,7 @@ public class LecController {
 	@PostMapping(value = {"/register"})
 	public String registerLec(LecVO lecvo, RedirectAttributes rttr) {
 		service.register(lecvo);
-		rttr.addFlashAttribute("result", lecvo.getLec_num());
+		rttr.addFlashAttribute("result", lecvo.getNum());
 		return "redirect:/lec/list";
 	}
 	
