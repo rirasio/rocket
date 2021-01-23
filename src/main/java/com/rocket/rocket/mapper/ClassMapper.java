@@ -17,7 +17,7 @@ public interface ClassMapper {
 	
 	
 	
-	@Insert("insert into class values (seq_class.nextval, #{title}, #{intro}, sysdate, sysdate, null, null, null, null, null, null)")
+	@Insert("insert into class values (seq_class.nextval, #{title}, #{intro}, sysdate, sysdate, #{ctgy_title}, 'qqruqq@naver.com')")
 	public void insertClass(ClassVO classVO);
 
 
