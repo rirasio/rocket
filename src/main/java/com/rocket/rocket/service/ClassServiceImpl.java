@@ -27,11 +27,7 @@ public class ClassServiceImpl implements ClassService {
 		classMapper.insertClass(classVO);
 
 	}
-	
-
-
-	
-	
+		
 	@Override
 	public ClassVO read(Long num) {
 		log.info("read............");

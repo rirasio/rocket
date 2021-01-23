@@ -43,7 +43,6 @@ public class LecServiceImpl implements LecService {
 
 	@Override
 	public List<LecVO> getList() {
-		
 		return mapper.getList();
 	}
 	

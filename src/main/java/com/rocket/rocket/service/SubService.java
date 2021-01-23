@@ -8,11 +8,11 @@ public interface SubService {
 
 	public void create(SubVO subvo);
 	
-	public SubVO read(String sub_num);
+	public SubVO read(long num);
 	
 	public boolean update(SubVO subvo) ;
 	
-	public boolean delete(String sub_num);
+	public boolean delete(long num);
 	
 	public List<SubVO> getList();
 	
