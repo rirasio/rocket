@@ -27,8 +27,8 @@ public class SubServiceImpl  implements SubService {
 	}
 
 	@Override
-	public SubVO read(String sub_num) {
-		return mapper.select(sub_num);
+	public SubVO read(long num) {
+		return mapper.select(num);
 	}
 
 	@Override
@@ -37,8 +37,8 @@ public class SubServiceImpl  implements SubService {
 	}
 
 	@Override
-	public boolean delete(String sub_num) {
-		return mapper.delete(sub_num) == 1;
+	public boolean delete(long num) {
+		return mapper.delete(num) == 1;
 	}
 
 	@Override
