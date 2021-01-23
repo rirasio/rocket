@@ -11,7 +11,7 @@ import com.rocket.rocket.domain.UserRoleVO;
 public interface SecurityMapper {
 	
 	@ResultType(UserRoleVO.class)
-	@Select("SELECT * FROM USERROLE WHERE ID= #{id}")
+	@Select("SELECT * FROM USERROLE WHERE email= #{email}")
 	public UserRoleVO readAccount(String email);
 	
 

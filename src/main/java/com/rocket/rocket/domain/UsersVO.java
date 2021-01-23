@@ -1,6 +1,7 @@
 package com.rocket.rocket.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -32,5 +33,7 @@ public class UsersVO {
 	private String mbti;
 	
 	private byte enabled;
+	
+	private List<UserRoleVO> authList;
 	
 }
