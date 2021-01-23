@@ -11,7 +11,7 @@ import com.rocket.rocket.domain.LecVO;
 
 public interface LecMapper {
 	
-	@Select("SELECT num, lorder, title FROM lec WHERE class_num = 1 ORDER BY lorder")
+	@Select("SELECT num, lorder, title FROM lec ORDER BY lorder")
 	public List<LecVO> getList();
 	
 	@Select("select * from lec where num = #{num}")
@@ -19,7 +19,7 @@ public interface LecMapper {
 	
 	@Insert("insert into lec values("
 			+ " seq_lec.nextval, #{title}, #{video}, #{ingre},"
-			+ " SYSDATE, SYSDATE, '1', 2, #{lorder}"
+			+ " SYSDATE, null, '1', 2, #{lorder}"
 			+ ")")
 	public void insert(LecVO lecvo);
 	
