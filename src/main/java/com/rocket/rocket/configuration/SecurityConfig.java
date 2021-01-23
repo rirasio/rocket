@@ -15,7 +15,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -26,6 +26,7 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 
 import com.rocket.rocket.security.CustomLoginSuccessHandler;
+import com.rocket.rocket.security.CustomUserDetailsService;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
@@ -52,6 +53,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
+	}
+	
+	@Bean
+	public UserDetailsService customUserService() {
+		return new CustomUserDetailsService();
 	}
 	
 	@Setter(onMethod_ = {@Autowired})
@@ -99,16 +105,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		log.info("권한 읽기 시작--------");
 		
+		auth.userDetailsService(customUserService()).passwordEncoder(passwordEncoder());
 		
-		String queryUser = "select userid, userpw, enabled from users where userid = ?";
-		String queryDetails = "select userid, auth from user_role where userid = ?";
-		
-		
-		auth.jdbcAuthentication()
-		.dataSource(dataSource)
-		.passwordEncoder(passwordEncoder())
-		.usersByUsernameQuery(queryUser)
-		.authoritiesByUsernameQuery(queryDetails);
+//		String queryUser = "select userid, userpw, enabled from users where userid = ?";
+//		String queryDetails = "select userid, auth from user_role where userid = ?";
+//		auth.jdbcAuthentication()
+//		.dataSource(dataSource)
+//		.passwordEncoder(passwordEncoder())
+//		.usersByUsernameQuery(queryUser)
+//		.authoritiesByUsernameQuery(queryDetails);
 		
 		
 //		test용 임시 계정
