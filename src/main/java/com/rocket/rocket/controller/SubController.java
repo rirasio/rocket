@@ -37,9 +37,9 @@ public class SubController {
 	}
 
 	@GetMapping({ "/read", "/update" })
-	public void read(@RequestParam("sub_num") String sub_num,
+	public void read(@RequestParam("num") long num,
 			@RequestAttribute(value = "cri", required = false) Criteria cri, Model model) {
-		model.addAttribute("hw", service.read(sub_num));
+		model.addAttribute("hw", service.read(num));
 	}
 
 	@PostMapping("/update")
@@ -47,15 +47,15 @@ public class SubController {
 		if (service.update(subvo)) {
 			rttr.addAttribute("result", "success");
 		}
-		return "redirect:/sub?sub_num=" + subvo.getNum();// class num 필요함
+		return "redirect:/sub?num=" + subvo.getNum();// class num 필요함
 	}
 
 	@PostMapping("/delete")
-	public String delete(@RequestParam("sub_num") String sub_num, @RequestAttribute("cri") Criteria cri,
+	public String delete(@RequestParam("num") long num, @RequestAttribute("cri") Criteria cri,
 			RedirectAttributes rttr) {
-		if (service.delete(sub_num)) {
+		if (service.delete(num)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		return "redirect:/sub?sub_num=";// sub 상품 게시판 
+		return "redirect:/sub?num=";// sub 상품 게시판 
 	}
 }
