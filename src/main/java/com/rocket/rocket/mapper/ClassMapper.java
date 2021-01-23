@@ -21,22 +21,22 @@ public interface ClassMapper {
 	public void insertClass(ClassVO classVO);
 
 
-	@Select("select * from class where class_num = #{class_num}")
+	@Select("select * from class where num = #{num}")
 	@ResultType(ClassVO.class)
 	public ClassVO select(Long num);
 	
 	@Select("select * from class ctgy")
 	@ResultType(CtgyVO.class)
-	public CtgyVO select();
+	public CtgyVO selectCTGY();
 	
 	
 	
 	
 
-	@Update("update class set title = #{title}, intro = #{intro} where class_num = #{class_num}")
+	@Update("update class set title = #{title}, intro = #{intro} where num = #{num}")
 	public int update(ClassVO classVO);
 
-	@Delete("delete from class where class_num = #{class_num}")
+	@Delete("delete from class where num = #{num}")
 	public int delete(Long num);
 
 	@Select("select count(*) from class")
