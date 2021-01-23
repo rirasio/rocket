@@ -1,28 +1,19 @@
 package com.rocket.rocket.domain;
 
-import java.sql.Date;
+import java.util.Date;
 
 import lombok.Data;
 
 @Data
 public class DoHwVO {
 
-
-	private int dohw_num;
+	private Long num;
 	
-
-	private Date regDate;
-
-	private Date modiDate;
-
-	private String fileName;
-
-	private byte fileType;
-
-	private String filePath;
-
-	private int user_num;
+	private Date regdate;
 	
-	private int hw_num;
-
+	private Date modidate;
+	
+	private Long hw_num;
+	
+	private String email;
 }

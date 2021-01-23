@@ -15,7 +15,7 @@ import lombok.Data;
 @Data
 public class RoleVO {
 
-	private byte role_num;
+	private byte auth_num;
 	
-	private String roleName;
+	private String auth;
 }

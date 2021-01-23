@@ -7,13 +7,13 @@ import lombok.Data;
 @Data
 public class LecScoreVO {
 
-	private int lec_sc_num;
+	private Long num;
 	
 	private Date lec_sc_date;
 	
-	private int lec_num;
-	
-	private int user_num;
+	private Long lec_num;
 	
 	private int lec_sc_star;
+	
+	private String email;
 }

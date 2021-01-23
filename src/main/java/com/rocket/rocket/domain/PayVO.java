@@ -7,15 +7,15 @@ import lombok.Data;
 @Data
 public class PayVO {
 
-	private int pay_num;
+	private Long num;
 	
-	private Long payPrice;
+	private int payprice;
 	
-	private Date payDate;
+	private Date paydate;
 	
-	private Date payExpire;
+	private Date payexpire;
 	
-	private int sub_num;
+	private Long sub_num;
 	
-	private int user_num;
+	private String email;
 }

@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class ExVO {
 
-	private int ex_num;
+	private Long num;
 	
 	private String title;
 	
@@ -15,9 +15,9 @@ public class ExVO {
 	
 	private byte answer;
 	
-	private Date modiDate;
+	private Date modidate;
 	
-	private Date regDate;
+	private Date regdate;
 	
-	private int lec_num;
+	private Long lec_num;
 }

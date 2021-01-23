@@ -7,11 +7,11 @@ import lombok.Data;
 @Data
 public class TakeVO {
 
-	private int take_num;
+	private Long num;
 	
-	private Date regDate;
+	private Date regdate;
 	
-	private int user_num;
+	private Long class_num;
 	
-	private int class_num;
+	private String email;
 }

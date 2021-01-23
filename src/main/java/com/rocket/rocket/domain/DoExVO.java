@@ -5,13 +5,13 @@ import lombok.Data;
 @Data
 public class DoExVO {
 
-	private int doex_num;
+	private Long num;
 	
 	private byte content;
 	
 	private int score;
 	
-	private int ex_num;
+	private Long ex_num;
 	
-	private int user_num;
+	private String email;
 }
