@@ -23,7 +23,7 @@ public interface ClassMapper {
 
 	@Select("select * from class where class_num = #{class_num}")
 	@ResultType(ClassVO.class)
-	public ClassVO select(String class_Num);
+	public ClassVO select(Long num);
 	
 	@Select("select * from class ctgy")
 	@ResultType(CtgyVO.class)
@@ -37,7 +37,7 @@ public interface ClassMapper {
 	public int update(ClassVO classVO);
 
 	@Delete("delete from class where class_num = #{class_num}")
-	public int delete(String class_num);
+	public int delete(Long num);
 
 	@Select("select count(*) from class")
 	@ResultType(Integer.class)

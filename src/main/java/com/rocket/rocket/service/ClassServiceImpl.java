@@ -33,9 +33,9 @@ public class ClassServiceImpl implements ClassService {
 	
 	
 	@Override
-	public ClassVO read(String class_num) {
+	public ClassVO read(Long num) {
 		log.info("read............");
-		return classMapper.select(class_num);
+		return classMapper.select(num);
 	}
 
 	@Override
@@ -45,9 +45,9 @@ public class ClassServiceImpl implements ClassService {
 	}
 
 	@Override
-	public boolean delete(String class_num) {
+	public boolean delete(Long num) {
 		log.info("delete............");
-		return classMapper.delete(class_num) == 1;
+		return classMapper.delete(num) == 1;
 	}
 
 	@Override

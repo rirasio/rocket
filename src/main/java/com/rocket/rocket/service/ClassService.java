@@ -11,11 +11,11 @@ public interface ClassService {
 	
 	public void createClass(ClassVO classVO);
 
-	public ClassVO read(String class_num);
+	public ClassVO read(Long num);
 
 	public boolean update(ClassVO classVO);
 
-	public boolean delete(String class_num);
+	public boolean delete(Long num);
 
 	public int getTotal(Criteria cri);
 	
