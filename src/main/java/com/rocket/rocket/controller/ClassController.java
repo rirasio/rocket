@@ -61,8 +61,9 @@ public class ClassController {
 	}
 
 	@GetMapping(value = { "/create" })
-	public String create() {
+	public String create(Model model) {
 		log.info("create page");
+		model.addAttribute("ctgy", classService);
 		return "classes/create";
 	}
 	
