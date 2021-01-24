@@ -1,31 +1,57 @@
 {{>layout/header}}
 
-<h1>렉처 리스트</h1>
-<div class="col-md-12">
-	<div class="row">
-		<div class="col-md-6">
-			<a href="/lec/register" role="button" class="btn btn-primary">렉처 등록</a>
-		</div>
-	</div>
-</div>
-<!-- 리스트 -->
-<table class="table table-horizontal table-bordered">
-	<thead class="thead-strong">
+<!-- Page Heading -->
 
-	  <tr>
-	  	<th>순서</th>
-	  	<td>제목</td>
-	  </tr>
-  	</thead>
-  	<tbody id="tbody">
-  	{{#list}}
-  		<tr>
-  			<td>{{lorder}}</td>
-  			<td><a href="/lec/get?num={{num}}">{{title}}</a></td>
-  		</tr>
-  	{{/list}}
-  	</tbody>
-
-</table>
+					<!-- DataTales Example -->
+					<div class="card shadow mb-4">
+						<div class="card-header py-3">
+							<span class="text float-left">강의 목록</span>
+							<span class="float-right">
+								<a href="#" class="btn btn-primary btn-icon-split btn-sm">
+									<span class="icon text-white-50">
+										<i class="fas fa-flag"></i>
+									</span>
+									<span class="text">등록</span>
+								</a>
+							</span>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+							
+								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+									<thead>
+										<tr>
+											<th>num</th>
+											<th>title</th>
+											<th>video</th>
+											<th>regdate</th>
+											<th>modidate</th>
+											<th>clickcnt</th>
+										</tr>
+									</thead>
+									<tfoot>
+										<tr>
+											<th>Name</th>
+											<th>Position</th>
+											<th>Office</th>
+											<th>Age</th>
+											<th>Start date</th>
+											<th>Salary</th>
+										</tr>
+									</tfoot>
+									<tbody>
+										<tr>
+											<td>Tiger Nixon</td>
+											<td>System Architect</td>
+											<td>Edinburgh</td>
+											<td>61</td>
+											<td>2011/04/25</td>
+											<td>$320,800</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
 
 {{>layout/footer}}

@@ -1,13 +1,44 @@
 {{>layout/header}}
 
-<article>
-	<hgroup>
-		<h1>{{lecture.title}}</h1>
-	</hgroup>
+	<article class="hentry">
+	
+		<hgroup>
+			<h1>{{lecture.title}}</h1>
+			<div class="text-gray-500 mb-0">
+				<time>{{lecture.regdate}}</time>
+			</div>
+		</hgroup>
+		
+		<div>
+			<div class="movie">
+				<iframe allow="autoplay; encrypted-media" allowfullscreen frameborder="0" 
+				height="540" src="http://www.youtube.com/embed/{{lecture.video}}" width="980">
+				</iframe>
+			</div>
+			<p>&nbsp;</p>
+			<h2>수업소개</h2>
+			<p>{{lecture.ingre}}</p>
+			<p>&nbsp;</p>
+		</div>
+		
+	</article>
+	
+	
+	<div id="comment" data-role="collapisble">
+		<form id="comment-new-form" method="POST" action="">
+			
+			<div class="wrapper">
+				<div>
+					<img class="img-profile rounded-circle" src="/img/undraw_profile.svg">
+				</div>
+			</div>
+		</form>
+	</div>
+	
 	
 	<div class="col-md-12">
 		<div class="col-md-4">	
-			<form role="form" action="/lec/modify" method="get">
+			<form role="form" action="/lec/update" method="get">
 				<div class="form-group">
 					<label for="num">렉처 번호</label>
 					<input type="text" class="form-control" id="num" name="num" value="{{lecture.num}}" readonly="readonly">
@@ -36,6 +67,7 @@
 			</form>
 		</div>
 	</div>
-</article>
+
+
 {{>layout/footer}}
 

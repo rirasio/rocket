@@ -6,15 +6,15 @@ import com.rocket.rocket.domain.LecVO;
 
 public interface LecService {
 	
-	public void register(LecVO lecvo);
+	public void create(LecVO lecvo, Long class_num);
 	
-	public LecVO get(Long num);
+	public LecVO read(Long num);
 	
-	public boolean modify(LecVO lecvo);
+	public boolean update(LecVO lecvo);
 	
-	public boolean remove(Long num);
+	public boolean delete(Long num);
 	
-	public List<LecVO> getList();
+	public List<LecVO> getList(Long class_num);
 	
 	
 
