@@ -21,29 +21,29 @@ public class LecServiceImpl implements LecService {
 	private LecMapper mapper;
 	
 	@Override
-	public void register(LecVO lecvo) {
+	public void create(LecVO lecvo) {
 		mapper.insert(lecvo);
 	}
 
 	@Override
-	public LecVO get(Long num) {
+	public LecVO read(Long num) {
 		mapper.updateHitCount(num);
 		return mapper.select(num);
 	}
 
 	@Override
-	public boolean modify(LecVO lecvo) {
+	public boolean update(LecVO lecvo) {
 		return mapper.update(lecvo) == 1;
 	}
 
 	@Override
-	public boolean remove(Long num) {
+	public boolean delete(Long num) {
 		return mapper.delete(num) == 1;
 	}
 
 	@Override
-	public List<LecVO> getList() {
-		return mapper.getList();
+	public List<LecVO> getList(Long class_num) {
+		return mapper.getList(class_num);
 	}
 	
 	

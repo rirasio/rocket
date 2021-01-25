@@ -21,39 +21,41 @@ public class LecController {
 	private final LecService service;
 	
 	@GetMapping("/list")
-	public String list(Model model) {
-		model.addAttribute("list", service.getList());
+	public String list(@RequestParam("class_num") Long class_num, Model model) {
+		model.addAttribute("list", service.getList(class_num));
+		model.addAttribute("class_num", class_num);
 		return "lec/list";
 	}
 	
-	@GetMapping(value = {"/register"})
-	public String registerLec() {
-		return "lec/register";
+	@GetMapping("/create")
+	public String create(@RequestParam("class_num") Long class_num, Model model) {
+		model.addAttribute("class_num", class_num);
+		return "lec/create";
 	}
 	
-	@PostMapping(value = {"/register"})
-	public String registerLec(LecVO lecvo, RedirectAttributes rttr) {
-		service.register(lecvo);
+	@PostMapping("/create")
+	public String create(LecVO lecvo, RedirectAttributes rttr) {
+		service.create(lecvo);
 		rttr.addFlashAttribute("result", lecvo.getNum());
-		return "redirect:/lec/list";
+		return "redirect:/lec/list?class_num=" + lecvo.getClass_num();
 	}
 	
-	@GetMapping({"/get", "/modify"})
-	public void get(@RequestParam("num") Long num, Model model) {
-		model.addAttribute("lecture", service.get(num));
+	@GetMapping({"/read", "/update"})
+	public void read(@RequestParam("num") Long num, Model model) {
+		model.addAttribute("lecture", service.read(num));
 	}
 	
-	@PostMapping("/modify")
-	public String modify(LecVO lecvo, RedirectAttributes rttr) {
-		if (service.modify(lecvo)) {
+	@PostMapping("/update")
+	public String update(LecVO lecvo, RedirectAttributes rttr) {
+		if (service.update(lecvo)) {
 			rttr.addFlashAttribute("result", "success");
 		}
 		return "redirect:/lec/list";
 	}
 	
-	@PostMapping("/remove")
-	public String remove(@RequestParam("num") Long num, RedirectAttributes rttr) {
-		if (service.remove(num)) {
+	@PostMapping("/delete")
+	public String delete(@RequestParam("num") Long num, RedirectAttributes rttr) {
+		if (service.delete(num)) {
 			rttr.addFlashAttribute("result", "success");
 		}
 		return "redirect:/lec/list";
