@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.rocket.rocket.domain.Criteria;
-import com.rocket.rocket.domain.HwVO;
 import com.rocket.rocket.domain.NoticeVO;
-import com.rocket.rocket.service.HwService;
 import com.rocket.rocket.service.NoticeService;
 
 import lombok.AllArgsConstructor;
@@ -56,12 +54,15 @@ public class NoticeController {
 
 		return "redirect:/notice/get?notice_num=" + noticevo.getNum();
 	}
+	
+
+
 
 	@PostMapping("/delete")
 	public String delete(@RequestParam("num") long num, @ModelAttribute("cri") Criteria cri,
 			RedirectAttributes rttr) {
 		if (noticeService.delete(num)) {
-			log.info("delete notice_num: " + num);
+			log.info("delete notice_seq: " + num);
 			rttr.addFlashAttribute("result", "success");
 		}
 		return "redirect:/notice/list";// notice 게시판

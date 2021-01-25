@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 @Slf4j
 @Service
-public class NoticeImpl implements NoticeService {
+public class NoticeServiceImpl implements NoticeService {
 
 	private NoticeMapper mapper;
 	
