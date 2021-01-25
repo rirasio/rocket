@@ -69,9 +69,10 @@
 		
 		
 		<div>
-		{{#ctgy}}
-		<input type="checkbox" name="ctgy_title" value="{{ctgy_title}}">{{ctgy_title}}
-		{{/ctgy}}
+		{{#ctgylist}}
+		<span>{{ctgy_title}}</span>
+		<input value="{{ctgy_title}}" type="checkbox" name="ctgy_title" >
+		{{/ctgylist}}
 		</div>
 		
 		
@@ -131,7 +132,7 @@
 	</form>
 
 
-<!-- <script>
+<script>
 	$(document)
 			.ready(
 					function(e) {
@@ -178,7 +179,7 @@
 								.change(
 										function(e) {
 											var formData = new FormData();
-											var inputFile = $("input[name='uploadFile']");
+											var inputFile = $("input[name='curriculum']");
 											var files = inputFile[0].files;
 
 											for (var i = 0; i < files.length; i++) {
@@ -188,7 +189,7 @@
 													return false;
 												}
 
-												formData.append("uploadFile",
+												formData.append("curriculum",
 														files[i]);
 											}
 
@@ -297,7 +298,7 @@
 
 					});
 </script>
- -->
+
 
 
 
