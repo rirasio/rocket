@@ -50,15 +50,15 @@ public class LecController {
 		if (service.update(lecvo)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		return "redirect:/lec/list";
+		return "redirect:/lec/list?class_num=" + lecvo.getClass_num();
 	}
 	
 	@PostMapping("/delete")
-	public String delete(@RequestParam("num") Long num, RedirectAttributes rttr) {
+	public String delete(@RequestParam("num") Long num, @RequestParam("class_num") String class_num, RedirectAttributes rttr) {
 		if (service.delete(num)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		return "redirect:/lec/list";
+		return "redirect:/lec/list?class_num=" + class_num;
 	}
 
 }
