@@ -21,8 +21,8 @@ public class LecServiceImpl implements LecService {
 	private LecMapper mapper;
 	
 	@Override
-	public void create(LecVO lecvo, Long class_num) {
-		mapper.insert(lecvo, class_num);
+	public void create(LecVO lecvo) {
+		mapper.insert(lecvo);
 	}
 
 	@Override

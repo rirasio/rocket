@@ -1,73 +1,80 @@
 {{>layout/header}}
 
 	<article class="hentry">
-	
 		<hgroup>
 			<h1>{{lecture.title}}</h1>
-			<div class="text-gray-500 mb-0">
-				<time>{{lecture.regdate}}</time>
+			<div>
+				<span class="float-left">
+					<time>{{lecture.regdate}}</time>
+				</span>
+				<span class="text">
+					--- count: {{lecture.clickcnt}}
+				</span>
+				<span class="float-right">
+					<a href="/lec/update?num={{lecture.num}}" class="btn btn-secondary btn-icon-split btn-sm">
+						<span class="icon text-white-50"><i class="fas fa-flag"></i></span>
+						<span class="text">수정하기</span>
+					</a>
+				</span>
 			</div>
 		</hgroup>
 		
+		<hr/>
+		
 		<div>
-			<div class="movie">
-				<iframe allow="autoplay; encrypted-media" allowfullscreen frameborder="0" 
-				height="540" src="http://www.youtube.com/embed/{{lecture.video}}" width="980">
-				</iframe>
+			<div class="container">
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{lecture.video}}?rel=0" allowfullscreen></iframe>
+				</div>
+				<div class="row">
+					<div class="col">
+						<a href="#" class="btn btn-primary btn-icon-split w-100">
+							<span class="text">과제</span>
+						</a>
+					</div>
+					<div class="col">
+						<a href="#" class="btn btn-success btn-icon-split w-100">
+							<span class="text">연습문제</span>
+						</a>
+					</div>
+					<div class="col">
+						<a href="#" class="btn btn-warning btn-icon-split w-100">
+							<span class="text">별점주기</span>
+						</a>
+					</div>
+				</div>
 			</div>
 			<p>&nbsp;</p>
-			<h2>수업소개</h2>
+			<h3>수업소개</h3>
 			<p>{{lecture.ingre}}</p>
 			<p>&nbsp;</p>
+			<hr/>
 		</div>
-		
 	</article>
 	
-	
-	<div id="comment" data-role="collapisble">
-		<form id="comment-new-form" method="POST" action="">
-			
-			<div class="wrapper">
-				<div>
-					<img class="img-profile rounded-circle" src="/img/undraw_profile.svg">
-				</div>
+	<div id="comment">
+		<h3>댓글</h3>
+		<form class="row" method="POST" action="#">
+			<div class="col-1">
+				<img class="img-profile rounded-circle" src="/img/undraw_profile.svg" style="width: 35px">
+			</div>
+			<div class="col-11">
+				<dl>
+					<dd>
+						<textarea name="content" style="margin: 0px; width: 100%;"></textarea>
+					</dd>
+				</dl>
+				<button type="submit" class="btn btn-primary btn-icon-split float-right">
+					<span class="icon text-white-50">
+						<i class="fas fa-flag"></i>
+					</span>
+					<span class="text">
+						submit
+					</span>				
+				</button>
 			</div>
 		</form>
 	</div>
-	
-	
-	<div class="col-md-12">
-		<div class="col-md-4">	
-			<form role="form" action="/lec/update" method="get">
-				<div class="form-group">
-					<label for="num">렉처 번호</label>
-					<input type="text" class="form-control" id="num" name="num" value="{{lecture.num}}" readonly="readonly">
-				</div>
-				<div class="form-group">
-					<label for="title">제목</label>
-					<input type="text" class="form-control" id="title" name="title" value="{{lecture.title}}" readonly="readonly">
-				</div>
-				<div class="form-group">
-					<label for="video">영상 소스</label>
-					<input type="text" class="form-control" id="video" name="video" value="{{lecture.video}}" readonly="readonly">
-				</div>
-				<div class="form-group">
-					<label for="ingre">내용</label>
-					<textarea class="form-control" id="ingre" name="ingre" readonly="readonly">{{lecture.ingre}}</textarea>
-				</div>
-				<div class="form-group">
-					<label for="lorder">순번</label>
-					<textarea class="form-control" id="lorder" name="lorder" readonly="readonly">{{lecture.lorder}}</textarea>
-				</div>
-				{{#_csrf}}
-				<input type="hidden" name="{{parameterName}}" value="{{token}}" />
-				{{/_csrf}}
-				<a href="/lec/list" role="button" class="btn btn-secondary">돌아가기</a>
-				<button type="submit" class="btn btn-default">수정</button>
-			</form>
-		</div>
-	</div>
-
 
 {{>layout/footer}}
 

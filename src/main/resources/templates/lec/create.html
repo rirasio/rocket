@@ -6,6 +6,7 @@
 
    <div class="col-md-4">
        <form role="form" action="/lec/create" method="post">
+			<input type="hidden" name="class_num" value="{{class_num}}">
            <div class="form-group">
                <label for="title">제목</label>
                <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요">

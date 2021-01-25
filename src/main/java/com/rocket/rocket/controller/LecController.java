@@ -21,24 +21,23 @@ public class LecController {
 	private final LecService service;
 	
 	@GetMapping("/list")
-	public String list(@RequestParam("class_num") String param_class_num, Model model) {
-		Long class_num = Long.parseLong(param_class_num);
+	public String list(@RequestParam("class_num") Long class_num, Model model) {
 		model.addAttribute("list", service.getList(class_num));
-		model.addAttribute("param", param_class_num);
+		model.addAttribute("class_num", class_num);
 		return "lec/list";
 	}
 	
 	@GetMapping("/create")
-	public String create() {
+	public String create(@RequestParam("class_num") Long class_num, Model model) {
+		model.addAttribute("class_num", class_num);
 		return "lec/create";
 	}
 	
 	@PostMapping("/create")
-	public String create(LecVO lecvo, @RequestParam("class_num") String classnum, RedirectAttributes rttr) {
-		Long class_num = Long.parseLong(classnum);
-		service.create(lecvo, class_num);
+	public String create(LecVO lecvo, RedirectAttributes rttr) {
+		service.create(lecvo);
 		rttr.addFlashAttribute("result", lecvo.getNum());
-		return "redirect:/lec/list";
+		return "redirect:/lec/list?class_num=" + lecvo.getClass_num();
 	}
 	
 	@GetMapping({"/read", "/update"})
@@ -51,7 +50,7 @@ public class LecController {
 		if (service.update(lecvo)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		return "redirect:/lec/list?class_num" + lecvo.getClass_num();
+		return "redirect:/lec/list";
 	}
 	
 	@PostMapping("/delete")

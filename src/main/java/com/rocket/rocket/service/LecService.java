@@ -6,7 +6,7 @@ import com.rocket.rocket.domain.LecVO;
 
 public interface LecService {
 	
-	public void create(LecVO lecvo, Long class_num);
+	public void create(LecVO lecvo);
 	
 	public LecVO read(Long num);
 	

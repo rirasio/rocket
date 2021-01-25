@@ -19,9 +19,9 @@ public interface LecMapper {
 	
 	@Insert("insert into lec values("
 			+ " seq_lec.nextval, #{title}, #{video}, #{ingre},"
-			+ " SYSDATE, null, '1', #{class_num}, #{lorder}"
+			+ " SYSDATE, SYSDATE, '1', #{class_num}, #{lorder}"
 			+ ")")
-	public void insert(LecVO lecvo, Long class_num);
+	public void insert(LecVO lecvo);
 	
 	@Delete("delete from lec where num = #{num}")
 	public int delete(Long num);
