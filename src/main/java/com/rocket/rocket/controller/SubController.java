@@ -15,15 +15,17 @@ import com.rocket.rocket.domain.SubVO;
 import com.rocket.rocket.service.SubService;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 @RequestMapping("/sub")
 @AllArgsConstructor
 public class SubController {
 
-	private final SubService service;
+	private SubService service;
 	
-	@GetMapping("/list")
+	@GetMapping(value={"/create"})
 	public String list(Model model) {
 		model.addAttribute("list",service.getList());
 		return "sub/create";
@@ -33,27 +35,30 @@ public class SubController {
 	public String create(SubVO subvo, RedirectAttributes rttr) {
 		service.create(subvo);
 		rttr.addFlashAttribute("result", subvo.getNum());
-		return "test";
+		return "sub/list";
 	}
 
 	@GetMapping({ "/read", "/update" })
 	public void read(@RequestParam("num") long num,
 			@RequestAttribute(value = "cri", required = false) Criteria cri, Model model) {
-		model.addAttribute("hw", service.read(num));
+		log.info(" Get + /read + /update ,,,,,, ");
+		model.addAttribute("sub", service.read(num));
 	}
 
 	@PostMapping("/update")
 	public String update(SubVO subvo, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 		if (service.update(subvo)) {
+			log.info(" Post  + /update,,,, ");
 			rttr.addAttribute("result", "success");
 		}
-		return "redirect:/sub?num=" + subvo.getNum();// class num 필요함
+		return "redirect:/sub?num=" + subvo.getNum();// have to add regidate in Pay table 
 	}
 
 	@PostMapping("/delete")
 	public String delete(@RequestParam("num") long num, @RequestAttribute("cri") Criteria cri,
 			RedirectAttributes rttr) {
 		if (service.delete(num)) {
+			log.info(" Post + /delete,,,,,, ");
 			rttr.addFlashAttribute("result", "success");
 		}
 		return "redirect:/sub?num=";// sub 상품 게시판 

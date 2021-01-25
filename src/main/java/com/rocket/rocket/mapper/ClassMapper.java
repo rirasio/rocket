@@ -15,7 +15,7 @@ public interface ClassMapper {
 	
 	
 	
-	@Insert("insert into class values (seq_class.nextval, #{title}, #{intro}, sysdate, sysdate, #{ctgy_title}, 'qqruqq@naver.com')")
+	@Insert("insert into class values (num.nextval, #{title}, #{intro}, sysdate, sysdate, #{ctgy_title}, 'qqruqq@naver.com')")
 	public void insertClass(ClassVO classVO);
 
 	@Select("select * from class where num = #{num}")
