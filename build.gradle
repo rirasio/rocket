@@ -32,6 +32,8 @@ dependencies {
 	
 	compile("org.springframework.boot:spring-boot-starter-security")
 	compile group: 'net.coobird', name: 'thumbnailator', version: '0.4.8'
+	implementation 'commons-io:commons-io:2.6'
+	
 }
 
 test {

@@ -14,7 +14,9 @@
 	</div>
 
 	<button id='uploadBtn'>Upload</button>
-
+	{{#_csrf}}
+		<input type="hidden" name="{{parameterName}}" value="{{token}}" />
+	{{/_csrf}}
 	<div class='uploadResult'>
 		<ul>
 
