@@ -53,7 +53,7 @@ public class SecurityController {
 	//로그인 관련-------------------------------------------------------
 	@GetMapping("/login")
 	public void login(String error, String logout, Model model ) {
-		log.info("error : "+error);
+		log.info("error : "+ error);
 		log.info("logout : "+logout);
 		
 		if (error !=null) {
