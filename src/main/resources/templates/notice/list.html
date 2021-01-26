@@ -1,0 +1,56 @@
+{{>layout/header_paging}}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+	<!-- Page Heading -->
+	<h1 class="h3 mb-2 text-gray-800">Notice List</h1>
+
+	<!-- DataTales Example -->
+	<div class="card shadow mb-4">
+		<div class="card-header py-3">
+			<h6 class="m-0 font-weight-bold text-primary"> 하늘이쌤의 공지게시판 </h6>
+		</div>
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered" id="dataTable" style="width: 100%; border-collapse:collapse; " 
+					> <!-- width="100%", cellspacing="0" 없애버림 참고 : https://devday.tistory.com/entry/cellspacing-cellpadding-in-HTML5-->
+					<thead>
+						<tr>
+							<th>공지 고유번호</th>
+							<th>등록 날짜</th>
+							<th>수정 날짜</th>
+<!-- 							<th>삭제 날짜</th> -->
+<!-- 							<th>유저 이메일</th> -->
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th>공지 고유번호</th>
+							<th>공지 제목</th>
+							<th>등록 날짜</th>
+							<th>수정 날짜</th>
+							<th>삭제 날짜</th>
+							<th>유저 이메일</th>
+						</tr>
+					</tfoot>
+					<tbody>
+						{{#list}}
+						<tr>
+							<td><a href="/notice/read">{{num}}</a></td>
+							</a>
+							<td>{{title}}</td> <!-- content 의 일부를 보여줄지 고민중,, -->
+							<td>{{regDate}}</td>
+							<td>{{modiDate}}</td>
+							<td>{{delDate}}</td>
+<!-- 							<td>{{email}}</td> -->
+<!-- 							<td>{{num}}</td> -->
+						</tr>
+						{{/list}}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /.container-fluid -->
+
+{{>layout/footer_paging}}

@@ -4,10 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.rocket.rocket.domain.ClassVO;
 import com.rocket.rocket.domain.Criteria;
+import com.rocket.rocket.domain.CtgyVO;
 import com.rocket.rocket.mapper.ClassMapper;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
@@ -25,9 +24,14 @@ public class ClassServiceImpl implements ClassService {
 	public void createClass(ClassVO classVO) {
 		log.info("createClass............");
 		classMapper.insertClass(classVO);
-
 	}
 		
+	@Override
+	public CtgyVO ctgyread() {
+		log.info("ctgy............");
+		return classMapper.selectCTGY();
+	}
+	
 	@Override
 	public ClassVO read(Long num) {
 		log.info("read............");

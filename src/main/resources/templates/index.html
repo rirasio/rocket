@@ -49,7 +49,7 @@
 	<fieldset>
 		<legend>lec</legend>
 		<label>lec/list</label>
-		<input type="text" name="lec_num" placeholder="class_num">
+		<input type="text" name="class_num" placeholder="class_num">
 		<input type="submit" value="submit">
 	</fieldset>
 </form>
@@ -80,4 +80,16 @@
 		<input type="submit" formaction="classes/read">
 	</fieldset>
 </form>
---------------------------------------------------------------------------- {{>layout/footer}}
+-------------------------------------------------------------------------------------
+<h3>마자용 작업들</h3>
+<form action="notice/read">
+	<fieldset>
+		<legend>notice</legend>
+		<label>notice/create</label>
+		<input type="submit" formaction="notice/create" value="notice/create">
+		<br>
+		<label>notice/read</label>
+		<input type="text" name="num">
+		<input type="submit" formaction="notice/read">
+	</fieldset>
+</form>--------------------------------------------------------------------------- {{>layout/footer}}

@@ -11,15 +11,15 @@ import com.rocket.rocket.domain.LecVO;
 
 public interface LecMapper {
 	
-	@Select("SELECT num, lorder, title FROM lec WHERE class_num = 1 ORDER BY lorder")
-	public List<LecVO> getList();
+	@Select("SELECT * FROM lec WHERE class_num = #{class_num} ORDER BY lorder")
+	public List<LecVO> getList(Long class_num);
 	
 	@Select("select * from lec where num = #{num}")
 	public LecVO select(Long num);
 	
 	@Insert("insert into lec values("
 			+ " seq_lec.nextval, #{title}, #{video}, #{ingre},"
-			+ " SYSDATE, SYSDATE, '1', 2, #{lorder}"
+			+ " SYSDATE, SYSDATE, '1', #{class_num}, #{lorder}"
 			+ ")")
 	public void insert(LecVO lecvo);
 	
@@ -27,7 +27,7 @@ public interface LecMapper {
 	public int delete(Long num);
 	
 	@Update("update lec set "
-			+ "title= #{title}, video= #{video}, ingre= #{ingre}, modiDate= SYSDATE, lorder= #{lorder} where num = #{num}")
+			+ "title= #{title}, video= #{video}, ingre= #{ingre}, modidate= SYSDATE, lorder= #{lorder} where num = #{num}")
 	public int update(LecVO lecvo);
 	
 	@Update("update lec set clickcnt = clickcnt + 1 where num = #{num}")

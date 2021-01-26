@@ -5,6 +5,7 @@
 <div class="col-md-12">
    <div class="col-md-4">
        <form role="form"  method="post">
+				<input type="hidden" name="class_num" value="{{lecture.class_num}}">
         	<div class="form-group">
                <label for="num">렉처 번호</label>
                <input type="text" class="form-control" id="num" name="num" value="{{lecture.num}}" readonly="readonly">
@@ -28,9 +29,9 @@
            {{#_csrf}}
 		   <input type="hidden" name="{{parameterName}}" value="{{token}}" />
 		   {{/_csrf}}
-           <a href="/lec/list" role="button" class="btn btn-secondary">취소</a>
-           <button type="submit" formaction="/lec/modify" class="btn btn-primary">수정</button>
-           <button type="submit" formaction="/lec/remove" class="btn btn-danger">삭제</button>
+           <a href="/lec/list?class_num={{lecture.class_num}}" role="button" class="btn btn-secondary">취소</a>
+           <button type="submit" formaction="/lec/update" class="btn btn-primary">수정</button>
+           <button type="submit" formaction="/lec/delete" class="btn btn-danger">삭제</button>
        </form>
    </div>
 </div>

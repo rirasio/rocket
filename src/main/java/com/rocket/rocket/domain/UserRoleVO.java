@@ -5,6 +5,14 @@ import lombok.Data;
 @Data
 public class UserRoleVO {
 
-	private String email, auth_num;
+	
+	private String userid, auth;
+	
+//	private byte auth_num;
+
+//	private String email;
+	
+	//private String auth;//ROLE 테이블
+
 
 }

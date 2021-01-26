@@ -3,14 +3,18 @@ package com.rocket.rocket.domain;
 import java.sql.Date;
 import java.util.List;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+//@AllArgsConstructor
 public class UsersVO {
 
-	private String email;
-
-	private String pw;
+	
+	private String userid;
+	
+	private String password;
+	
 
 	private String name;
 
@@ -20,9 +24,11 @@ public class UsersVO {
 
 	private String phone;
 
-	private byte agree_e;
-
-	private byte agree_ue;
+	
+	private boolean agree_e;
+	
+	private boolean agree_ue;
+	
 
 	private Date regdate;
 
