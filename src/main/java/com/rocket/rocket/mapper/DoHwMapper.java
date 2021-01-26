@@ -13,23 +13,23 @@ import com.rocket.rocket.domain.DoHwVO;
 
 public interface DoHwMapper {
 
-	@Insert("insert into dohw values (seq_dohw.nextval, sysdate, sysdate, 1, 1, 1, #{user_num}, #{hw_num})")
+	@Insert("insert into dohw values (seq_dohw.nextval, sysdate, sysdate, #{hw_num}, #{email})")
 	public void insert(DoHwVO doHwVO);
 
 	@Select("select * from dohw where num = #{num}")
 	@ResultType(DoHwVO.class)
 	public DoHwVO select(long num);
 
-	@Update("update dohw set modidate = sysdate, fileName = 'updatedName', fileType = 0, filePath = 'updatedPath' where num = #{num}")
+	@Update("update dohw set modidate = sysdate where num = #{num}")
 	public int update(DoHwVO dohwvo);
 
 	@Delete("delete from dohw where num = #{num}")
 	public int delete(long num);
 
 //	@Select("select * from (select rownum rn, dohw.* from dohw where hw_num = #{hw_num}) where rn BETWEEN ((#{cri.pageNum} - 1) * #{cri.amount}	+ 1) and #{cri.pageNum} * #{cri.amount}")
-	@Select("select * from dohw order by num desc")
+	@Select("select * from dohw where hw_num = #{hw_num}")
 	@ResultType(DoHwVO.class)
-	public List<DoHwVO> readList();
+	public List<DoHwVO> readList(long hw_num);
 
 	@Select("select count(*) from dohw")
 	@ResultType(Integer.class)

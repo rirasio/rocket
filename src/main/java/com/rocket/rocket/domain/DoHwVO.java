@@ -1,6 +1,6 @@
 package com.rocket.rocket.domain;
 
-import java.util.Date;
+import java.sql.Date;
 
 import lombok.Data;
 
@@ -8,12 +8,12 @@ import lombok.Data;
 public class DoHwVO {
 
 	private Long num;
-	
+
 	private Date regdate;
-	
+
 	private Date modidate;
-	
+
 	private Long hw_num;
-	
+
 	private String email;
 }

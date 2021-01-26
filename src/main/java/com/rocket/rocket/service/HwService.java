@@ -5,11 +5,11 @@ import com.rocket.rocket.domain.HwVO;
 
 public interface HwService {
 
-	public void create(HwVO hwvo);
+	public void create(HwVO hw);
 
 	public HwVO read(long num);
 
-	public boolean update(HwVO hwvo);
+	public boolean update(HwVO ex);
 
 	public boolean delete(long num);
 

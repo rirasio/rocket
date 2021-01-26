@@ -6,9 +6,7 @@ import com.rocket.rocket.domain.ClassVO;
 import com.rocket.rocket.domain.Criteria;
 
 public interface ClassService {
-	
-	
-	
+
 	public void createClass(ClassVO classVO);
 
 	public ClassVO read(Long num);
@@ -18,7 +16,7 @@ public interface ClassService {
 	public boolean delete(Long num);
 
 	public int getTotal(Criteria cri);
-	
+
 	public List<ClassVO> getList();
 
 }

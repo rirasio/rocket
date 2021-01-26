@@ -22,7 +22,7 @@
 		<input type="submit" formaction="hw/create" value="hw/create">
 		<br>
 		<label>hw/read</label>
-		<input type="text" name="hw_Num">
+		<input type="text" name="num">
 		<input type="submit" formaction="hw/read">
 	</fieldset>
 </form>
@@ -30,14 +30,14 @@
 <form action="dohw/list">
 	<fieldset>
 		<legend>dohw</legend>
-		<label>user_num</label>
-		<input type="text" name="user_num" value="users_1">
-		<br>
-		<label>hw_num</label>
-		<input type="text" name="hw_num" value="hw_1">
+		<label>email</label>
+		<input type="text" name="email" value="eee@e.com">
 		<br>
 		<label>dohw_num</label>
-		<input type="text" name="dohw_num" value="dohw_1">
+		<input type="text" name="num" value="1">
+		<br>
+		<label>hw_num</label>
+		<input type="text" name="hw_num" value="1">
 		<br>
 		<input type="submit" formaction="dohw/create" value="dohw/create">
 		<input type="submit" formaction="dohw/read" value="dohw/read">
@@ -51,6 +51,18 @@
 		<label>lec/list</label>
 		<input type="text" name="lec_num" placeholder="class_num">
 		<input type="submit" value="submit">
+	</fieldset>
+</form>
+<br>
+<form action="ex/create">
+	<fieldset>
+		<legend>ex</legend>
+		<label>ex/create</label>
+		<input type="submit" value="ex/create">
+		<br>
+		<label>ex/read</label>
+		<input type="text" name="num" placeholder="ex_num">
+		<input type="submit" formaction="ex/read" value="submit">
 	</fieldset>
 </form>
 ---------------------------------------------------------------------------

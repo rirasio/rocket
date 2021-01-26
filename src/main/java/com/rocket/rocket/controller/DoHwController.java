@@ -28,16 +28,15 @@ public class DoHwController {
 	private DoHwService dohwService;
 
 	@GetMapping(value = { "/create" })
-	public void create(DoHwVO dohwvo, @RequestParam("hw_num") long hw_num, Model model) {
-		model.addAttribute("dohwvo", dohwvo);
-		model.addAttribute("hw_num", hw_num);
+	public void create(DoHwVO dohw, Model model) {
+		model.addAttribute("dohw", dohw);
 	}
 
 	@PostMapping(value = { "/create" })
-	public String create(DoHwVO dohwvo, RedirectAttributes rttr) {
-		dohwService.create(dohwvo);
-		rttr.addFlashAttribute("result", dohwvo.getNum());
-		return "redirect:/";
+	public String create(DoHwVO dohw, RedirectAttributes rttr) {
+		dohwService.create(dohw);
+		rttr.addFlashAttribute("result", dohw.getNum());
+		return "redirect:/dohw/list";
 	}
 
 	@GetMapping({ "/read", "/update" })
@@ -47,11 +46,11 @@ public class DoHwController {
 	}
 
 	@PostMapping("/update")
-	public String update(DoHwVO dohwvo, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
-		if (dohwService.update(dohwvo)) {
+	public String update(DoHwVO dohw, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
+		if (dohwService.update(dohw)) {
 			rttr.addAttribute("result", "success");
 		}
-		return "redirect:/";// lec num 필요함
+		return "redirect:/dohw/read?num=" + dohw.getNum();
 	}
 
 	@PostMapping("/delete")
