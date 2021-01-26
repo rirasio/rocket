@@ -102,7 +102,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		//http.csrf().ignoringAntMatchers("/**");
 		http.sessionManagement()
-        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
+       .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
 
 	}
 	//권한 아이디설정
