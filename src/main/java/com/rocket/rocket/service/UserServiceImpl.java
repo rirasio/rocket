@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.rocket.rocket.domain.Criteria;
 import com.rocket.rocket.domain.HwVO;
+import com.rocket.rocket.domain.UserRoleVO;
 import com.rocket.rocket.domain.UsersVO;
 import com.rocket.rocket.mapper.HwMapper;
 import com.rocket.rocket.mapper.UserMapper;
@@ -27,22 +28,23 @@ public class UserServiceImpl implements UserService {
 	
 	@Transactional
 	@Override
-	public void create(UsersVO usersvo) {
-		usersvo.setPw(pwencoder.encode("pw"));
+	public void create(UsersVO usersvo, UserRoleVO userrolevo) {
+		usersvo.setPassword(pwencoder.encode("password"));
 		userMapper.insert(usersvo);
+		userMapper.insert2(userrolevo);
 	}
 
 	@Transactional
 	@Override
-	public boolean update(UsersVO usersvo) {
-		usersvo.setPw(pwencoder.encode("pw"));
+	public boolean update(UsersVO usersvo, UserRoleVO userrolevo) {
+		usersvo.setPassword(pwencoder.encode("password"));
 		return userMapper.update(usersvo) == 1 ? true : false;
 	}
 
 	@Transactional
 	@Override
-	public boolean delete(String users_Num) {
-		return userMapper.delete(users_Num) == 1 ? true : false;
+	public boolean delete(String email) {
+		return userMapper.delete(email) == 1 ? true : false;
 	}
 
 }
