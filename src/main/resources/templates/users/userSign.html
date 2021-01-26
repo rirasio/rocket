@@ -3,10 +3,10 @@
 	<h1>Sign Up ProtoType</h1>
 	<form action="/users/userSign" method="post">
 		<label>이메일(id)</label>
-		<input type="text" name="email" placeholder="id">
+		<input type="text" name="userid" placeholder="id">
 		<br>
 		<label>패스워드</label>
-		<input type="password" name="pw" placeholder="password">
+		<input type="password" name="password" placeholder="password">
 		<br>
 		<label>이름</label>
 		<input type="text" name="name" placeholder="이름">
@@ -28,18 +28,19 @@
 		<label>자기소개</label>
 		<textarea name="intro">자기소개를 해주세요</textarea>
 		<br>
-		<label>프로필사진</label>
-		<input type="file" name="pic">
-		<!-- pictype,picpath는 프로필사진 기능 구현안해서 임시로넣음 -->
-		<input type="hidden" name="picType" value="0">
-		<input type="hidden" name="picPath" value="0">
+		<label>권한선택</label>
+		<select name = "auth">
+			<option value="0">일반회원</option>
+			<option value="1">구독회원</option>
+			<option value="2">선생님</option>
+			<option value="9">관리자</option>
+		</select>
 		<br>
 		<input type="submit" value="submit">
 		<input type="reset" value="reset">
-		<input type="hidden" name="_csrf" value="{{#_csrf}}token{{/_csrf}}" />
-<!--		{{#_csrf}} -->
-<!-- 		<input type="hidden" name="{{parameterName}}" value="{{token}}" /> -->
-<!-- 		{{/_csrf}} -->
+		{{#_csrf}}
+ 		<input type="hidden" name="{{parameterName}}" value="{{token}}" />
+ 		{{/_csrf}}
 	</form>
 	
 {{>layout/footer}}

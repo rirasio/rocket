@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.rocket.rocket.mapper.SecurityMapper">
+ 
+ 	<resultMap type="com.rocket.rocket.domain.UsersVO" id="usersMap">
+ 		<id property="userid" column="email"/>
+ 		<result property="userid" column="email"/>
+ 		<result property="password" column="pw"/>
+ 		<result property="name" column="name"/>
+ 		<result property="nickname" column="nickname"/>
+ 		<result property="birthday" column="birthday"/>
+ 		<result property="phone" column="phone"/>
+ 		<result property="agree_e" column="agree_e"/>
+ 		<result property="agree_ue" column="agree_ue"/>
+  		<result property="regdate" column="regdate"/>
+  		<result property="deldate" column="deldate"/>
+  		<result property="intro" column="intro"/>
+  		<result property="mbti" column="mbti"/>
+  		<result property="enabled" column="enabled"/>
+ 		<collection property="authList" resultMap="authMap">
+ 		</collection>
+ 	</resultMap>
+ 	
+ 	<resultMap type="com.rocket.rocket.domain.UserRoleVO" id="authMap">
+ 		<result property="auth" column="auth_num"/>
+ 		<result property="userid" column="email"/>
+ 	</resultMap>
+ 
+ 	<select id="read" parameterType="String" resultMap="usersMap">
+ 		SELECT
+ 			users.email, pw, name, nickname, birthday, phone, agree_e, agree_ue, regdate, deldate, intro, mbti,enabled, auth_num
+ 		FROM
+ 			users LEFT OUTER JOIN user_role  on users.email = user_role.email
+ 		WHERE users.email = #{userid}
+ 	</select>
+ 
+ 
+ </mapper>
