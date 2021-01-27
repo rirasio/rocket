@@ -14,17 +14,20 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.rocket.rocket.domain.ClassVO;
 import com.rocket.rocket.domain.Criteria;
 import com.rocket.rocket.service.ClassService;
+import com.rocket.rocket.service.LecService;
+
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
-@RequestMapping("/classes/**")
+@RequestMapping("/classes")
 @AllArgsConstructor
 @Slf4j
 public class ClassController {
 
 	private ClassService classService;
-	
+	private LecService lecService;
+
 
 //	@GetMapping("/list")
 //	public void list (Criteria cri, Model model) {
@@ -74,6 +77,8 @@ public class ClassController {
 			@RequestAttribute(value = "cri", required = false) Criteria cri, Model model) {
 		log.info("read page");
 		model.addAttribute("class", classService.read(num));
+		model.addAttribute("list", lecService.getList(num));
+		model.addAttribute("class_num", num);
 	}
 
 	@PostMapping("/update")

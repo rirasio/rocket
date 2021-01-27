@@ -29,7 +29,7 @@
            {{#_csrf}}
 		   <input type="hidden" name="{{parameterName}}" value="{{token}}" />
 		   {{/_csrf}}
-           <a href="/lec/list?class_num={{lecture.class_num}}" role="button" class="btn btn-secondary">취소</a>
+           <a href="/classes/read?num={{lecture.class_num}}" role="button" class="btn btn-secondary">취소</a>
            <button type="submit" formaction="/lec/update" class="btn btn-primary">수정</button>
            <button type="submit" formaction="/lec/delete" class="btn btn-danger">삭제</button>
        </form>
