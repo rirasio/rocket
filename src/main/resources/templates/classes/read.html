@@ -10,131 +10,120 @@
 	<h2 class="m-0 font-weight-bold text-primary">{{class.title}}</h2>
 </div>
 
+<div class="container">
 
 
-<div class="card-body">
+	<div class="row">
+		<div class="card-body">
 
-	<div style="float: left; margin: 40px 50px;">
-		<img alt="" src="/img/th1.jpg" style="width: 400px">
-	</div>
+			<div style="float: left; margin: 40px 50px;">
+				<img alt="" src="/img/th1.jpg" style="width: 400px">
+			</div>
 
-	<div style="float: right; margin: 40px 50px; text-align: right;">
+			<div style="float: right; margin: 40px 50px; text-align: right;">
 
-		<h1 class="m-0 font-weight-bold text-primary">{{class.title}}</h1>
-		<h6>100만개의 평가</h6>
-	
-
-		<h4>#{{class.ctgy_title}}#{{class.ctgy_title}}#{{class.ctgy_title}}</h4>
-    
-    	<form id="operForm" method="get">
-
-			<input type="hidden" name="num" value="{{class.num}}">
-			<input type="hidden" name="title" value="{{class.title}}">
-			<input type="hidden" name="intro" value="{{class.intro}}">
-			<input type="hidden" name="regdate" value="{{class.regdate}}">
-			<input type="hidden" name="modidate" value="{{class.modidate}}">
-			<input type="hidden" name="ctgy_title" value="{{class.ctgy_title}}">
-			<input type="hidden" name="email" value="{{class.email}}">
+				<h1 class="m-0 font-weight-bold text-primary">{{class.title}}</h1>
+				<h6>100만개의 평가</h6>
 
 
-			<button data-oper="update" class="btn btn-default">Update</button>
-			<button data-oper="list" class="btn btn-info">List</button>
-		</form>
-	</div>
-</div>
+				<h4>#{{class.ctgy_title}}#{{class.ctgy_title}}#{{class.ctgy_title}}</h4>
 
-    
-    
-    
+				<form id="operForm" method="get">
 
-
-
-    
+					<input type="hidden" name="num" value="{{class.num}}">
+					<input type="hidden" name="title" value="{{class.title}}">
+					<input type="hidden" name="intro" value="{{class.intro}}">
+					<input type="hidden" name="regdate" value="{{class.regdate}}">
+					<input type="hidden" name="modidate" value="{{class.modidate}}">
+					<input type="hidden" name="ctgy_title" value="{{class.ctgy_title}}">
+					<input type="hidden" name="email" value="{{class.email}}">
 
 
-<div class="content">
-	<form id="operForm" method="get">
-
-		<input type="hidden" name="num" value="{{class.num}}">
-		<label>클래스 명</label>
-		<input type="text" name="title" value="{{class.title}}" readonly="readonly">
-		<br>
-		<label>클래스 내용</label>
-		<textarea name="intro" readonly="readonly">{{class.intro}}</textarea>
-		<br>
-		<input type="hidden" name="regdate" value="{{class.regdate}}">
-		<input type="hidden" name="modidate" value="{{class.modidate}}">
-		
-		<div>
-			
+					<button data-oper="update" class="btn btn-default">Update</button>
+					<button data-oper="list" class="btn btn-info">List</button>
+				</form>
+			</div>
 		</div>
-		
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="content">
+
+
+		<div></div>
+
 		<!-- 렉처 리스트 -->
 		<br>
-			<div class="card shadow mb-4">
-				<div class="card-header py-3">
-					<span class="text float-left">강의 목록</span>
-					<span class="float-right">
-						<a href="/lec/create?class_num={{class_num}}" class="btn btn-primary btn-icon-split btn-sm">
-							<span class="icon text-white-50">
-								<i class="fas fa-flag"></i>
-							</span>
-							<span class="text">등록</span>
-						</a>
-					
-					</span>
-				</div>
-				<div class="card-body">
-					<div class="table-responsive">
-						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-							<thead>
-								<tr>
-									<th>num</th>
-									<th>title</th>
-									<th>video</th>
-									<th>regdate</th>
-									<th>modidate</th>
-									<th>clickcnt</th>
-									<th>class_num</th>
-									<th>order</th>
-								</tr>
-							</thead>
-							<tfoot>
-								<tr>
-									<th>num</th>
-									<th>title</th>
-									<th>video</th>
-									<th>regdate</th>
-									<th>modidate</th>
-									<th>clickcnt</th>
-									<th>class_num</th>
-									<th>order</th>
-								</tr>
-							</tfoot>
-							{{#list}}
-							<tbody>
-								<tr>
-									<td>{{num}}</td>
-									<td><a href="/lec/read?num={{num}}">{{title}}</a></td>
-									<td>{{video}}</td>
-									<td>{{regdate}}</td>
-									<td>{{modidate}}</td>
-									<td>{{clickcnt}}</td>
-									<td>{{class_num}}</td>
-									<td>{{lorder}}</td>
-								</tr>
-							</tbody>
-							{{/list}}
-						</table>
-					</div>
+		<div class="card shadow mb-4">
+			<div class="card-header py-3">
+				<span class="text float-left">강의 목록</span> <span class="float-right">
+					<a href="/lec/create?class_num={{class_num}}"
+					class="btn btn-primary btn-icon-split btn-sm"> <span
+						class="icon text-white-50"> <i class="fas fa-flag"></i>
+					</span> <span class="text">등록</span>
+				</a>
+
+				</span>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-bordered" id="dataTable" width="100%"
+						cellspacing="0">
+						<thead>
+							<tr>
+								<th>num</th>
+								<th>title</th>
+								<th>video</th>
+								<th>regdate</th>
+								<th>modidate</th>
+								<th>clickcnt</th>
+								<th>class_num</th>
+								<th>order</th>
+							</tr>
+						</thead>
+						<tfoot>
+							<tr>
+								<th>num</th>
+								<th>title</th>
+								<th>video</th>
+								<th>regdate</th>
+								<th>modidate</th>
+								<th>clickcnt</th>
+								<th>class_num</th>
+								<th>order</th>
+							</tr>
+						</tfoot>
+						{{#list}}
+						<tbody>
+							<tr>
+								<td>{{num}}</td>
+								<td><a href="/lec/read?num={{num}}">{{title}}</a></td>
+								<td>{{video}}</td>
+								<td>{{regdate}}</td>
+								<td>{{modidate}}</td>
+								<td>{{clickcnt}}</td>
+								<td>{{class_num}}</td>
+								<td>{{lorder}}</td>
+							</tr>
+						</tbody>
+						{{/list}}
+					</table>
 				</div>
 			</div>
+		</div>
 		<br>
 		<!-- 렉처 리스트 끝 -->
-		
- 	</div>
-		
 
+	</div>
+
+</div>
 
 {{>layout/footer}}
 
