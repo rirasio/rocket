@@ -10,6 +10,32 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+ 
+ 
+/* 
+
+-------------------------------------------------------------------------- 예자용 추가
+.notice_desc : 본문내용 숨기기 
+
+ */
+.notice_desc {
+    display: block;
+    display: -webkit-box;
+    overflow: hidden;
+    max-height: 40px;
+    line-height: 20px;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin-top: 2px;
+    font-size: 13px;
+    color: #404040; }
+ /* 
+
+--------------------------------------------------------------------------
+ */
+ 
+ 
 :root {
   --blue: #4e73df;
   --indigo: #6610f2;

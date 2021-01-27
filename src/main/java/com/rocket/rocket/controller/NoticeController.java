@@ -1,7 +1,6 @@
 
 package com.rocket.rocket.controller;
 
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,16 +26,27 @@ public class NoticeController {
 
 	private NoticeService noticeService;
 
-	
-	@GetMapping(value = { "/create" })
+	@GetMapping("/list")
+	public String list(@RequestParam("email") String email, Model model) {
+		model.addAttribute("notice", noticeService.getList(email));
+		return "/notice/list";
+	}
+
+// http://localhost:8080/notice/create 실행
+	@GetMapping("/create")
 	public void create() {
 	}
-    
-	@PostMapping(value = { "/create" })
+
+// 공지 생성시 해당 num 을 통해서 공지로 보여지도록 설정 
+	@PostMapping("/create")
 	public String create(NoticeVO noticevo, RedirectAttributes rttr) {
 		noticeService.create(noticevo);
-		rttr.addFlashAttribute("result", noticevo.getNum());
-		return "/notice/list";
+//		rttr.addFlashAttribute("result", noticevo.getNum());
+//		return "redirect:/notice/list?num="+ noticevo.getNum();
+//		return "redirect:/notice/list?email=qqruqq@naver.com";
+		return "redirect:/notice/list?email=" + noticevo.getEmail();
+//		return "redirect:/notice/list?email=" + uservo.();
+
 	}
 
 	@GetMapping({ "/read", "/update" })
@@ -52,19 +62,16 @@ public class NoticeController {
 		}
 		log.info("update notice: " + noticevo);
 
-		return "redirect:/notice/get?notice_num=" + noticevo.getNum();
+//		return "redirect:/notice/get?Num=" + noticevo.getNum();
+		return "redirect:/notice/get?Num=" + noticevo.getNum();
 	}
-	
-
-
 
 	@PostMapping("/delete")
-	public String delete(@RequestParam("num") long num, @ModelAttribute("cri") Criteria cri,
-			RedirectAttributes rttr) {
-		if (noticeService.delete(num)) {
-			log.info("delete notice_seq: " + num);
+	public String delete(NoticeVO noticevo, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
+		if (noticeService.delete(noticevo.getNum())) {
+			log.info("delete notice_seq: " + noticevo.getNum());
 			rttr.addFlashAttribute("result", "success");
 		}
-		return "redirect:/notice/list";// notice 게시판
+		return "redirect:/notice/list?email=" + noticevo.getEmail();// notice 게시판
 	}
 }

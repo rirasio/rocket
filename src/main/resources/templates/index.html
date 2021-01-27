@@ -1,5 +1,5 @@
  {{>layout/header}}
- 
+
 <h1>Index</h1>
 
 <div class="container">
@@ -21,17 +21,21 @@
 		</div>
 		<div class="col-md-4">
 			<h3>마자용 작업들</h3>
-			<form action="notice/read">
-				<fieldset>
-					<legend>notice</legend>
-					<label>notice/create</label>
-					<input type="submit" formaction="notice/create" value="notice/create">
-					<br>
-					<label>notice/read</label>
-					<input type="text" name="num">
-					<input type="submit" formaction="notice/read">
-				</fieldset>
-			</form>
+      <form action="notice/list">
+        <fieldset>
+          <legend>notice</legend>
+          <label>notice/create</label>
+          <input type="submit" formaction="notice/create" value="notice/create">
+          <br>
+          <label>notice/read</label>
+          <input type="text" name="num">
+          <input type="submit" formaction="notice/read">
+          <br>
+          <label>notice/list</label>
+          <input type="text" name="email">
+          <input type="submit" formaction="notice/list">
+        </fieldset>
+      </form>
 		</div>
 		<div class="col-md-4">
 			<h3>로사 작업들</h3>
@@ -121,3 +125,4 @@
 </div>
 
 {{>layout/footer}}
+
