@@ -26,7 +26,8 @@ dependencies {
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
 
 //    implementation('org.springframework.boot:spring-boot-starter-oauth2-client') // 권한 관련
-//  implementation('org.springframework.session:spring-session-jdbc') // 권한 관련	
+//    implementation('org.springframework.session:spring-session-jdbc') // 권한 관련	
+
 	
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.oracle.database.jdbc:ojdbc8'
@@ -35,6 +36,9 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 	
 	compile("org.springframework.boot:spring-boot-starter-security")
+	compile group: 'net.coobird', name: 'thumbnailator', version: '0.4.8'
+	implementation 'commons-io:commons-io:2.6'
+	
 }
 
 test {

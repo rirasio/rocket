@@ -27,8 +27,8 @@ public class SecurityController {
 
 	@Autowired
 	SecurityMapper securityMapper;
-	
-	//유저권한별 마이페이지-------------------
+
+	// 유저권한별 마이페이지-------------------
 	@RequestMapping("/admin")
 	public String user() {
 		return "/users/adminPage";
@@ -38,7 +38,7 @@ public class SecurityController {
 	public String teacher() {
 		return "/users/teacherPage";
 	}
-	
+
 	@RequestMapping("/subs")
 	public String subs() {
 		return "/users/subsPage";
@@ -47,35 +47,34 @@ public class SecurityController {
 	@RequestMapping("/student")
 	public String student() {
 		return "/users/studentPage";
-	}	
+	}
 
-	//로그인 관련-------------------------------------------------------
+	// 로그인 관련-------------------------------------------------------
 	@GetMapping("/login")
-	public void login(String error, String logout, Model model ) {
-		log.info("error : "+ error);
-		log.info("logout : "+logout);
-		
-		if (error !=null) {
+
+	public void login(String error, String logout, Model model) {
+		log.info("error : " + error);
+		log.info("logout : " + logout);
+
+		if (error != null) {
+
 			model.addAttribute("error", "login Error check your account");
 		}
-		if (logout !=null) {
+		if (logout != null) {
 			model.addAttribute("logout", "logout!");
 		}
 	}
-	
+
 	@GetMapping("/access_denied")
 	public void accessDenied(Authentication auth, Model model) {
 		log.info("access Denied : " + auth);
 		model.addAttribute("msg", "403 access_denied입니다.(from model)");
 	}
-	
-	
+
 	@RequestMapping("/logout")
 	public void logout() {
 		log.info("logout실행");
 
 	}
-	
-	
-	
+
 }

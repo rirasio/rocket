@@ -39,8 +39,8 @@ public class DoHwServiceImpl implements DoHwService {
 	}
 
 	@Override
-	public List<DoHwVO> readList(@RequestParam("hw_num") long hw_num, Criteria cri) {
-		return dohwMapper.readList();
+	public List<DoHwVO> readList(long hw_num, Criteria cri) {
+		return dohwMapper.readList(hw_num);
 	}
 
 	@Override
