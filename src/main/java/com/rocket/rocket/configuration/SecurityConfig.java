@@ -1,41 +1,36 @@
 package com.rocket.rocket.configuration;
 
-import java.util.Date;
-
 import javax.sql.DataSource;
 
-import org.apache.ibatis.type.BaseTypeHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.access.prepost.PreAuthorize;
+
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.csrf.CsrfFilter;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.web.filter.CharacterEncodingFilter;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 
 import com.rocket.rocket.security.CustomLoginSuccessHandler;
 import com.rocket.rocket.security.CustomUserDetailsService;
 
-import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Configuration // 자바설정파일임을 선언
+
 //@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 @EnableWebSecurity() // 시큐리티 설정클래스임을 선언
 @AllArgsConstructor // 클래스에 존재하는 모든 필드에 대한 생성자를 자동
@@ -50,15 +45,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return new CustomUserDetailsService();
 	}
 	
+
 	@Bean
 	public AuthenticationSuccessHandler loginSuccessHandler() {
-		return new CustomLoginSuccessHandler();//loginSuccess사용하기위함
+		return new CustomLoginSuccessHandler();// loginSuccess사용하기위함
 	}
-	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+
 
 
 	@Override
@@ -68,9 +65,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 	
 
+
 	// 필터들
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+
 
 		http.authorizeRequests()
 				// 페이지 권한 설정(큰권한이 제일 상단에 있어야됨)
@@ -106,30 +105,33 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	}
 	//권한 아이디설정
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		log.info("권한 읽기 시작--------");
-		
+
+		// Custom Users Auth
 		auth.userDetailsService(customUserService()).passwordEncoder(passwordEncoder());
+
 		
 //		String queryUser = "select email, pw, enabled from users where email = ?";
 //		String queryDetails = "select email, auth_num from user_role where email = ?";
+
 //		auth.jdbcAuthentication()
 //		.dataSource(dataSource)
 //		.passwordEncoder(passwordEncoder())
 //		.usersByUsernameQuery(queryUser)
 //		.authoritiesByUsernameQuery(queryDetails);
-		
-		
+
 //		test용 임시 계정
 //		auth.inMemoryAuthentication().withUser("rocketbot1").password("{noop}rocketbot1").roles("9");
 //		auth.inMemoryAuthentication().withUser("rocketbot1").password("$2a$10$kmCUFCNxf0LDqy2OKKdGkuKY7dnZTk.X9/y9vAYtTl8vp9VT4gzs6").roles("9");
+
 //		auth.inMemoryAuthentication().withUser("rocketbot2").password("{noop}rocketbot2").roles("2");
 //		auth.inMemoryAuthentication().withUser("rocketbot3").password("{noop}rocketbot3").roles("1");
 //		auth.inMemoryAuthentication().withUser("rocketbot4").password("{noop}rocketbot4").roles("0");
 //		auth.inMemoryAuthentication().withUser("rocketbot5").password("{noop}rocketbot5").roles("2,9");
-		
-	}
 
+	}
 
 }

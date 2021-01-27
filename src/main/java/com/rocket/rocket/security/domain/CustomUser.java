@@ -1,3 +1,4 @@
+
 package com.rocket.rocket.security.domain;
 
 import java.util.Collection;

@@ -1,14 +1,15 @@
 {{>layout/header}}
-<h1>dohw/create</h1>
-
+<h1>ex/create</h1>
 <div class="col-md-12">
 	<div class="col-md-4">
-		<form role="form" action="/dohw/create" method="post">
+		<form role="form" action="/ex/create" method="post">
 			<div class="form-group">
 				<input type="file" name="file">
 			</div>
-			<input type="text" name="email" value="{{dohw.email}}" readonly="readonly">
-			<input type="text" name="hw_num" value="{{dohw.hw_num}}" readonly="readonly">
+			<input type="text" name="title" value="{{ex.title}}">
+			<input type="text" name="content" value="{{ex.content}}">
+			<input type="text" name="answer" value="{{ex.answer}}">
+			<input type="hidden" name="lec_num" value="{{ex.lec_num}}" readonly="readonly">
 			{{#_csrf}}
 			<input type="hidden" name="{{parameterName}}" value="{{token}}" />
 			{{/_csrf}}

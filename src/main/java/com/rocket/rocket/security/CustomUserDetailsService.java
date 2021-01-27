@@ -14,6 +14,7 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+
 @Service
 public class CustomUserDetailsService implements UserDetailsService{
 
@@ -30,8 +31,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 		log.warn("qurried by users mapper : " + vo);
 		
 		return vo == null ? null : new CustomUser(vo);
+
 	}
-	
-	
-	
+
 }

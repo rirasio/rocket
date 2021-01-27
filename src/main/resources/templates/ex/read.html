@@ -1,29 +1,29 @@
 {{>layout/header}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<h1>read</h1>
+<h1>ex/read</h1>
 <div class="col-md-12">
 	<div class="col-md-4">
 
 		<form id="operForm" method="get">
 			<div class="form-group">
-				<label>dohw_num</label>
-				<input type="text" class="form-control" name="num" value="{{dohw.num}}" readonly="readonly">
+				<label>ex_num</label>
+				<input type="text" class="form-control" name="num" value="{{ex.num}}" readonly="readonly">
 			</div>
 			<div class="form-group">
-				<label>dohw_regDate</label>
-				<input type="text" class="form-control" name="regDate" value="{{dohw.regdate}}" readonly="readonly">
+				<label>title</label>
+				<input type="text" class="form-control" name="title" value="{{ex.title}}" readonly="readonly">
 			</div>
 			<div class="form-group">
-				<label>dohw_modiDate</label>
-				<input type="text" class="form-control" name="modiDate" value="{{dohw.modidate}}" readonly="readonly">
+				<label>content</label>
+				<input type="text" class="form-control" name="content" value="{{ex.content}}" readonly="readonly">
 			</div>
 			<div class="form-group">
-				<label>user_num</label>
-				<input type="text" class="form-control" name="hw_num" value="{{dohw.hw_num}}" readonly="readonly">
+				<label>answer</label>
+				<input type="hidden" class="form-control" name="answer" value="{{ex.answer}}" readonly="readonly">
 			</div>
 			<div class="form-group">
-				<label>email</label>
-				<input type="text" class="form-control" name="email" value="{{dohw.email}}" readonly="readonly">
+				<label>lec_num</label>
+				<input type="text" class="form-control" name="lec_num" value="{{ex.lec_num}}" readonly="readonly">
 			</div>
 			<div class="form-group">
 				<label>file</label>
@@ -42,7 +42,7 @@
 		var operForm = $("#operForm");
 		$("button[data-oper='update']").on("click", function(e) {
 			console.log("data-oper='update']");
-			operForm.attr("action", "/dohw/update").submit();
+			operForm.attr("action", "/ex/update").submit();
 		});
 
 	});
