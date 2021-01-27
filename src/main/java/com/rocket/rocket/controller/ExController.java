@@ -12,51 +12,47 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.rocket.rocket.domain.Criteria;
-import com.rocket.rocket.domain.HwVO;
-import com.rocket.rocket.service.HwService;
+import com.rocket.rocket.domain.ExVO;
+import com.rocket.rocket.service.ExService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping("/hw")
+@RequestMapping("/ex")
 @AllArgsConstructor
-public class HwController {
+public class ExController {
 
-	private HwService hwService;
+	private ExService exService;
 
 	@GetMapping(value = { "/create" })
 	public void create() {
 	}
 
 	@PostMapping(value = { "/create" })
-	public String create(HwVO hwvo, RedirectAttributes rttr) {
-		hwService.create(hwvo);
-		rttr.addFlashAttribute("result", hwvo.getNum());
-		return "/lec/list";
+	public String create(ExVO ex, RedirectAttributes rttr) {
+		exService.create(ex);
+		return "/lec/read?num=" + ex.getLec_num();
 	}
 
 	@GetMapping({ "/read", "/update" })
-	public void read(@RequestParam("num") long num,
-			@RequestAttribute(value = "cri", required = false) Criteria cri, Model model) {
-		model.addAttribute("hw", hwService.read(num));
+	public void read(@RequestParam("num") long num, @RequestAttribute(value = "cri", required = false) Criteria cri,
+			Model model) {
+		model.addAttribute("ex", exService.read(num));
 	}
 
 	@PostMapping("/update")
-	public String update(HwVO hwvo, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
-		if (hwService.update(hwvo)) {
+	public String update(ExVO ex, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
+		if (exService.update(ex)) {
 			rttr.addAttribute("result", "success");
 		}
-		log.info("update hwvo: " + hwvo);
-
-		return "redirect:/lec/get?num=" + hwvo.getLec_num();
+		return "redirect:/lec/get?num=" + ex.getLec_num();
 	}
 
 	@PostMapping("/delete")
-	public String delete(@RequestParam("num") long num, @ModelAttribute("cri") Criteria cri,
-			RedirectAttributes rttr) {
-		if (hwService.delete(num)) {
+	public String delete(@RequestParam("num") long num, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
+		if (exService.delete(num)) {
 			rttr.addFlashAttribute("result", "success");
 		}
 		return "redirect:/lec/list";// lec 게시판

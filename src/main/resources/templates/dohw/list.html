@@ -11,7 +11,7 @@
 	<!-- DataTales Example -->
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
-			<h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+			<h6 class="m-0 font-weight-bold text-primary">{{hw_num}}</h6>
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
@@ -37,12 +37,12 @@
 					<tbody>
 						{{#list}}
 						<tr>
-							<td><a href="/dohw/read?dohw_num={{dohw_num}}">{{dohw_num}}</td>
+							<td><a href="/dohw/read?num={{num}}">{{num}}</td>
 							</a>
-							<td>{{regDate}}</td>
-							<td>{{modiDate}}</td>
-							<td>{{user_num}}</td>
-							<td>{{hw_num}}</td>
+							<td>{{regdate}}</td>
+							<td>{{modidate}}</td>
+							<td>{{email}}</td>
+							<th>{{hw_num}}</th>
 						</tr>
 						{{/list}}
 					</tbody>

@@ -45,3 +45,4 @@ public interface ClassMapper {
 	public List<ClassVO> classList();
 
 }
+
