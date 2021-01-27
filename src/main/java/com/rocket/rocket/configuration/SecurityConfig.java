@@ -25,6 +25,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import com.rocket.rocket.security.CustomLoginSuccessHandler;
 import com.rocket.rocket.security.CustomUserDetailsService;
 
+import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
