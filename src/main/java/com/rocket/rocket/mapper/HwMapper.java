@@ -12,14 +12,14 @@ import com.rocket.rocket.domain.HwVO;
 
 public interface HwMapper {
 
-	@Insert("insert into hw values (seq_hw.nextval, #{title}, #{content}, 1, 1, 1, #{lec_num})")
+	@Insert("insert into hw values (seq_hw.nextval, #{title}, #{content}, #{lec_num})")
 	public void insert(HwVO hwvo);
 
-	@Select("select * from hw where num = #{num}")
+	@Select("select * from hw where lec_num = #{lec_num}")
 	@ResultType(HwVO.class)
-	public HwVO select(long num);
+	public HwVO select(long lec_num);
 
-	@Update("update hw set title = #{title}, content = #{content}, filename = 1, filetype = 1, filePath = 1, lec_num = #{lec_num} where num = #{num}")
+	@Update("update hw set title = #{title}, content = #{content} where num = #{num}")
 	public int update(HwVO hwvo);
 
 	@Delete("delete from hw where num = #{num}")

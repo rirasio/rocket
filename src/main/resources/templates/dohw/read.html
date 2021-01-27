@@ -7,33 +7,29 @@
 		<form id="operForm" method="get">
 			<div class="form-group">
 				<label>dohw_num</label>
-				<input type="text" class="form-control" name="dohw_num" value="{{dohw.dohw_num}}" readonly="readonly">
+				<input type="text" class="form-control" name="num" value="{{dohw.num}}" readonly="readonly">
+			</div>
+			<div class="form-group">
+				<label>dohw_regDate</label>
+				<input type="text" class="form-control" name="regDate" value="{{dohw.regdate}}" readonly="readonly">
+			</div>
+			<div class="form-group">
+				<label>dohw_modiDate</label>
+				<input type="text" class="form-control" name="modiDate" value="{{dohw.modidate}}" readonly="readonly">
 			</div>
 			<div class="form-group">
 				<label>user_num</label>
 				<input type="text" class="form-control" name="hw_num" value="{{dohw.hw_num}}" readonly="readonly">
 			</div>
 			<div class="form-group">
-				<label>hw_num</label>
-				<input type="text" class="form-control" name="user_num" value="{{dohw.user_num}}" readonly="readonly">
-			</div>
-			<div class="form-group">
-				<label>dohw_regDate</label>
-				<input type="text" class="form-control" name="regDate" value="{{dohw.regDate}}" readonly="readonly">
-			</div>
-			<div class="form-group">
-				<label>dohw_modiDate</label>
-				<input type="text" class="form-control" name="modiDate" value="{{dohw.modiDate}}" readonly="readonly">
+				<label>email</label>
+				<input type="text" class="form-control" name="email" value="{{dohw.email}}" readonly="readonly">
 			</div>
 			<div class="form-group">
 				<label>file</label>
 				<br>
 				<input type="file" name="file" multiple="multiple">
 			</div>
-
-			<input type="hidden" name="fileName" value="{{dohw.fileName}}">
-			<input type="hidden" name="fileType" value="{{dohw.fileType}}">
-			<input type="hidden" name="filePath" value="{{dohw.Path}}">
 
 			<button class="btn btn-info" data-oper='update'>Update</button>
 

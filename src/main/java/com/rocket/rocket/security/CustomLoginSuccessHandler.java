@@ -32,6 +32,10 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 		log.warn("ROLE NAMES: "+ roleNames);
 		
 		//관리자 로그인시 관리자 페이지로 자동연결
+		if (roleNames.contains("ROLE_ADMIN")) {
+			response.sendRedirect("/users/admin");
+			return;
+		}
 		if (roleNames.contains("ROLE_9")) {
 			response.sendRedirect("/users/admin");
 			return;

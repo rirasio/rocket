@@ -1,0 +1,42 @@
+ {{>layout/header}}
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+	<form action="files/files/" method="post"
+		enctype="multipart/form-data">
+		<input type='file' name='file' id='files' multiple>
+		<button>Submit</button>
+		
+		{{#_csrf}}
+		<input type="hidden" name="{{parameterName}}" value="{{token}}" />
+		{{/_csrf}}
+		
+		
+	</form>
+	
+	
+	<script>
+		function submit() {
+			var formData = new FormData();
+			formData.append('file', $('#file').val());
+			var files = $('#files')[0].files;
+			for (var i = 0; i < files.length; ++i) {
+				console.log(files[i]);
+				formData.append('files', files[i]);
+			}
+			$.ajax({
+				url: 'http://localhost:8080/files',
+				method: 'POST',
+				processData: false,
+				contentType: false,
+				data: formData,
+				success: function(d) {
+					console.log(d);
+				}
+			});
+		}
+	</script>
+	
+{{>layout/footer}}

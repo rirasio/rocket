@@ -7,11 +7,8 @@
 			<div class="form-group">
 				<input type="file" name="file">
 			</div>
-
-
-			<input type="hidden" name="user_num" value="{{dohwvo.user_num}}">
-
-			<input type="hidden" name="hw_num" value="{{hw_num}}">
+			<input type="text" name="email" value="{{dohw.email}}" readonly="readonly">
+			<input type="text" name="hw_num" value="{{dohw.hw_num}}" readonly="readonly">
 			{{#_csrf}}
 			<input type="hidden" name="{{parameterName}}" value="{{token}}" />
 			{{/_csrf}}

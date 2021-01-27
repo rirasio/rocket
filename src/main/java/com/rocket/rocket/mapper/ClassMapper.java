@@ -15,16 +15,17 @@ public interface ClassMapper {
 	
 	
 	
-	@Insert("insert into class values (num.nextval, #{title}, #{intro}, sysdate, sysdate, #{ctgy_title}, 'qqruqq@naver.com')")
+	@Insert("insert into class values"
+			+ "(seq_class.nextval, #{title}, #{intro}, sysdate, sysdate, #{ctgy_title}, 'qqruqq@naver.com')")
 	public void insertClass(ClassVO classVO);
 
 	@Select("select * from class where num = #{num}")
 	@ResultType(ClassVO.class)
 	public ClassVO select(Long num);
 	
-	@Select("select * from class ctgy")
+	@Select("select * from ctgy")
 	@ResultType(CtgyVO.class)
-	public CtgyVO selectCTGY();
+	public List<CtgyVO> ctgyList();
 	
 	
 	
@@ -42,6 +43,6 @@ public interface ClassMapper {
 
 	@Select("select * from class")
 	@ResultType(ClassVO.class)
-	public List<ClassVO> getList();
+	public List<ClassVO> classList();
 
 }

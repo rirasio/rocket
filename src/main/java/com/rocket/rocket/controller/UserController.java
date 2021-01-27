@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.rocket.rocket.domain.Criteria;
 import com.rocket.rocket.domain.HwVO;
+import com.rocket.rocket.domain.UserRoleVO;
 import com.rocket.rocket.domain.UsersVO;
 import com.rocket.rocket.service.HwService;
 import com.rocket.rocket.service.UserService;
@@ -37,9 +38,9 @@ public class UserController {
 	}
 
 	@PostMapping(value = { "/userSign" })
-	public String create(UsersVO usersvo, RedirectAttributes rttr) {
-		usersService.create(usersvo);
-		rttr.addFlashAttribute("result", usersvo.getEmail());
+	public String create(UsersVO usersvo, UserRoleVO userrolevo, RedirectAttributes rttr) {
+		usersService.create(usersvo, userrolevo);
+		rttr.addFlashAttribute("result", usersvo.getUserid());
 		return "/users/login";
 	}
 
@@ -50,12 +51,12 @@ public class UserController {
 	}
 
 	@PostMapping("/update")
-	public String update(UsersVO usersvo, RedirectAttributes rttr) {
+	public String update(UsersVO usersvo, UserRoleVO userrolevo, RedirectAttributes rttr) {
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String name = authentication.getName();
 		log.info("Now Login id : " + name);
-		if (usersService.update(usersvo)) {
+		if (usersService.update(usersvo, userrolevo)) {
 			rttr.addAttribute("result", "success");
 		}
 		log.info("usersVO: " + usersvo);

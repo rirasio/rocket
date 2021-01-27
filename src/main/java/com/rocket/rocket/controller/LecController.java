@@ -37,7 +37,7 @@ public class LecController {
 	public String create(LecVO lecvo, RedirectAttributes rttr) {
 		service.create(lecvo);
 		rttr.addFlashAttribute("result", lecvo.getNum());
-		return "redirect:/lec/list?class_num=" + lecvo.getClass_num();
+		return "redirect:/classes/read?num=" + lecvo.getClass_num();
 	}
 	
 	@GetMapping({"/read", "/update"})
@@ -50,7 +50,7 @@ public class LecController {
 		if (service.update(lecvo)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		return "redirect:/lec/list?class_num=" + lecvo.getClass_num();
+		return "redirect:/classes/read?num=" + lecvo.getClass_num();
 	}
 	
 	@PostMapping("/delete")
@@ -58,7 +58,12 @@ public class LecController {
 		if (service.delete(num)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		return "redirect:/lec/list?class_num=" + class_num;
+		return "redirect:/classes/read?num=" + class_num;
 	}
+	
+//	@GetMapping("/autocreate")
+//	public void auto(LecVO lecvo) {
+//		service.autoCreate(lecvo);
+//	}
 
 }

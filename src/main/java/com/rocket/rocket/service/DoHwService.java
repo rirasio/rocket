@@ -17,7 +17,7 @@ public interface DoHwService {
 
 	public boolean delete(long num);
 
-	public List<DoHwVO> readList(@RequestParam("hw_num") long hw_num, Criteria cri);
+	public List<DoHwVO> readList(long hw_num, Criteria cri);
 
 	public int getTotal(Criteria cri);
 

@@ -46,6 +46,21 @@ public class LecServiceImpl implements LecService {
 		return mapper.getList(class_num);
 	}
 	
+//	@Override
+//	public void autoCreate(LecVO lecvo) {
+//		for (int i=7; i<13; i++) {
+//			for (int k=0; k<12; k++) {
+//				lecvo.setClass_num((long) i);
+//				lecvo.setNum((long) k);
+//				lecvo.setTitle("제목"+k);
+//				lecvo.setVideo("source"+k);
+//				lecvo.setIngre("내용"+k);
+//				lecvo.setLorder(k);
+//				mapper.insert(lecvo);
+//			}
+//		}
+//	}
+	
 	
 
 }

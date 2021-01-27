@@ -18,14 +18,14 @@
 			</div>
 			<div class="form-group">
 				<label>lec_Num</label>
-				<input type="text" class="form-control" name="lec_Num" value="{{hw.lec_Num}}">
+				<input type="text" class="form-control" name="lec_num" value="{{hw.lec_num}}" readonly="readonly">
 			</div>
 
 			<input type="submit" class="btn btn-info" value="submit">
 			<input type="reset" class="btn btn-warning" value="reset">
 			<button class="btn btn-danger" data-oper='delete'>delete</button>
 
-			<input type="hidden" name="hw_Num" value="{{hw.hw_Num}}">
+			<input type="hidden" name="num" value="{{hw.num}}">
 			{{#_csrf}}
 			<input type="hidden" name="{{parameterName}}" value="{{token}}" />
 			{{/_csrf}}
