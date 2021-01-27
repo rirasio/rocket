@@ -13,6 +13,12 @@ public class UsersVO {
 	private String userid;
 	
 	private String password;
+
+//	private String pw;
+	
+//	private String email;
+	
+//	private String username;
 	
 	private String name;
 	

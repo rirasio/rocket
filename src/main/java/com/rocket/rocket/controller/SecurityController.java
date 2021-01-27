@@ -17,12 +17,11 @@ import com.rocket.rocket.service.HwService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import oracle.jdbc.proxy.annotation.Pre;
+//import oracle.jdbc.proxy.annotation.Pre;
 
 @Slf4j
 @RequestMapping("/users/**")
 @Controller
-@MapperScan(basePackages = { "com.rocket.rocket.mapper" })
 @AllArgsConstructor
 public class SecurityController {
 

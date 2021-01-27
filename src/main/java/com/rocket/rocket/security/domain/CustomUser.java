@@ -1,6 +1,7 @@
 package com.rocket.rocket.security.domain;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -23,11 +24,12 @@ public class CustomUser extends User{
 		super(username, password, authorities);
 		log.info("i am custom user-----1111111-----------");
 	}
-	
 	public CustomUser(UsersVO vo) {
 		super(vo.getUserid(), vo.getPassword(), vo.getAuthList().stream().map(auth -> new SimpleGrantedAuthority(auth.getAuth())).collect(Collectors.toList()));
+		log.info("userid " + vo.getUserid());
+		log.info("password " + vo.getPassword());
 		this.usersvo = vo;
 		log.info("i am custom user--------2222222222------------");
 	}
+	
 }
-
