@@ -16,6 +16,8 @@ public interface LecService {
 	
 	public List<LecVO> getList(Long class_num);
 	
+//	public void autoCreate(LecVO lecvo);
+	
 	
 
 }

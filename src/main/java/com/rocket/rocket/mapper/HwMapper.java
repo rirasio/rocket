@@ -15,9 +15,9 @@ public interface HwMapper {
 	@Insert("insert into hw values (seq_hw.nextval, #{title}, #{content}, #{lec_num})")
 	public void insert(HwVO hwvo);
 
-	@Select("select * from hw where num = #{num}")
+	@Select("select * from hw where lec_num = #{lec_num}")
 	@ResultType(HwVO.class)
-	public HwVO select(long num);
+	public HwVO select(long lec_num);
 
 	@Update("update hw set title = #{title}, content = #{content} where num = #{num}")
 	public int update(HwVO hwvo);

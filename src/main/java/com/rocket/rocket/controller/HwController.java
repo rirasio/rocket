@@ -38,7 +38,7 @@ public class HwController {
 	}
 
 	@GetMapping({ "/read", "/update" })
-	public void read(@RequestParam("num") long num,
+	public void read(@RequestParam("lec_num") long num,
 			@RequestAttribute(value = "cri", required = false) Criteria cri, Model model) {
 		model.addAttribute("hw", hwService.read(num));
 	}
