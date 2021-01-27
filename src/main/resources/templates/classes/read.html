@@ -1,12 +1,55 @@
  {{>layout/header}}
 
+
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
 <div class="card-header py-3">
-	<h6 class="m-0 font-weight-bold text-primary">클래스</h6>
+	<h2 class="m-0 font-weight-bold text-primary">{{class.title}}</h2>
 </div>
+
+
+
+<div class="card-body">
+
+	<div style="float: left; margin: 40px 50px;">
+		<img alt="" src="/img/th1.jpg" style="width: 400px">
+	</div>
+
+	<div style="float: right; margin: 40px 50px; text-align: right;">
+
+		<h1 class="m-0 font-weight-bold text-primary">{{class.title}}</h1>
+		<h6>100만개의 평가</h6>
+	
+
+		<h4>#{{class.ctgy_title}}#{{class.ctgy_title}}#{{class.ctgy_title}}</h4>
+    
+    	<form id="operForm" method="get">
+
+			<input type="hidden" name="num" value="{{class.num}}">
+			<input type="hidden" name="title" value="{{class.title}}">
+			<input type="hidden" name="intro" value="{{class.intro}}">
+			<input type="hidden" name="regdate" value="{{class.regdate}}">
+			<input type="hidden" name="modidate" value="{{class.modidate}}">
+			<input type="hidden" name="ctgy_title" value="{{class.ctgy_title}}">
+			<input type="hidden" name="email" value="{{class.email}}">
+
+
+			<button data-oper="update" class="btn btn-default">Update</button>
+			<button data-oper="list" class="btn btn-info">List</button>
+		</form>
+	</div>
+</div>
+
+    
+    
+    
+
+
+
+    
 
 
 <div class="content">
@@ -89,49 +132,9 @@
 		<br>
 		<!-- 렉처 리스트 끝 -->
 		
- 	
-		<label>썸네일</label>
-		<input type="text" name="thumbnail" value="{{class.thumbName}}.{{class.thumbType}}">
-		<br> <label>커리큘럼</label>
-		<input type="text" name="curriculum" value="{{class.fileName}}.{{class.thumbType}}">
-		<br>
-		<input type="hidden" name="filename" value="{{class.fileName}}">
-		<input type="hidden" name="filetype" value="{{class.fileType}}">
-		<input type="hidden" name="filepath" value="{{class.filePath}}">
-		<input type="hidden" name="thumbname" value="{{class.thumbName}}">
-		<input type="hidden" name="thumbtype" value="{{class.thumbType}}">
-		<input type="hidden" name="thumbpath" value="{{class.thumbPath}}">
+ 	</div>
 		
-		<button data-oper="update" class="btn btn-default">Update</button>
-		<button data-oper="list" class="btn btn-info">List</button>
 
-
-
-	</form>
-</div>
-
-
-<script>
-	$(document).ready(function() {
-
-		var operForm = $("#operForm");
-
-		$("button[data-oper='update']").on("click", function(e) {
-			operForm.attr("action", "/classes/update").submit();
-		});
-
-		$("button[data-oper='list']").on("click", function(e) {
-			operForm.find("#bno").remove();
-			operForm.attr("action", "/classes/list")
-			operForm.submit();
-		});
-	});
-</script>
 
 {{>layout/footer}}
 
-<!-- 진형 
-class 상세보기 화면에서 lecture 만들기로 넘어갈 때 
-{{class.num}}의 파라미터이름을 name="class_num"으로 
-넘겨주세요. 이 내용은 확인하시고 지우셔도 됩니다.
--->
