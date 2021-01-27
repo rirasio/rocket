@@ -41,8 +41,13 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public List<NoticeVO> getList() {
-		return mapper.getList();
+	public List<NoticeVO> getList(String email) {
+		return mapper.getList(email);
+	}
+
+	@Override
+	public List<NoticeVO> getListbyNickname(String nickname) {
+		return mapper.getListbyNickname22(nickname);
 	}
    
 }
