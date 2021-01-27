@@ -10,7 +10,7 @@ public interface ClassService {
 
 	public void createClass(ClassVO classVO);
 	
-	public CtgyVO ctgyread();
+	public List<CtgyVO> ctgyList();
 	
 	public ClassVO read(Long num);
 
@@ -20,6 +20,8 @@ public interface ClassService {
 
 	public int getTotal(Criteria cri);
 
-	public List<ClassVO> getList();
+	
+	public List<ClassVO> classList();
+
 
 }

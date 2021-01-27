@@ -1,58 +1,5 @@
  {{>layout/header}}
 
-<style>
-.uploadResult {
-	width: 100%;
-	background-color: gray;
-}
-
-.uploadResult ul {
-	display: flex;
-	flex-flow: row;
-	justify-content: center;
-	align-items: center;
-}
-
-.uploadResult ul li {
-	list-style: none;
-	padding: 10px;
-}
-
-.uploadResult ul li img {
-	width: 100px;
-}
-
-.uploadResult ul li span {
-	color: white;
-}
-
-.bigPictureWrapper {
-	position: absolute;
-	display: none;
-	justify-content: center;
-	align-items: center;
-	top: 0%;
-	width: 100%;
-	height: 100%;
-	background-color: gray;
-	z-index: 100;
-	background: rgba(255, 255, 255, 0.5);
-}
-
-.bigPicture {
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.bigPicture img {
-	width: 600px;
-}
-</style>
-
-
-
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -62,76 +9,77 @@
 </div>
 
 
-	<form action="/classes/create" method="post">
-		<label>클래스 명</label>
-		<input type="text" name="title">
-		<br>
-		
-		
-		<div>
-		{{#ctgy}}
-		<input type="checkbox" name="ctgy_title" value="{{ctgy_title}}">{{ctgy_title}}
-		{{/ctgy}}
-		</div>
-		
-		
-		<label>클래스 인트로</label>
-		<input type="text" name="intro">
-		<br>
-		
-		
-		
-		
-		<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">썸네일</div>
-			<div class="panel-body">
-				<div class="form-group uploadDiv">
-					<input type='file' name='thumbnail' multiple="multiple">
-				</div>
-				<div class='uploadResult'>
-					<ul>
+<form action="/classes/create" method="post"
+	enctype="multipart/form-data">
+	<label>클래스 명</label> <input type="text" name="title"> <br>
 
-					</ul>
+
+	<div>
+		{{#ctgylist}} <span>{{ctgy_title}}</span> <input
+			value="{{ctgy_title}}" type="checkbox" name="ctgy_title">
+		{{/ctgylist}}
+	</div>
+
+
+	<label>클래스 인트로</label> <input type="text" name="intro"> <br>
+
+
+
+
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">썸네일</div>
+				<div class="panel-body">
+					<div class="form-group uploadDiv">
+						<input type='file' name='thumbnail' multiple="multiple">
+					</div>
+					<div class='uploadResult'>
+						<ul>
+
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-		
-		
-		
-		<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">커리큘럼</div>
-			<div class="panel-body">
-				<div class="form-group uploadDiv">
-					<input type='file' name='curriculum' multiple="multiple">
-				</div>
-				<div class='uploadResult'>
-					<ul>
 
-					</ul>
+
+
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">커리큘럼</div>
+				<div class="panel-body">
+					<div class="form-group uploadDiv">
+						<input type='file' class='curriUP' name='curriculum'
+							multiple="multiple">
+					</div>
+					<div class='uploadResult'>
+						<ul>
+
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-		
-		
-		{{#_csrf}}
-		<input type="hidden" name="{{parameterName}}" value="{{token}}" />
-		{{/_csrf}}
-		
-		
-		<input type="submit" value="submit">
-		<input type="reset" value="reset">
-	</form>
 
 
-<!-- <script>
+	{{#_csrf}}
+	<input type="hidden" name="{{parameterName}}" value="{{token}}" />
+	{{/_csrf}}
+	
+	
+	<input type="submit" value="submit">
+	<input type="reset" value="reset">
+	
+	
+</form>
+
+
+
+<script>
 	$(document)
 			.ready(
 					function(e) {
@@ -155,6 +103,8 @@
 							
 							formObj.append(str).submit();
 						});
+						
+						/* ------------------------------------------------------------------------------------------ */
 
 						var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
 						var maxSize = 5242880; //5MB
@@ -173,6 +123,8 @@
 
 							return true;
 						}
+						
+						/* ------------------------------------------------------------------------------------------ */
 
 						$("input[type='file']")
 								.change(
@@ -205,6 +157,8 @@
 												}
 											});
 										});
+						
+						/* ------------------------------------------------------------------------------------------ */
 
 						function showUploadResult(uploadResultArr) {
 							if (!uploadResultArr || uploadResultArr.length == 0) {
@@ -266,6 +220,8 @@
 											});
 							uploadUL.append(str);
 						}
+						
+						/* ------------------------------------------------------------------------------------------ */
 
 						$(".uploadResult").on("click", "button", function(e) {
 							console.log("delete file");
@@ -297,11 +253,6 @@
 
 					});
 </script>
- -->
-
-
-
-
 
 
 {{>layout/footer}}

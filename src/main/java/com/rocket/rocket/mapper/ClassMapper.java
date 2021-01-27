@@ -13,17 +13,22 @@ import com.rocket.rocket.domain.CtgyVO;
 
 public interface ClassMapper {
 	
+	
+	
 	@Insert("insert into class values (num.nextval, #{title}, #{intro}, sysdate, sysdate, #{ctgy_title}, 'qqruqq@naver.com')")
-
 	public void insertClass(ClassVO classVO);
 
 	@Select("select * from class where num = #{num}")
 	@ResultType(ClassVO.class)
 	public ClassVO select(Long num);
-
-	@Select("select * from class ctgy")
+	
+	@Select("select * from ctgy")
 	@ResultType(CtgyVO.class)
-	public CtgyVO selectCTGY();
+	public List<CtgyVO> ctgyList();
+	
+	
+	
+	
 
 	@Update("update class set title = #{title}, intro = #{intro} where num = #{num}")
 	public int update(ClassVO classVO);
@@ -37,6 +42,7 @@ public interface ClassMapper {
 
 	@Select("select * from class")
 	@ResultType(ClassVO.class)
-	public List<ClassVO> getList();
+	public List<ClassVO> classList();
 
 }
+

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.rocket.rocket.domain.ClassVO;
 import com.rocket.rocket.domain.Criteria;
 import com.rocket.rocket.domain.CtgyVO;
@@ -27,9 +28,9 @@ public class ClassServiceImpl implements ClassService {
 	}
 		
 	@Override
-	public CtgyVO ctgyread() {
+	public List<CtgyVO> ctgyList() {
 		log.info("ctgy............");
-		return classMapper.selectCTGY();
+		return classMapper.ctgyList();
 	}
 	
 	@Override
@@ -56,10 +57,10 @@ public class ClassServiceImpl implements ClassService {
 	}
 	
 	@Override
-	public List<ClassVO> getList() {
+	public List<ClassVO> classList() {
 		
 		log.info("get List !!!!!! ");
-		return classMapper.getList();
+		return classMapper.classList();
 	}
 
 }
