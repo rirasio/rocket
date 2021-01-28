@@ -45,24 +45,25 @@
 	</fieldset>
 </form>
 <br>
-<form action="lec/list">
-	<fieldset>
-		<legend>lec</legend>
-		<label>lec/list</label>
-		<input type="text" name="class_num" placeholder="class_num">
-		<input type="submit" value="submit">
-	</fieldset>
-</form>
-<br>
 <form action="ex/create">
 	<fieldset>
 		<legend>ex</legend>
 		<label>ex/create</label>
+		<input type="text" name="lec_num" placeholder="lec_num">
 		<input type="submit" value="ex/create">
 		<br>
 		<label>ex/read</label>
 		<input type="text" name="num" placeholder="ex_num">
 		<input type="submit" formaction="ex/read" value="submit">
+	</fieldset>
+</form>
+<br>
+<form action="lec/list">
+	<fieldset>
+		<legend>myPage</legend>
+		<label>myPage</label>
+		<input type="text" name="class_num" placeholder="class_num">
+		<input type="submit" value="submit">
 	</fieldset>
 </form>
 ---------------------------------------------------------------------------
@@ -97,4 +98,5 @@
 		<input type="text" name="num">
 		<input type="submit" formaction="notice/read">
 	</fieldset>
-</form>--------------------------------------------------------------------------- {{>layout/footer}}
+</form>
+--------------------------------------------------------------------------- {{>layout/footer}}

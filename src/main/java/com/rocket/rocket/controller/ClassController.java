@@ -41,7 +41,6 @@ import com.rocket.rocket.domain.Criteria;
 import com.rocket.rocket.service.ClassService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import net.coobird.thumbnailator.Thumbnailator;
 
 @Controller
 @RequestMapping("/classes/**")

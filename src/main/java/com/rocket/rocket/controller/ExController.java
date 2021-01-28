@@ -27,13 +27,15 @@ public class ExController {
 	private ExService exService;
 
 	@GetMapping(value = { "/create" })
-	public void create() {
+	public void create(ExVO ex, Model model) {
+		model.addAttribute("ex", ex);
 	}
 
 	@PostMapping(value = { "/create" })
 	public String create(ExVO ex, RedirectAttributes rttr) {
 		exService.create(ex);
-		return "/lec/read?num=" + ex.getLec_num();
+		return "redirect:/";
+//		return "/lec/read?num=" + ex.getLec_num();
 	}
 
 	@GetMapping({ "/read", "/update" })
@@ -47,7 +49,8 @@ public class ExController {
 		if (exService.update(ex)) {
 			rttr.addAttribute("result", "success");
 		}
-		return "redirect:/lec/get?num=" + ex.getLec_num();
+		return "redirect:/";
+//		return "redirect:/lec/get?num=" + ex.getLec_num();
 	}
 
 	@PostMapping("/delete")
@@ -55,6 +58,7 @@ public class ExController {
 		if (exService.delete(num)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		return "redirect:/lec/list";// lec 게시판
+		return "redirect:/";
+//		return "redirect:/lec/list";// lec 게시판
 	}
 }

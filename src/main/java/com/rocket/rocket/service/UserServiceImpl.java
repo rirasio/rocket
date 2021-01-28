@@ -25,11 +25,11 @@ public class UserServiceImpl implements UserService {
 
 	@Setter(onMethod_ = @Autowired)
 	private PasswordEncoder pwencoder;
-	
+
 	@Transactional
 	@Override
 	public void create(UsersVO usersvo, UserRoleVO userrolevo) {
-		usersvo.setPassword(pwencoder.encode("password"));
+		usersvo.setPw(pwencoder.encode("password"));
 		userMapper.insert(usersvo);
 		userMapper.insert2(userrolevo);
 	}
@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	@Override
 	public boolean update(UsersVO usersvo, UserRoleVO userrolevo) {
-		usersvo.setPassword(pwencoder.encode("password"));
+		usersvo.setPw(pwencoder.encode("password"));
 		return userMapper.update(usersvo) == 1 ? true : false;
 	}
 

@@ -19,9 +19,7 @@ public interface ClassService {
 	public boolean delete(Long num);
 
 	public int getTotal(Criteria cri);
-
 	
 	public List<ClassVO> classList();
-
 
 }

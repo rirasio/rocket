@@ -17,8 +17,8 @@ public interface ExMapper {
 	@ResultType(ExVO.class)
 	public ExVO select(long num);
 
-	@Update("update ex set title = #{title}, content = #{content} where num = #{num}")
-	public int update(ExVO hwvo);
+	@Update("update ex set title = #{title}, content = #{content}, answer = #{answer}, modidate = sysdate where num = #{num}")
+	public int update(ExVO ex);
 
 	@Delete("delete from ex where num = #{num}")
 	public int delete(long num);
