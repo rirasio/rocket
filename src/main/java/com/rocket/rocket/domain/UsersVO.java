@@ -10,9 +10,14 @@ import lombok.Data;
 //@AllArgsConstructor
 public class UsersVO {
 
+
 	private String email;
 
 	private String pw;
+	
+	//private String userid;
+	
+	//private String password;
 
 	private String name;
 

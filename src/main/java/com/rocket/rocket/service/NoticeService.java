@@ -2,13 +2,8 @@ package com.rocket.rocket.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.rocket.rocket.domain.NoticeVO;
 
-import lombok.AllArgsConstructor;
-
-@Service
 public interface NoticeService {
 
 	public void create(NoticeVO noticevo);
@@ -19,5 +14,8 @@ public interface NoticeService {
 	
 	public boolean delete(long num);
 	
-	public List<NoticeVO> getList();
+	public List<NoticeVO> getList(String email);
+
+	public List<NoticeVO> getListbyNickname(String nickname);
+	
 }

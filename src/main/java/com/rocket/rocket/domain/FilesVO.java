@@ -7,11 +7,11 @@ public class FilesVO {
 
 	private String uuid;
 	
-	private String uploadpath;
+	private String uploadPath;
 	
-	private String filename;
+	private String fileName;
 	
-	private byte filetype;
+	private char fileType;
 	
 	private Long class_num;
 	

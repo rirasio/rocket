@@ -10,18 +10,22 @@
 
 
 <form action="/classes/create" method="post"
-	enctype="multipart/form-data">
-	<label>클래스 명</label> <input type="text" name="title"> <br>
+	enctype="multipart/form-data" id="create">
+	<label>클래스 명</label>
+	<input type="text" name="title">
+	<br>
 
 
 	<div>
-		{{#ctgylist}} <span>{{ctgy_title}}</span> <input
-			value="{{ctgy_title}}" type="checkbox" name="ctgy_title">
+		{{#ctgylist}} <span>{{ctgy_title}}</span>
+		<input value="{{ctgy_title}}" type="checkbox" name="ctgy_title">
 		{{/ctgylist}}
 	</div>
 
 
-	<label>클래스 인트로</label> <input type="text" name="intro"> <br>
+	<label>클래스 인트로</label>
+	<input type="text" name="intro">
+	<br>
 
 
 
@@ -32,7 +36,8 @@
 				<div class="panel-heading">썸네일</div>
 				<div class="panel-body">
 					<div class="form-group uploadDiv">
-						<input type='file' name='thumbnail' multiple="multiple">
+						<input type='file' name='thumbnail' id='thumbnail'
+							multiple="multiple">
 					</div>
 					<div class='uploadResult'>
 						<ul>
@@ -69,189 +74,42 @@
 	{{#_csrf}}
 	<input type="hidden" name="{{parameterName}}" value="{{token}}" />
 	{{/_csrf}}
-	
-	
+
+
 	<input type="submit" value="submit">
 	<input type="reset" value="reset">
-	
-	
+
+
 </form>
 
 
 
 <script>
-	$(document)
-			.ready(
-					function(e) {
+	$(document).ready(function() {
+		// bind form submit event
+		$("#file-upload-form").on("submit", function(e) {
 
-						var formObj = $("form[role='form']");
-						$("button[type='submit']").on("click", function(e) {
-							e.preventDefault();
-							console.log("submit clicked");
-							
-							var str = "";
-							
-							$(".uploadResult ul li").each(function(i, obj) {
-								var jobj = $(obj);
-								console.dir(jobj);
-								
-								str += "<input type='hidden' name='attachList["+i+"].fileName' value='"+jobj.data("filename")+"'>"
-								str += "<input type='hidden' name='attachList["+i+"].uuid' value='"+jobj.data("uuid")+"'>"
-								str += "<input type='hidden' name='attachList["+i+"].uploadPath' value='"+jobj.data("path")+"'>"
-								str += "<input type='hidden' name='attachList["+i+"].fileType' value='"+jobj.data("type")+"'>"
-							});
-							
-							formObj.append(str).submit();
-						});
-						
-						/* ------------------------------------------------------------------------------------------ */
+			// cancel the default behavior
+			e.preventDefault();
 
-						var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
-						var maxSize = 5242880; //5MB
-
-						function checkExtension(fileName, fileSize) {
-
-							if (fileSize >= maxSize) {
-								alert("too big file");
-								return false;
-							}
-
-							if (regex.test(fileName)) {
-								alert("not allowed this type");
-								return false;
-							}
-
-							return true;
-						}
-						
-						/* ------------------------------------------------------------------------------------------ */
-
-						$("input[type='file']")
-								.change(
-										function(e) {
-											var formData = new FormData();
-											var inputFile = $("input[name='uploadFile']");
-											var files = inputFile[0].files;
-
-											for (var i = 0; i < files.length; i++) {
-												if (!checkExtension(
-														files[i].name,
-														files[i].size)) {
-													return false;
-												}
-
-												formData.append("uploadFile",
-														files[i]);
-											}
-
-											$.ajax({
-												url : '/uploadAjaxAction',
-												processData : false,
-												contentType : false,
-												data : formData,
-												type : 'POST',
-												dataType : 'json',
-												success : function(result) {
-													console.log(result);
-													showUploadResult(result);
-												}
-											});
-										});
-						
-						/* ------------------------------------------------------------------------------------------ */
-
-						function showUploadResult(uploadResultArr) {
-							if (!uploadResultArr || uploadResultArr.length == 0) {
-								return;
-							}
-
-							var uploadUL = $(".uploadResult ul");
-							var str = "";
-
-							$(uploadResultArr)
-									.each(
-											function(i, obj) {
-												if (obj.image) {
-
-													var fileCallPath = encodeURIComponent(obj.uploadPath
-															+ "/"
-															+ obj.uuid
-															+ "_"
-															+ obj.fileName);
-
-													str += "<li data-path='"+obj.uploadPath+"'";
-													str += "data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type = '"+obj.image+"'";
-													str += "><div>";
-													str += "<span>"
-															+ obj.fileName
-															+ "</span>";
-													str += "<button type='button' data-file=\'"+fileCallPath+"\' data-type='image' class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
-													str += "<img src='/display?fileName="
-															+ fileCallPath
-															+ "'>";
-													str += "</div>";
-													str += "</li>";
-
-												} else {
-
-													var fileCallPath = encodeURIComponent(obj.uploadPath
-															+ "/"
-															+ obj.uuid
-															+ "_"
-															+ obj.fileName);
-
-													var fileLink = fileCallPath
-															.replace(
-																	new RegExp(
-																			/\\/g),
-																	"/");
-
-													str += "<li data-path='"+obj.uploadPath+"'";
-													str += "data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type = '"+obj.image+"'";
-													str += "><div>";
-													str += "<span>"
-															+ obj.fileName
-															+ "</span>";
-													str += "<button type='button' data-file=\'"+fileCallPath+"\' data-type='file' class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
-													str += "<img src='/resources/img/attach.png'>";
-													str += "</div>";
-													str += "</li>";
-												}
-											});
-							uploadUL.append(str);
-						}
-						
-						/* ------------------------------------------------------------------------------------------ */
-
-						$(".uploadResult").on("click", "button", function(e) {
-							console.log("delete file");
-						});
-
-						$(".uploadResult").on("click", "button", function(e) {
-
-							console.log("delete file");
-
-							var targetFile = $(this).data("file");
-							var type = $(this).data("type");
-							var targetLi = $(this).closest("li");
-
-							$.ajax({
-								url : '/deleteFile',
-								data : {
-									fileName : targetFile,
-									type : type
-								},
-								dataType : 'text',
-								type : 'POST',
-								success : function(result) {
-									alert(result);
-
-									targetLi.remove();
-								}
-							});
-						});
-
-					});
+			// use $.ajax() to upload file
+			$.ajax({
+				url : "/file-upload",
+				type : "POST",
+				data : new FormData(this),
+				enctype : 'multipart/form-data',
+				processData : false,
+				contentType : false,
+				cache : false,
+				success : function(res) {
+					console.log(res);
+				},
+				error : function(err) {
+					console.error(err);
+				}
+			});
+		});
+	});
 </script>
 
 

@@ -1,54 +1,33 @@
 package com.rocket.rocket.controller;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.nio.file.Files;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
-
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.rocket.rocket.domain.ClassAttachFileDTO;
 import com.rocket.rocket.domain.ClassVO;
 import com.rocket.rocket.domain.Criteria;
 import com.rocket.rocket.service.ClassService;
+import com.rocket.rocket.service.LecService;
+
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
-@RequestMapping("/classes/**")
+@RequestMapping("/classes")
 @AllArgsConstructor
 @Slf4j
 public class ClassController {
 
 	private ClassService classService;
+	private LecService lecService;
+
 
 //	@GetMapping("/list")
 //	public void list (Criteria cri, Model model) {
@@ -77,14 +56,15 @@ public class ClassController {
 		model.addAttribute("ctgylist", classService.ctgyList());
 		return "classes/create";
 	}
-
+	
+	@ResponseBody
 	@PostMapping(value = { "/create" })
 	public String create(ClassVO classVO, RedirectAttributes rttr) {
 
-		rttr.addFlashAttribute("result", classVO.getNum());
+//		rttr.addFlashAttribute("result", classVO.getNum());
 
 		classService.createClass(classVO);
-
+		
 		log.info("create complete");
 
 		return "index";
@@ -97,6 +77,8 @@ public class ClassController {
 			@RequestAttribute(value = "cri", required = false) Criteria cri, Model model) {
 		log.info("read page");
 		model.addAttribute("class", classService.read(num));
+		model.addAttribute("list", lecService.getList(num));
+		model.addAttribute("class_num", num);
 	}
 
 	@PostMapping("/update")
@@ -121,27 +103,73 @@ public class ClassController {
 		return "redirect:/classes/list";
 	}
 	
-	@GetMapping(value = { "/uploadForm" })
-	public String uploadForm(Model model) {
 
-		log.info("uploadForm page");
-		return "classes/uploadForm";
-	}
-	
-	
-//	@PostMapping("/file")
-//	@ResponseStatus(HttpStatus.CREATED)
-//	public List<String> upload(@RequestPart List<MultipartFile> files) throws Exception {
-//		List<String> list = new ArrayList<>();
-//		for (MultipartFile file : files) {
-//			String originalfileName = file.getOriginalFilename();
-//			File dest = new File("A:/Upload/" + originalfileName);
-//			file.transferTo(dest);
-//			// TODO
+//	@PostMapping("/classThumbnail")
+//	@ResponseBody
+//	public ResponseEntity<List<FilesVO>> fileUpload (HttpServletRequest request, @RequestParam("thumbnail") MultipartFile multipartFile) {
+//		
+//		
+//		log.info("----------------------------------------------------------");
+//		log.info("Upload File Name :: " + multipartFile.getOriginalFilename());
+//		log.info("Upload File Size :: " + multipartFile.getSize());
+//
+//		
+//		
+//		log.info("classThumnail.............");
+//
+//		List<FilesVO> list = new ArrayList<FilesVO>();
+//		String uploadFolder = "C:\\Image";
+//		String uploadFolderPath = getFolder();
+//
+//		File uploadPath = new File(uploadFolder, uploadFolderPath);
+//		log.info("upload path :: " + uploadPath);
+//
+//		if (uploadPath.exists() == false) {
+//			uploadPath.mkdirs();
 //		}
-//		return list;
+//
+//		
+//
+//		FilesVO filesVO = new FilesVO();
+//
+//			
+//			String uploadFileName = multipartFile.getOriginalFilename();
+//
+//			uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
+//			log.info("only file name :: " + uploadFileName);
+//			filesVO.setFilename(uploadFileName);
+//
+//			UUID uuid = UUID.randomUUID();
+//			uploadFileName = uuid.toString() + "_" + uploadFileName;
+//
+//			try {
+//				File saveFile = new File(uploadPath, uploadFileName);
+//				multipartFile.transferTo(saveFile);
+//
+//				filesVO.setUuid(uuid.toString());
+//				filesVO.setUploadpath(uploadFolderPath);
+//
+//				if (checkImageType(saveFile)) {
+//
+//					filesVO.setFiletype(true);
+//
+//					FileOutputStream thumbnail = new FileOutputStream(new File(uploadPath, "s_" + uploadFileName));
+//					Thumbnailator.createThumbnail(multipartFile.getInputStream(), thumbnail, 100, 100);
+//					thumbnail.close();
+//				}
+//
+//				list.add(filesVO);
+//
+//			} catch (Exception e) {
+//				log.error(e.getMessage());
+//			}
+//		
+//			classAttachMapper.insertClassThumbnail(filesVO);
+//		
+//		
+//		return new ResponseEntity<List<FilesVO>>(list, HttpStatus.OK);
 //	}
-
+//	
 	
 	
 	
