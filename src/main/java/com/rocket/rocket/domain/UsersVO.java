@@ -10,17 +10,14 @@ import lombok.Data;
 //@AllArgsConstructor
 public class UsersVO {
 
-	
-	private String userid;
-	
-	private String password;
 
-//	private String pw;
+	private String email;
+
+	private String pw;
 	
-//	private String email;
+	//private String userid;
 	
-//	private String username;
-	
+	//private String password;
 
 	private String name;
 
@@ -30,11 +27,9 @@ public class UsersVO {
 
 	private String phone;
 
-	
 	private boolean agree_e;
-	
+
 	private boolean agree_ue;
-	
 
 	private Date regdate;
 

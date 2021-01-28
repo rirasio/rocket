@@ -65,10 +65,9 @@ public class DoHwController {
 	}
 
 	@GetMapping("/list")
-	public void list(@RequestParam("num") long num, Criteria cri, Model model) {
-		model.addAttribute("list", dohwService.readList(num, cri));
+	public void list(@RequestParam("hw_num") long hw_num, Criteria cri, Model model) {
+		model.addAttribute("list", dohwService.readList(hw_num, cri));
 		int total = dohwService.getTotal(cri);
-		model.addAttribute("pageMaker", new PageDTO(cri, total));
-		model.addAttribute("num", num);
+		model.addAttribute("hw_num", hw_num);
 	}
 }

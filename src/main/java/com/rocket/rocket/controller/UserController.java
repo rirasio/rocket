@@ -31,7 +31,7 @@ public class UserController {
 
 	private UserService usersService;
 
-	//회원가입
+	// 회원가입
 	@GetMapping(value = { "/userSign" })
 	public String create() {
 		return "users/userSign";
@@ -40,19 +40,19 @@ public class UserController {
 	@PostMapping(value = { "/userSign" })
 	public String create(UsersVO usersvo, UserRoleVO userrolevo, RedirectAttributes rttr) {
 		usersService.create(usersvo, userrolevo);
-		rttr.addFlashAttribute("result", usersvo.getUserid());
+		rttr.addFlashAttribute("result", usersvo.getEmail());
 		return "/users/login";
 	}
 
-	//회원수정
-	@GetMapping({"/update" })
+	// 회원수정
+	@GetMapping({ "/update" })
 	public String read() {
 		return "/users/userUpdate";
 	}
 
 	@PostMapping("/update")
 	public String update(UsersVO usersvo, UserRoleVO userrolevo, RedirectAttributes rttr) {
-		
+
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String name = authentication.getName();
 		log.info("Now Login id : " + name);
@@ -60,10 +60,10 @@ public class UserController {
 			rttr.addAttribute("result", "success");
 		}
 		log.info("usersVO: " + usersvo);
-		return "redirect:/" ;
+		return "redirect:/";
 	}
 
-	//회원삭제
+	// 회원삭제
 	@PostMapping("/delete")
 	public String delete(@RequestParam("email") String email, RedirectAttributes rttr) {
 		if (usersService.delete(email)) {

@@ -26,9 +26,12 @@ public class CustomUser extends User{
 		log.info("i am custom user-----1111111-----------");
 	}
 	public CustomUser(UsersVO vo) {
-		super(vo.getUserid(), vo.getPassword(), vo.getAuthList().stream().map(auth -> new SimpleGrantedAuthority(auth.getAuth())).collect(Collectors.toList()));
-		log.info("userid " + vo.getUserid());
+
+		super(vo.getEmail(), vo.getPw(), vo.getAuthList().stream().map(auth -> new SimpleGrantedAuthority(auth.getAuth())).collect(Collectors.toList()));
+
+		log.info("email " + vo.getEmail());
 		log.info("password " + vo.getPassword());
+
 		this.usersvo = vo;
 		log.info("i am custom user--------2222222222------------");
 	}
