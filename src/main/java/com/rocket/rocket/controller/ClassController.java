@@ -28,61 +28,78 @@ public class ClassController {
 	private ClassService classService;
 	private LecService lecService;
 
-
-//	@GetMapping("/list")
-//	public void list (Criteria cri, Model model) {
-//		
-//		log.info("list :: " + cri);
-//		model.addAttribute("list", classService.getList(cri));
-//		
-//		
-//		int total = classService.getTotal(cri);
-//		log.info("total :: " + total);
-//		
-//		
-//	}
-
+	
+	//	디폴트 리스트 
 	@GetMapping(value = { "/list" })
 	public String list(Model model) {
 
 		log.info("list page");
 		model.addAttribute("classlist", classService.classList());
-		
+		model.addAttribute("ctgylist", classService.ctgyList());
+
 		return "classes/list";
 	}
 
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////	
+	
+		
+	//	필터 적용 리스트
+	@GetMapping(value = { "/listCtgy" })
+	public void listCtgy(@RequestParam("{{ctgy_title}}") String ctgy_title, Model model) {
+
+		log.info("filtered list page");
+		model.addAttribute("filter", classService.classListCTGY(ctgy_title));
+	}
+
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	//	클래스 개설
 	@GetMapping(value = { "/create" })
 	public String create(Model model) {
 		log.info("create page");
 		model.addAttribute("ctgylist", classService.ctgyList());
 		return "classes/create";
 	}
+
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	
+	//	클래스 개설 완료 후 개설된 페이지로 이동
 	@PostMapping(value = { "/create" })
 	public String create(ClassVO classVO, RedirectAttributes rttr) {
-
-//		rttr.addFlashAttribute("result", classVO.getNum());
 
 		classService.createClass(classVO);
 		Long mn = classService.maxNum();
 		log.info(mn.toString());
 		log.info("create complete");
 
-		return "redirect:/classes/read?num="+mn;
+		return "redirect:/classes/read?num=" + mn;
 	}
 
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	//	클래스 상세, 수정페이지로 이동
 	@GetMapping({ "/read", "/update" })
 
-	public void read(@RequestParam("num") Long num,
-
-			@RequestAttribute(value = "cri", required = false) Criteria cri, Model model) {
+	public void read(@RequestParam("num") Long num, @RequestAttribute(value = "cri", required = false) Criteria cri,
+			Model model) {
 		log.info("read page");
 		model.addAttribute("class", classService.read(num));
 		model.addAttribute("list", lecService.getList(num));
 		model.addAttribute("class_num", num);
 	}
 
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	//	수정완료
 	@PostMapping("/update")
 	public String update(ClassVO classVO, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 		if (classService.update(classVO)) {
@@ -93,8 +110,12 @@ public class ClassController {
 		return "redirect:/classes/read?num=" + cn;
 	}
 
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	//	삭제
 	@PostMapping("/delete")
-
 	public String delete(@RequestParam("num") Long num,
 
 			@RequestAttribute(value = "cri", required = false) Criteria cri, RedirectAttributes rttr) {
@@ -104,8 +125,8 @@ public class ClassController {
 		log.info("delete complete");
 		return "redirect:/classes/list";
 	}
-	
 
+	
 //	@PostMapping("/classThumbnail")
 //	@ResponseBody
 //	public ResponseEntity<List<FilesVO>> fileUpload (HttpServletRequest request, @RequestParam("thumbnail") MultipartFile multipartFile) {
@@ -172,8 +193,5 @@ public class ClassController {
 //		return new ResponseEntity<List<FilesVO>>(list, HttpStatus.OK);
 //	}
 //	
-	
-	
-	
-	
+
 }

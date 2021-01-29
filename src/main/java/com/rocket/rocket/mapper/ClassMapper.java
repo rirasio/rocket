@@ -30,9 +30,8 @@ public interface ClassMapper {
 	
 	@Select("select MAX(NUM) from class")
 	public Long maxNum();
-	
 
-	@Update("update class set title = #{title}, intro = #{intro}, modidate=sysdate, where num = #{num}")
+	@Update("update class set title = #{title}, intro = #{intro}, modidate = sysdate where num = #{num}")
 	public int update(ClassVO classVO);
 
 	@Delete("delete from class where num = #{num}")
@@ -45,5 +44,9 @@ public interface ClassMapper {
 	@Select("select * from class order by num")
 	@ResultType(ClassVO.class)
 	public List<ClassVO> classList();
+	
+	@Select("select * from class where ctgy_title=#{ctgy_title} order by num")
+	@ResultType(ClassVO.class)
+	public List<ClassVO> classListCTGY(String ctgy_title);
 
 }
