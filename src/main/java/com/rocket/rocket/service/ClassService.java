@@ -25,4 +25,6 @@ public interface ClassService {
 	
 	public Long maxNum();
 	
+	public List<ClassVO> classListCTGY(String ctgy_title);
+	
 }

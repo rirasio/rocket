@@ -1,6 +1,5 @@
 package com.rocket.rocket.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.rocket.rocket.domain.ClassVO;
 import com.rocket.rocket.domain.Criteria;
 import com.rocket.rocket.domain.CtgyVO;
-import com.rocket.rocket.domain.NumberDTO;
 import com.rocket.rocket.mapper.ClassMapper;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
@@ -70,5 +68,11 @@ public class ClassServiceImpl implements ClassService {
 		
 		return classMapper.maxNum();
 	}
-
+	
+	@Override
+	public List<ClassVO> classListCTGY(String ctgy_title) {
+		
+		log.info("get filtered List  !!!!!! ");
+		return classMapper.classListCTGY(ctgy_title);
+	}
 }

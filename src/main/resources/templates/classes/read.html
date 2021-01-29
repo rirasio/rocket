@@ -125,6 +125,7 @@
 	$(document).ready(function() {
 
 		var operForm = $("#operForm");
+		
 		$("button[data-oper='update']").on("click", function(e) {
 			console.log("data-oper='update']");
 			operForm.attr("action", "/classes/update").submit();
