@@ -1,6 +1,8 @@
 package com.rocket.rocket.domain;
 
-import java.util.Date;
+
+
+import java.sql.Date;
 
 import lombok.Data;
 

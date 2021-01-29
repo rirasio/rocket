@@ -47,6 +47,7 @@ public class ClassController {
 
 		log.info("list page");
 		model.addAttribute("classlist", classService.classList());
+		
 		return "classes/list";
 	}
 
@@ -57,17 +58,18 @@ public class ClassController {
 		return "classes/create";
 	}
 	
-	@ResponseBody
+	
 	@PostMapping(value = { "/create" })
 	public String create(ClassVO classVO, RedirectAttributes rttr) {
 
 //		rttr.addFlashAttribute("result", classVO.getNum());
 
 		classService.createClass(classVO);
-		
+		Long mn = classService.maxNum();
+		log.info(mn.toString());
 		log.info("create complete");
 
-		return "index";
+		return "redirect:/classes/read?num="+mn;
 	}
 
 	@GetMapping({ "/read", "/update" })

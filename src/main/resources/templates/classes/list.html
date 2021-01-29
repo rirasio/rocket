@@ -1,9 +1,12 @@
 {{>layout/header}}
 
+
+
 <style>
 .card {
 	width: 25%;
 	float: left;
+	overflow: hidden;
 }
 </style>
 
@@ -12,8 +15,9 @@
 <h3>Class List</h3>
 
 <div class="outer">
-
+	
 	{{#classlist}}
+	
 	<div class="card shadow mb-4">
 		<!-- Card Header - Dropdown -->
 		<div
@@ -21,36 +25,21 @@
 
 
 			<div>
-				<img alt="" src="/img/th1.jpg" style="width: 100%">
+				<a href="/classes/read?num={{num}}"><img alt="" src="/img/th{{num}}.jpg" style="width: 350px; height: 350px"></a>
 			</div>
-			<div class="dropdown no-arrow">
-
-				<h6 class="m-0 font-weight-bold text-primary">
-					<a href="/classes/read?num={{num}}">{{title}}</a>
-				</h6>
-				<div class="dropdown no-arrow">
-					<a class="dropdown-toggle" href="/classes/read?num={{num}}"
-						role="button" id="dropdownMenuLink" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false"> <i
-						class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-					</a>
-
-
-
-
-				</div>
-			</div>
+			
 		</div>
 
-
+		
+		
 		<!-- Card Body -->
 		<div class="card-body">
 
-			<img alt="" src="/img/pr4.png" style="float: left; width: 40px">
+			<img alt="" src="/img/pr{{num}}.png" style="float: left; width: 40px">
 
 			<p>
 				<strong style="font-size: large;">&nbsp;&nbsp;{{title}}</strong><br>
-				<span style="font-size: small;">&nbsp;&nbsp;&nbsp;임포스터 선생님</span>
+				<span style="font-size: small;">&nbsp;&nbsp;&nbsp;임포스터 선생님{{num}}</span>
 			</p>
 
 			<a class="dropdown-toggle" href="#" role="button"
@@ -74,8 +63,14 @@
 
 
 	</div>
+	
 	{{/classlist}}
-
+	
+	
+	
+	
+	
+	
 
 
 
