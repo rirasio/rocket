@@ -1,8 +1,7 @@
-{{>layout/header}}
+{{>layout/header_paging}}
 
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
 <style>
@@ -22,9 +21,9 @@
 	<div>
 		<form id="operForm" method="get">
 
-			{{#ctgylist}} <span>{{ctgy_title}}</span>
-			<input value="{{ctgy_title}}" type="checkbox" name="ctgy_title"
-				class="ctgy_title">
+			{{#ctgylist}}
+			<span>{{ctgy_title}}</span>
+			<input value="{{ctgy_title}}" type="checkbox" name="ctgy_title" class="ctgy_title">
 			{{/ctgylist}}
 			<button data-oper="search" class="btn btn-info">Search</button>
 
@@ -37,18 +36,14 @@
 	{{#classlist}}
 
 	<div class="card shadow mb-4">
+
+
 		<!-- Card Header - Dropdown -->
-		<div
-			class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-
-
-			<div>
-				<a href="/classes/read?num={{num}}"><img alt=""
-					src="/img/th{{num}}.jpg" style="width: 350px; height: 350px"></a>
-			</div>
-
+		<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+			<a href="/classes/read?num={{num}}">
+				<img alt="" src="/img/th{{num}}.jpg" style="width: 350px; height: 350px">
+			</a>
 		</div>
-
 
 
 		<!-- Card Body -->
@@ -57,23 +52,21 @@
 			<img alt="" src="/img/pr{{num}}.png" style="float: left; width: 40px">
 
 			<p>
-				<strong style="font-size: large;">&nbsp;&nbsp;{{title}}</strong><br>
-				<span style="font-size: small;">&nbsp;&nbsp;&nbsp;임포스터
-					선생님{{num}}</span>
+				<strong style="font-size: large;">&nbsp;&nbsp;{{title}}</strong>
+				<br>
+				<span style="font-size: small;">&nbsp;&nbsp;&nbsp;임포스터 선생님{{num}}</span>
 			</p>
 
-			<a class="dropdown-toggle" href="#" role="button"
-				id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-				aria-expanded="false"> <i
-				class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+			<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false">
+				<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
 			</a>
 
-			<div
-				class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+			<div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
 				aria-labelledby="dropdownMenuLink" style="">
 				<div class="dropdown-header">Dropdown Header:</div>
-				<a class="dropdown-item" href="#">Action</a> <a
-					class="dropdown-item" href="#">Another action</a>
+				<a class="dropdown-item" href="#">Action</a>
+				<a class="dropdown-item" href="#">Another action</a>
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="#">Something else here</a>
 			</div>
@@ -83,56 +76,6 @@
 
 
 	</div>
-
-
-	<script type="text/javascript">
-		var dataTable = $('.datatable').DataTable({
-
-			// #1
-			processing : true,
-			serverSide : true,
-			ajax : {
-				url : "/foo/bar/datatable",
-				type : 'GET',
-
-				// #2
-				data : function(data) {
-
-					// #3
-					var filters = $('#filter').serializeArray();
-					for (i = 0; i < filters.length; i++) {
-						var filter = filters[i];
-
-						// #4
-						if (data[filter.name]) {
-							data[filter.name] += '|' + filter.value;
-						} else {
-							data[filter.name] = filter.value;
-						}
-					}
-				}
-			}
-		});
-
-		// #5
-		$('#filter .filter').on('change keyup', function() {
-			dataTable.draw();
-		});
-
-		/* $(document).ready(function() {
-
-			var operForm = $("#operForm");
-			var ctgy_title = $('input:checkbox[id="ctgy_title"]').val();
-
-			$("button[data-oper='search']").on("click", function(e) {
-				console.log("data-oper='search']");
-
-				operForm.attr("action", "/classes/listCtgy").submit();
-			});
-
-		}); */
-	</script>
-
 
 	{{/classlist}}
 
@@ -147,4 +90,4 @@
 </div>
 
 
-{{>layout/footer}}
+{{>layout/footer_paging}}
