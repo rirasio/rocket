@@ -40,6 +40,18 @@ public class ClassController {
 //		return "classes/list";
 //	}
 
+
+	@GetMapping(value = { "/list" })
+	public String list(Model model) {
+
+		log.info("list page");
+		model.addAttribute("classlist", classService.classList());
+		model.addAttribute("ctgylist", classService.ctgyList());
+
+		return "classes/list";
+	}
+
+
 	
 ////////////////////////////////////////////////////////////////////////////////////////////////////	
 	
@@ -66,20 +78,23 @@ public class ClassController {
 		return "classes/create";
 	}
 
-	
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	
 	//	클래스 개설 완료 후 개설된 페이지로 이동
+
 	@PostMapping(value = { "/create" })
 	public String create(ClassVO classVO, RedirectAttributes rttr) {
 
 		classService.createClass(classVO);
+
 		Long mn = classService.maxNum();
 		log.info(mn.toString());
 		log.info("create complete");
 
 		return "redirect:/classes/read?num=" + mn;
+
 	}
 
 	

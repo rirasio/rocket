@@ -13,13 +13,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.rocket.rocket.domain.Criteria;
 import com.rocket.rocket.domain.DoHwVO;
-import com.rocket.rocket.domain.PageDTO;
+
 import com.rocket.rocket.service.DoHwService;
 
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Controller
 @RequestMapping("/dohw")
 @AllArgsConstructor
@@ -67,7 +65,6 @@ public class DoHwController {
 	@GetMapping("/list")
 	public void list(@RequestParam("hw_num") long hw_num, Criteria cri, Model model) {
 		model.addAttribute("list", dohwService.readList(hw_num, cri));
-		int total = dohwService.getTotal(cri);
 		model.addAttribute("hw_num", hw_num);
 	}
 }

@@ -14,6 +14,6 @@ public interface CommentService {
 	
 	public boolean delete(Long num);
 	
-	public List<CommVO> getList(Long lec_num);
+	public List<CommVO> getList(Long class_num, Long lec_num);
 
 }

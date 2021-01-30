@@ -12,23 +12,22 @@ import com.rocket.rocket.domain.Criteria;
 import com.rocket.rocket.domain.CtgyVO;
 
 public interface ClassMapper {
-	
-	
-	
+
 	@Insert("insert into class values"
-			+ "(seq_class.nextval, #{title}, #{intro}, sysdate, sysdate, #{ctgy_title}, 'qqruqq@naver.com')")
+			+ "(seq_class.nextval, #{title}, #{intro}, sysdate, sysdate, #{ctgy_title}, '2222')")
 	public void insertClass(ClassVO classVO);
 
 	@Select("select * from class where num = #{num}")
 	@ResultType(ClassVO.class)
 	public ClassVO select(Long num);
-	
+
 	@Select("select * from ctgy")
 	@ResultType(CtgyVO.class)
 	public List<CtgyVO> ctgyList();
-	
+
 	@Select("select MAX(NUM) from class")
 	public Long maxNum();
+
 
 	@Update("update class set title = #{title}, intro = #{intro}, modidate = sysdate where num = #{num}")
 	public int update(ClassVO classVO);

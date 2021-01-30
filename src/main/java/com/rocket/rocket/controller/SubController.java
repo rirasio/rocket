@@ -22,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/sub")
 @AllArgsConstructor
 public class SubController {
-
+                         
 	private SubService service;
 	
 	@GetMapping(value={"/create"})
@@ -35,7 +35,7 @@ public class SubController {
 	public String create(SubVO subvo, RedirectAttributes rttr) {
 		service.create(subvo);
 		rttr.addFlashAttribute("result", subvo.getNum());
-		return "sub/list";
+		return "sub/list"; // 만드는중임
 	}
 
 	@GetMapping({ "/read", "/update" })

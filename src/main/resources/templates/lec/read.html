@@ -52,7 +52,8 @@
 		</div>
 	</article>
 	
-	<div id="comment">
+	<!-- 댓글 등록 -->
+	<div class="container">
 		<h3>댓글</h3>
 		<form class="row" method="POST" action="#">
 			<div class="col-1">
@@ -75,6 +76,44 @@
 			</div>
 		</form>
 	</div>
+	<!-- 댓글 목록 -->
+	<div class="container">
+		<div class="box-footer">
+			<div class="card mb-8" id="commentList">
+				
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		var class_num = 7;
+		var lec_num = 2;
+		
+		function getCommetnList() {
+			
+			$.getJSON("/comment/all/" + class_num + "/" + lec_num, function(data) {
+				
+				console.log(data);
+				
+				var str = "";
+				
+				$(data).each(function () {
+					str += "<div class='card-header'>" + this.nickname + "</div>"
+					+ "<div class='card-body row'>"
+					+ "<div class='col-sm-8'>" + this.content + "</div>" 
+					+ "<div class='col-sm-4'>" + this.modidate + "</div>"
+					+ "</div>"
+					+ "<p>&nbsp;</p>"
+				});
+				
+				$("#commentList").html(str);
+				
+			});
+		}
+		
+		getCommetnList();
+		
+	</script>
 
 {{>layout/footer}}
 

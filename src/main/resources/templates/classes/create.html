@@ -1,7 +1,6 @@
  {{>layout/header}}
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
 <div class="card-header py-3">
@@ -9,12 +8,10 @@
 </div>
 
 
-<form action="/classes/create" method="post"
-	enctype="multipart/form-data" id="create">
+<form action="/classes/create" method="post" enctype="multipart/form-data" id="create">
 	<label>클래스 명</label>
 	<input type="text" name="title">
 	<br>
-
 
 	<div>
 		{{#ctgylist}} <span>{{ctgy_title}}</span>
@@ -27,17 +24,13 @@
 	<input type="text" name="intro">
 	<br>
 
-
-
-
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">썸네일</div>
 				<div class="panel-body">
 					<div class="form-group uploadDiv">
-						<input type='file' name='thumbnail' id='thumbnail'
-							multiple="multiple">
+						<input type='file' name='thumbnail' id='thumbnail' multiple="multiple">
 					</div>
 					<div class='uploadResult'>
 						<ul>
@@ -48,7 +41,6 @@
 			</div>
 		</div>
 	</div>
-
 
 
 	<div class="row">
@@ -57,8 +49,7 @@
 				<div class="panel-heading">커리큘럼</div>
 				<div class="panel-body">
 					<div class="form-group uploadDiv">
-						<input type='file' class='curriUP' name='curriculum'
-							multiple="multiple">
+						<input type='file' class='curriUP' name='curriculum' multiple="multiple">
 					</div>
 					<div class='uploadResult'>
 						<ul>
@@ -69,7 +60,8 @@
 			</div>
 		</div>
 	</div>
-
+	<label for=" ctgy_title">카테고리</label>
+	<input type="text" name="ctgy_title">
 
 	{{#_csrf}}
 	<input type="hidden" name="{{parameterName}}" value="{{token}}" />

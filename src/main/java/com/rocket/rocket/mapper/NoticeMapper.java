@@ -12,7 +12,7 @@ import com.rocket.rocket.domain.NoticeVO;
 import com.rocket.rocket.domain.SubVO;
 
 public interface NoticeMapper {
-	@Insert("insert into notice (num,title,content,regdate,modidate,email) values (seq_notice.nextval, #{title}, #{content}, sysdate, sysdate, 'qqruqq@naver.com')") // 서비스에서
+	@Insert("insert into notice (num,title,content,regdate,modidate,email) values (seq_notice.nextval, #{title}, #{content}, sysdate, sysdate, '2222')") // 서비스에서
 	public void insert(NoticeVO noticevo);
 
 	@Select("select * from notice where num = #{num}")

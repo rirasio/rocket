@@ -61,49 +61,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		web.ignoring().antMatchers("/resources/**"); // "/css/**", "/js/**", "/img/**", "/lib/**" 등등
 	}
 
-	// 권한 아이디설정
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		log.info("권한 읽기 시작--------");
-
-//		auth.userDetailsService(customUserService()).passwordEncoder(passwordEncoder());
-//		try {
-//			String queryUser = "select email, pw,enabled from users where email = ?";
-//			String queryDetails = "select email, auth_num from user_role where email = ?";
-//			auth.jdbcAuthentication()
-//			.dataSource(dataSource)
-//			.passwordEncoder(passwordEncoder())
-//			.usersByUsernameQuery(queryUser)
-//			.authoritiesByUsernameQuery(queryDetails);
-//			
-//		} catch (Exception e) {
-//			System.out.println(e.getMessage());
-//		}
-//		
-//		test용 임시 계정
-
-		// 하드코딩 비밀번호는 1111입니다.
-		String epassword = new BCryptPasswordEncoder().encode("1111");
-		auth.inMemoryAuthentication().withUser("rocketbot1").password(epassword).roles("9");
-		auth.inMemoryAuthentication().withUser("rocketbot2").password(epassword).roles("1");
-		auth.inMemoryAuthentication().withUser("rocketbot3").password(epassword).roles("2");
-		auth.inMemoryAuthentication().withUser("rocketbot4").password(epassword).roles("0");
-
-//		auth.inMemoryAuthentication().withUser("rocketbot1").password("{noop}rocketbot1").roles("9");
-//		auth.inMemoryAuthentication().withUser("rocketbot1").password("$2a$10$kmCUFCNxf0LDqy2OKKdGkuKY7dnZTk.X9/y9vAYtTl8vp9VT4gzs6").roles("9");
-//		auth.inMemoryAuthentication().withUser("rocketbot2").password("{noop}rocketbot2").roles("2");
-//		auth.inMemoryAuthentication().withUser("rocketbot3").password("{noop}rocketbot3").roles("1");
-//		auth.inMemoryAuthentication().withUser("rocketbot4").password("{noop}rocketbot4").roles("0");
-//		auth.inMemoryAuthentication().withUser("rocketbot5").password("{noop}rocketbot5").roles("2,9");
-
-	}
-
-//	@Override
-//	public void configure(WebSecurity web) throws Exception {
-//		// static 디렉터리의 하위 파일 목록은 인증 무시 ( = 항상통과 ) >> 지금 모든 페이지 다 무시하게 해놓음
-//		web.ignoring().antMatchers("/resources/**"); // "/css/**", "/js/**", "/img/**", "/lib/**" 등등
-//	}
-
 	// 필터들
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -149,6 +106,43 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// http.csrf().ignoringAntMatchers("/**");
 
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
+
+	}
+
+	// 권한 아이디설정
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		log.info("권한 읽기 시작--------");
+
+//		auth.userDetailsService(customUserService()).passwordEncoder(passwordEncoder());
+
+//		try {
+//			String queryUser = "select email, pw,enabled from users where email = ?";
+//			String queryDetails = "select email, auth_num from user_role where email = ?";
+//			auth.jdbcAuthentication()
+//			.dataSource(dataSource)
+//			.passwordEncoder(passwordEncoder())
+//			.usersByUsernameQuery(queryUser)
+//			.authoritiesByUsernameQuery(queryDetails);
+//			
+//		} catch (Exception e) {
+//			System.out.println(e.getMessage());
+//		}
+
+		// test용 임시 계정
+		// 하드코딩 비밀번호는 1111입니다.
+		String epassword = new BCryptPasswordEncoder().encode("1111");
+		auth.inMemoryAuthentication().withUser("9999").password(epassword).roles("9");
+		auth.inMemoryAuthentication().withUser("1111").password(epassword).roles("1");
+		auth.inMemoryAuthentication().withUser("2222").password(epassword).roles("2");
+		auth.inMemoryAuthentication().withUser("0000").password(epassword).roles("0");
+
+//		auth.inMemoryAuthentication().withUser("rocketbot1").password("{noop}rocketbot1").roles("9");
+//		auth.inMemoryAuthentication().withUser("rocketbot1").password("$2a$10$kmCUFCNxf0LDqy2OKKdGkuKY7dnZTk.X9/y9vAYtTl8vp9VT4gzs6").roles("9");
+//		auth.inMemoryAuthentication().withUser("rocketbot2").password("{noop}rocketbot2").roles("2");
+//		auth.inMemoryAuthentication().withUser("rocketbot3").password("{noop}rocketbot3").roles("1");
+//		auth.inMemoryAuthentication().withUser("rocketbot4").password("{noop}rocketbot4").roles("0");
+//		auth.inMemoryAuthentication().withUser("rocketbot5").password("{noop}rocketbot5").roles("2,9");
 
 	}
 
