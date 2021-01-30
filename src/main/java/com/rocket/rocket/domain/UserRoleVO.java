@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Data
 public class UserRoleVO {
-
 	
 	
 //	private String auth_num, auth, userid, username, email;
@@ -17,6 +16,7 @@ public class UserRoleVO {
 //	private String email;
 	
 	//private String auth;//ROLE 테이블
+	
 
 
 }

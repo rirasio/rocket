@@ -3,12 +3,11 @@
 <h1>Login prototype</h1>
 
 <h3>Login with Username and Password</h3>
-<form role="form" action="/users/login" method="post">
+<form action="users/login" method="post">
 	<table>
-		<tbody>
 			<tr>
 				<td>User:</td>
-				<td><input type="text" name="username" value=""></td>
+				<td><input type="text" name="username"></td>
 				<!-- username,password default값 지정안됨 -->
 			</tr>
 			<tr>
@@ -18,7 +17,6 @@
 			<tr>
 				<td colspan="2"><input name="submit" type="submit" value="Login"></td>
 			</tr>
-		</tbody>
 	</table>
 	{{#_csrf}}
 	<input type="hidden" name="{{parameterName}}" value="{{token}}" />

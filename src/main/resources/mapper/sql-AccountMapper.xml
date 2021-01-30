@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.rocket.rocket.mapper.AccountMapper">
+	
+	<select id="readAccount"  parameterType="String" resultType="com.rocket.rocket.domain.Account">
+		SELECT * FROM USER_INFO
+		WHERE ID= #{id}
+	</select>
+	
+	
+ </mapper>
+

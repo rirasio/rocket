@@ -15,7 +15,7 @@ import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 
 @WebAppConfiguration
-@ContextConfiguration(classes = { SecurityApplication.class, DatabaseConfiguration.class, SecurityConfig.class })
+@ContextConfiguration(classes = { SecurityApplication.class, DatabaseConfiguration.class, SecurityConfig.class})
 @Log4j2
 class HwControllerTests {
 

@@ -3,155 +3,85 @@ package com.rocket.rocket.configuration;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-
-
-import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-
-import com.rocket.rocket.security.CustomLoginSuccessHandler;
-import com.rocket.rocket.security.CustomUserDetailsService;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Configuration // 자바설정파일임을 선언
+@Configuration
 @EnableWebSecurity() // 시큐리티 설정클래스임을 선언
-@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
+//@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 @AllArgsConstructor // 클래스에 존재하는 모든 필드에 대한 생성자를 자동
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
+public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
-	@Setter(onMethod_ = {@Autowired})
+	@Setter(onMethod_ = { @Autowired })
 	private DataSource dataSource;
 	
-	
-	@Bean
-	public UserDetailsService customUserService() {
-		return new CustomUserDetailsService();
-	}
-	
-
-	@Bean
-	public AuthenticationSuccessHandler loginSuccessHandler() {
-		return new CustomLoginSuccessHandler();// loginSuccess사용하기위함
-	}
-
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-
+    
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		// static 디렉터리의 하위 파일 목록은 인증 무시 ( = 항상통과 ) >> 지금 모든 페이지 다 무시하게 해놓음
 		web.ignoring().antMatchers("/resources/**"); // "/css/**", "/js/**", "/img/**", "/lib/**" 등등
 	}
-	//권한 아이디설정
+	
+    @Override
+    protected void configure(HttpSecurity http) throws Exception{
+        http
+            .authorizeRequests() // 해당 메소드 아래는 각 경로에 따른 권한을 지정할 수 있다.
+                .antMatchers("/users/admin").hasRole("ADMIN") // 괄호의 권한을 가진 유저만 접근가능, ROLE_가 붙어서 적용 됨. 즉, 테이블에 ROLE_권한명 으로 저장해야 함.
+                .antMatchers("/users/student").hasRole("STUDENT")
+                .antMatchers("/users/teacher").hasRole("TEACHER")
+                .anyRequest().authenticated()  //  로그인된 사용자가 요청을 수행할 떄 필요하다  만약 사용자가 인증되지 않았다면, 스프링 시큐리티 필터는 요청을 잡아내고 사용자를 로그인 페이지로 리다이렉션 해준다.
+                .and()
+            .formLogin() // 하위에 내가 직접 구현한 로그인 폼, 로그인 성공시 이동 경로 설정 가능. , 로그인 폼의 아이디,패스워드는 username, password로 맞춰야 함
+                        .loginPage("/users/login") // 로그인이 수행될 경로.
+                        .loginProcessingUrl("/users/login")// 로그인form의  action과 일치시켜주어야 함.
+                        .defaultSuccessUrl("/") // 로그인 성공 시 이동할 경로.
+                        .failureUrl("/login?error=true") // 인증에 실패했을 때 보여주는 화면 url, 로그인 form으로 파라미터값 error=true로 보낸
+                .permitAll()
+                .and()
+             .logout()
+                 .permitAll()
+                 .logoutUrl("/logout")
+                 .logoutSuccessUrl("/")
+                 .and()
+             .exceptionHandling()
+                 .accessDeniedPage("/accessDenied_page"); // 권한이 없는 대상이 접속을시도했을 때
+        
+		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
+
+    }
+    
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		log.info("권한 읽기 시작--------");
-		
 
-//		auth.userDetailsService(customUserService()).passwordEncoder(passwordEncoder());
-//		try {
-//			String queryUser = "select email, pw,enabled from users where email = ?";
-//			String queryDetails = "select email, auth_num from user_role where email = ?";
-//			auth.jdbcAuthentication()
-//			.dataSource(dataSource)
-//			.passwordEncoder(passwordEncoder())
-//			.usersByUsernameQuery(queryUser)
-//			.authoritiesByUsernameQuery(queryDetails);
-//			
-//		} catch (Exception e) {
-//			System.out.println(e.getMessage());
-//		}
-//		
-//		test용 임시 계정
-
-		//하드코딩 비밀번호는 1111입니다.
-		String epassword = new BCryptPasswordEncoder().encode("1111");		
-		auth.inMemoryAuthentication().withUser("rocketbot1").password(epassword).roles("9");
-		auth.inMemoryAuthentication().withUser("rocketbot2").password(epassword).roles("1");
-		auth.inMemoryAuthentication().withUser("rocketbot3").password(epassword).roles("2");
-		auth.inMemoryAuthentication().withUser("rocketbot4").password(epassword).roles("0");
-		
-//		auth.inMemoryAuthentication().withUser("rocketbot1").password("{noop}rocketbot1").roles("9");
-//		auth.inMemoryAuthentication().withUser("rocketbot1").password("$2a$10$kmCUFCNxf0LDqy2OKKdGkuKY7dnZTk.X9/y9vAYtTl8vp9VT4gzs6").roles("9");
-//		auth.inMemoryAuthentication().withUser("rocketbot2").password("{noop}rocketbot2").roles("2");
-//		auth.inMemoryAuthentication().withUser("rocketbot3").password("{noop}rocketbot3").roles("1");
-//		auth.inMemoryAuthentication().withUser("rocketbot4").password("{noop}rocketbot4").roles("0");
-//		auth.inMemoryAuthentication().withUser("rocketbot5").password("{noop}rocketbot5").roles("2,9");
-		
-	}	
+		// test용 임시 계정
+		// 하드코딩 비밀번호는 1111입니다.
+		String epassword = new BCryptPasswordEncoder().encode("1111");
+		auth.inMemoryAuthentication().withUser("9999").password(epassword).roles("9");
+		auth.inMemoryAuthentication().withUser("1111").password(epassword).roles("1");
+		auth.inMemoryAuthentication().withUser("2222").password(epassword).roles("2");
+		auth.inMemoryAuthentication().withUser("0000").password(epassword).roles("0");
 
 
-
-	// 필터들
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-
-
-		http.authorizeRequests()
-				// 페이지 권한 설정(큰권한이 제일 상단에 있어야됨)
-
-//				.antMatchers("/users/admin/**").hasRole("ADMIN")// 관리자
-//				.antMatchers("/users/admin/**").access("hasRole('ADMIN')")// 관리자
-//				.antMatchers("/users/admin/**").access("hasRole('9')")// 관리자
-//				.antMatchers("/users/admin/**").access("hasRole('ROLE_9')")// 관리자
-//				.antMatchers("/users/admin/**").access("hasRole('ROLE_ADMIN')")// 관리자
-				.antMatchers("/users/admin/**").hasRole("9")// 관리자
-				.antMatchers("/users/teacher/**").hasRole("2")// 선생님
-				.antMatchers("/users/subs/**").hasRole("1")// 구독회원
-				.antMatchers("/users/student/**").hasRole("0")// 일반회원
-				.antMatchers("/**").permitAll()// 비회원까지
-				.anyRequest().authenticated()
-				;
-
-				// 로그인 설정
-				http.formLogin().
-				loginPage("/users/login")//로그인 컨트롤러와 일치
-				.loginProcessingUrl("/users/login")//form action이랑 일치
-//				.defaultSuccessUrl("/")
-//				.usernameParameter("email")
-//				.passwordParameter("pw")
-				//.successHandler(loginSuccessHandler())//@Bean loginSuccessHandler를 의존성 주입해서 가져왔음
-				//.defaultSuccessUrl("/users/logout")
-				;
-				// 로그아웃 설정
-				http.logout().logoutUrl("/users/logout")//로그아웃을 요청할 경로이고 기본값은 /logout											
-				.invalidateHttpSession(true); 
-				
-				// 403 예외처리 핸들링
-				http.exceptionHandling().accessDeniedPage("/users/access_denied");// 로그인 실패
-				//http.logoutRequestMatcher(new AntPathRequestMatcher("/users/logout")) //로그아웃의 기본 URL(/logout) 이 아닌 다른 URL로 재정의합니다.
-				//http.logoutSuccessUrl("/users/logout")// 로그아웃이 처리된 후 이동될 경로이고 >> 기본값은/login?logout >> 첫페이지 보낼때 사용할 수 있음
-
-		// http.formLogin().loginPage("/customLogin").loginProcessingUrl("/login");
-
-
-		//http.csrf().ignoringAntMatchers("/**");
-
-		http.sessionManagement()
-       .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
 
 	}
-
 }
+
