@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Update;
 import com.rocket.rocket.domain.ClassVO;
 import com.rocket.rocket.domain.Criteria;
 import com.rocket.rocket.domain.CtgyVO;
+import com.rocket.rocket.domain.NumberDTO;
 
 public interface ClassMapper {
 
@@ -25,7 +26,11 @@ public interface ClassMapper {
 	@ResultType(CtgyVO.class)
 	public List<CtgyVO> ctgyList();
 
-	@Update("update class set title = #{title}, intro = #{intro} where num = #{num}")
+	@Select("select MAX(NUM) from class")
+	public Long maxNum();
+
+
+	@Update("update class set title = #{title}, intro = #{intro}, modidate = sysdate where num = #{num}")
 	public int update(ClassVO classVO);
 
 	@Delete("delete from class where num = #{num}")
@@ -35,8 +40,12 @@ public interface ClassMapper {
 	@ResultType(Integer.class)
 	public int getTotalCount(Criteria cri);
 
-	@Select("select * from class")
+	@Select("select * from class order by num")
 	@ResultType(ClassVO.class)
 	public List<ClassVO> classList();
+	
+	@Select("select * from class where ctgy_title=#{ctgy_title} order by num")
+	@ResultType(ClassVO.class)
+	public List<ClassVO> classListCTGY(String ctgy_title);
 
 }

@@ -62,5 +62,17 @@ public class ClassServiceImpl implements ClassService {
 		log.info("get List !!!!!! ");
 		return classMapper.classList();
 	}
-
+	
+	@Override
+	public Long maxNum() {
+		
+		return classMapper.maxNum();
+	}
+	
+	@Override
+	public List<ClassVO> classListCTGY(String ctgy_title) {
+		
+		log.info("get filtered List  !!!!!! ");
+		return classMapper.classListCTGY(ctgy_title);
+	}
 }
