@@ -39,8 +39,8 @@ public class CommentServicImpl implements CommentService {
 	}
 
 	@Override
-	public List<CommVO> getList(Long lec_num) {
-		return mapper.getList(lec_num);
+	public List<CommVO> getList(Long class_num, Long lec_num) {
+		return mapper.getList(class_num, lec_num);
 	}
 
 }

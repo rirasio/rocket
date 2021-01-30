@@ -12,8 +12,8 @@ import com.rocket.rocket.domain.CommVO;
 
 public interface CommentMapper {
 
-	@Select("SELECT * FROM comm WHERE lec_num = #{lec_num} ORDER BY num DESC")
-	public List<CommVO> getList(@Param("lec_num") Long lec_num);
+	@Select("SELECT * FROM comm WHERE class_num = #{class_num} AND lec_num = #{lec_num} ORDER BY num DESC")
+	public List<CommVO> getList(@Param("class_num") Long class_num, @Param("lec_num") Long lec_num);
 	
 	@Insert("INSERT INTO comm VALUES (SEQ_COMM.nextval, #{nickname}, #{content}, SYSDATE, SYSDATE, null, '0', #{lec_num}, #{class_num}, 'chlwlsgud23@naver.com')")
 	public void insert(CommVO commvo);
