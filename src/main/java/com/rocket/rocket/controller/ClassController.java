@@ -28,7 +28,6 @@ public class ClassController {
 	private ClassService classService;
 	private LecService lecService;
 
-
 //	@GetMapping("/list")
 //	public void list (Criteria cri, Model model) {
 //		
@@ -56,18 +55,17 @@ public class ClassController {
 		model.addAttribute("ctgylist", classService.ctgyList());
 		return "classes/create";
 	}
-	
-	@ResponseBody
+
 	@PostMapping(value = { "/create" })
 	public String create(ClassVO classVO, RedirectAttributes rttr) {
 
 //		rttr.addFlashAttribute("result", classVO.getNum());
 
 		classService.createClass(classVO);
-		
+
 		log.info("create complete");
 
-		return "index";
+		return "redirect:/";
 	}
 
 	@GetMapping({ "/read", "/update" })
@@ -102,7 +100,6 @@ public class ClassController {
 		log.info("delete complete");
 		return "redirect:/classes/list";
 	}
-	
 
 //	@PostMapping("/classThumbnail")
 //	@ResponseBody
@@ -170,8 +167,5 @@ public class ClassController {
 //		return new ResponseEntity<List<FilesVO>>(list, HttpStatus.OK);
 //	}
 //	
-	
-	
-	
-	
+
 }
