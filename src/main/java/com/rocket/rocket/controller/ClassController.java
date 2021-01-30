@@ -28,8 +28,7 @@ public class ClassController {
 	private ClassService classService;
 	private LecService lecService;
 
-	
-	//	디폴트 리스트 
+
 	@GetMapping(value = { "/list" })
 	public String list(Model model) {
 
@@ -64,20 +63,23 @@ public class ClassController {
 		return "classes/create";
 	}
 
-	
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	
 	//	클래스 개설 완료 후 개설된 페이지로 이동
+
 	@PostMapping(value = { "/create" })
 	public String create(ClassVO classVO, RedirectAttributes rttr) {
 
 		classService.createClass(classVO);
+
 		Long mn = classService.maxNum();
 		log.info(mn.toString());
 		log.info("create complete");
 
 		return "redirect:/classes/read?num=" + mn;
+
 	}
 
 	
