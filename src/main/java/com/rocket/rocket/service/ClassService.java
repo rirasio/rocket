@@ -5,7 +5,6 @@ import java.util.List;
 import com.rocket.rocket.domain.ClassVO;
 import com.rocket.rocket.domain.Criteria;
 import com.rocket.rocket.domain.CtgyVO;
-import com.rocket.rocket.domain.NumberDTO;
 
 public interface ClassService {
 
@@ -21,10 +20,12 @@ public interface ClassService {
 
 	public int getTotal(Criteria cri);
 	
-	public List<ClassVO> classList();
+	public List<ClassVO> classList(Criteria cri);
 	
 	public Long maxNum();
 	
 	public List<ClassVO> classListCTGY(String ctgy_title);
+	
+	
 	
 }

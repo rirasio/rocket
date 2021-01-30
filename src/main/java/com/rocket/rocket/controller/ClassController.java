@@ -28,6 +28,18 @@ public class ClassController {
 	private ClassService classService;
 	private LecService lecService;
 
+	
+	//	디폴트 리스트 
+//	@GetMapping(value = { "/list" })
+//	public String list(Model model) {
+//
+//		log.info("list page");
+//		model.addAttribute("classlist", classService.classList());
+//		model.addAttribute("ctgylist", classService.ctgyList());
+//
+//		return "classes/list";
+//	}
+
 
 	@GetMapping(value = { "/list" })
 	public String list(Model model) {
@@ -39,16 +51,19 @@ public class ClassController {
 		return "classes/list";
 	}
 
+
 	
 ////////////////////////////////////////////////////////////////////////////////////////////////////	
 	
 		
 	//	필터 적용 리스트
-	@GetMapping(value = { "/listCtgy" })
-	public void listCtgy(@RequestParam("{{ctgy_title}}") String ctgy_title, Model model) {
+	@GetMapping(value = { "/list" })
+	public void listCtgy(Criteria cri, Model model) {
 
 		log.info("filtered list page");
-		model.addAttribute("filter", classService.classListCTGY(ctgy_title));
+		model.addAttribute("classlist", classService.classList(cri));
+		model.addAttribute("ctgylist", classService.ctgyList());
+		int total = classService.getTotal(cri);
 	}
 
 	
