@@ -57,7 +57,7 @@ public class ClassServiceImpl implements ClassService {
 	}
 	
 	@Override
-	public List<ClassVO> classList(Criteria cri) {
+	public List<ClassVO> classList() {
 		
 		log.info("get List !!!!!! ");
 		return classMapper.classList();
