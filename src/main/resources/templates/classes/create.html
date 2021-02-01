@@ -2,83 +2,63 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+<p>&nbsp;</p>
+<div class="container">
+	<h1>새 클래스 등록</h1>
+	<p>&nbsp;</p>
+	<div class="row justify-content-center">
+		<div class="col-xl-10 col-lg-12 col-md-9">
+			<form class="user" action="/classes/create" method="post" enctype="multipart/form-data" id="create">
+				<div class="form-group">
+					<input type="hidden" value="{{classVO.email}}">
+					<label>클래스 명</label>
+					<input type="text" name="title" class="form-control form-control-user">
+				</div>
+				<div class="form-group">
+					<label>클래스 인트로</label>
+					<input type="text" name="intro" class="form-control form-control-user">
+				</div>
+				<div class="form-group">
+					<label>대표사진</label>
+					<input class="btn btn-light" type='file' name='thumbnail' id='thumbnail' multiple="multiple">
+					<div class='uploadResult'>
+						<ul>
 
-<div class="card-header py-3">
-	<h6 class="m-0 font-weight-bold text-primary">새 클래스 등록</h6>
+						</ul>
+					</div>
+				</div>
+				<div class="form-group">
+					<label>수업과정</label>
+					<input class="btn btn-light" type='file' name='thumbnail' id='thumbnail' multiple="multiple">
+					<div class='uploadResult'>
+						<ul>
+
+						</ul>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for=" ctgy_title">카테고리</label>
+					<input type="text" name="ctgy_title" class="form-control form-control-user">
+				</div>
+				<div class="form-group">
+					{{#ctgylist}}
+					<span>{{ctgy_title}}</span>
+					<input value="{{ctgy_title}}" type="checkbox" name="ctgy_title" class="custom-checkbox">
+					{{/ctgylist}}
+				</div>
+				<div class="form-group">
+					<input type="submit" value="submit" class="btn btn-primary btn-user btn-block">
+					<input type="reset" value="reset" class="btn btn-danger btn-user btn-block">
+				</div>
+				<div class="form-group">
+					{{#_csrf}}
+					<input type="hidden" name="{{parameterName}}" value="{{token}}" />
+					{{/_csrf}}
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
-
-
-<form action="/classes/create" method="post" enctype="multipart/form-data" id="create">
-	
-	<input type="hidden" value="{{classVO.email}}">
-	
-	<label>클래스 명</label>
-	<input type="text" name="title">
-	<br>
-	
-	
-	<div>
-		{{#ctgylist}} <span>{{ctgy_title}}</span>
-		<input value="{{ctgy_title}}" type="checkbox" name="ctgy_title">
-		{{/ctgylist}}
-	</div>
-	
-	
-	<label>클래스 인트로</label>
-	<input type="text" name="intro">
-	<br>
-
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="panel panel-default">
-				<div class="panel-heading">썸네일</div>
-				<div class="panel-body">
-					<div class="form-group uploadDiv">
-						<input type='file' name='thumbnail' id='thumbnail' multiple="multiple">
-					</div>
-					<div class='uploadResult'>
-						<ul>
-
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="panel panel-default">
-				<div class="panel-heading">커리큘럼</div>
-				<div class="panel-body">
-					<div class="form-group uploadDiv">
-						<input type='file' class='curriUP' name='curriculum' multiple="multiple">
-					</div>
-					<div class='uploadResult'>
-						<ul>
-
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<label for=" ctgy_title">카테고리</label>
-	<input type="text" name="ctgy_title">
-
-	{{#_csrf}}
-	<input type="hidden" name="{{parameterName}}" value="{{token}}" />
-	{{/_csrf}}
-
-
-	<input type="submit" value="submit">
-	<input type="reset" value="reset">
-
-
-</form>
-
-
 
 <script>
 	$(document).ready(function() {

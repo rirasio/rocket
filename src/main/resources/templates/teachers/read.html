@@ -1,87 +1,25 @@
-{{>layout/header}}
+{{>layout/header_paging}}
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<h1>read</h1>
-<div class="col-md-12">
-	<div class="col-md-4" style="display: block;"></div>
-	<div class="col-md-4" style="display: block;">
 
-		<form id="operForm" method="get">
-			<div class="form-group">
-				<label>email</label>
-				<input type="text" class="form-control" name="email" value="{{teacher.email}}" readonly="readonly">
-			</div>
-			<div class="form-group">
-				<label>name</label>
-				<input type="text" class="form-control" name="name" value="{{teacher.name}}" readonly="readonly">
-			</div>
-			<div class="form-group">
-				<label>nickname</label>
-				<input type="text" class="form-control" name="nickname" value="{{teacher.nickname}}" readonly="readonly">
-			</div>
-			<div class="form-group">
-				<label>birthday</label>
-				<input type="text" class="form-control" name="birthday" value="{{teacher.birthday}}" readonly="readonly">
-			</div>
-			<div class="form-group">
-				<label>phone</label>
-				<input type="text" class="form-control" name="phone" value="{{teacher.phone}}" readonly="readonly">
-			</div>
-			<div class="form-group">
-				<label>intro</label>
-				<textarea rows="" cols="" name="intro" readonly="readonly">{{teacher.intro}}</textarea>
-			</div>
-			<div class="form-group">
-				<label>mbti</label>
-				<input type="text" class="form-control" name="mbti" value="{{teacher.mbti}}" readonly="readonly">
-			</div>
 
-			
-
-		</form>
-	</div>
-</div>
-
-<br>
-<br>
-
-{{#role_stu}}
-<div class="container-fluid">
-	<!-- Page Heading -->
-
-	<!-- DataTales Example -->
-	<div class="card shadow mb-4">
-		<div class="card-header py-3">
-			<h6 class="m-0 font-weight-bold text-primary">'{{users.nickname}}' 님이 수강중인 클래스</h6>
+<p>&nbsp;</p>
+<div class="container">
+	<h1>{{teacher.name}} 선생님</h1>
+	<p>&nbsp;</p>
+	<div class="row">
+		<div class="col-sm-4" style="height: 350px;">
+			<img src="/img/undraw_profile_3.svg">
 		</div>
-		<div class="card-body">
-			<div class="table-responsive">
-				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-					<thead>
-						<tr>
-							<th>분류</th>
-							<th>class</th>
-							<th>선생님</th>
-							<th>수강 시작 날짜</th>
-						</tr>
-					</thead>
-					<tbody>
-						{{#take}}
-						<tr>
-							<td>{{ctgy_title}}</td>
-							<td><a href="/classes/read?num={{num}}">{{title}}</a></td>
-							<td>{{nickname}}</td>
-							<td>{{regdate}}</td>
-						</tr>
-						{{/take}}
-					</tbody>
-				</table>
-			</div>
+		<div class="col-sm-8">
+			<p>&nbsp;</p>
+			<h2 class="text-primary">{{teacher.nickname}}</h2>
+			<p>{{teacher.intro}}</p>
 		</div>
 	</div>
+	<p>&nbsp;</p>
 </div>
-
-<br>
-<br>
 
 <div class="container-fluid">
 	<!-- Page Heading -->
@@ -89,41 +27,7 @@
 	<!-- DataTales Example -->
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
-			<h6 class="m-0 font-weight-bold text-primary">'{{users.nickname}}' 님이 구독한 카테고리</h6>
-		</div>
-		<div class="card-body">
-			<div class="table-responsive">
-				<table class="table table-bordered" id="dataTable" style="width: 100%; border-collapse: collapse;">
-					<thead>
-						<tr>
-							<th>분류</th>
-							<th>class</th>
-							<th>선생님</th>
-						</tr>
-					</thead>
-					<tbody>
-						{{#ctgy}}
-						<tr>
-							<td>{{ctgy_title}}</td>
-							<td><a href="/classes/read?num={{num}}">{{title}}</a></td>
-							<td>{{nickname}}</td>
-						</tr>
-						{{/ctgy}}
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- /.container-fluid -->
-{{/role_stu}} {{#role_tea}}
-<div class="container-fluid">
-	<!-- Page Heading -->
-
-	<!-- DataTales Example -->
-	<div class="card shadow mb-4">
-		<div class="card-header py-3">
-			<h6 class="m-0 font-weight-bold text-primary">'{{users.nickname}}' 님이 강의중인 클래스</h6>
+			<h6 class="m-0 font-weight-bold text-primary">'{{teacher.nickname}}' 님이 강의중인 클래스</h6>
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
@@ -152,7 +56,7 @@
 	</div>
 </div>
 <!-- /.container-fluid -->
-{{/role_tea}}
+
 <script type="text/javascript">
 	$(document).ready(function() {
 
@@ -163,4 +67,6 @@
 
 	});
 </script>
-{{>layout/footer}}
+
+
+{{>layout/footer_paging}}

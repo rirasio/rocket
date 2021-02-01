@@ -1,35 +1,38 @@
 {{>layout/header_paging}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<h1>read</h1>
-<div class="col-md-12">
-	<div class="col-md-4">
-		<form id="operForm" method="get">
-			<div class="form-group">
-				<label>title</label>
-				<input type="text" class="form-control" name="title" value="{{hw.title}}" readonly="readonly">
-			</div>
-			<div class="form-group">
-				<label>content</label>
-				<textarea name="content" class="form-control" readonly="readonly">{{hw.content}}</textarea>
-			</div>
-			<div class="form-group">
-				<label>file</label>
-				<br>
-				<input type="file" name="file" multiple="multiple">
-			</div>
-			<div class="form-group">
-				<label>lec_Num</label>
-				<input type="text" class="form-control" name="lec_Num" value="{{hw.lec_num}}" readonly="readonly">
-			</div>
-
-			<button class="btn btn-info" data-oper='update'>Update</button>
-			<button class="btn btn-info" data-oper='back'>Back</button>
-
-			<input type="hidden" name="num" value="{{hw.num}}">
-			<input type="hidden" name="title" value="{{hw.title}}">
-			<input type="hidden" name="content" value="{{hw.content}}">
-			<input type="hidden" name="lec_num" value="{{hw.lec_num}}">
-		</form>
+<p>&nbsp;</p>
+<div class="container">
+	<h1>과제</h1>
+	<div class="row justify-content-center">
+		<div class="col-xl-10 col-lg-12 col-md-9">
+			<form class="user" id="operForm" method="get">
+				<div class="form-group">
+					<label>title</label>
+					<input type="text" class="form-control" name="title" value="{{hw.title}}" readonly="readonly">
+				</div>
+				<div class="form-group">
+					<label>content</label>
+					<textarea name="content" class="form-control" readonly="readonly">{{hw.content}}</textarea>
+				</div>
+				<div class="form-group">
+					<label>file</label>
+					<br>
+					<input type="file" name="file" multiple="multiple">
+				</div>
+				<div class="form-group">
+					<label>lec_Num</label>
+					<input type="text" class="form-control" name="lec_Num" value="{{hw.lec_num}}" readonly="readonly">
+				</div>
+	
+				<button class="btn btn-info" data-oper='update'>Update</button>
+				<button class="btn btn-info" data-oper='back'>Back</button>
+	
+				<input type="hidden" name="num" value="{{hw.num}}">
+				<input type="hidden" name="title" value="{{hw.title}}">
+				<input type="hidden" name="content" value="{{hw.content}}">
+				<input type="hidden" name="lec_num" value="{{hw.lec_num}}">
+			</form>
+		</div>
 	</div>
 </div>
 <hr>
@@ -38,19 +41,17 @@
 	<!-- DataTales Example -->
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
-			<h6 class="m-0 font-weight-bold text-primary">{{hw.num}}</h6>
+			<h6 class="m-0 font-weight-bold text-primary">{{hw.num}}번 과제 제출 게시판</h6>
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
-				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="학생 제출 과제">
 					<thead>
 						<tr>
 							<th>dohw_num</th>
 							<th>nickname</th>
 							<th>regDate</th>
 							<th>modiDate</th>
-							<th>user_num</th>
-							<th>hw_num</th>
 						</tr>
 					</thead>
 					<tfoot>
@@ -59,8 +60,6 @@
 							<th>nickname</th>
 							<th>regDate</th>
 							<th>modiDate</th>
-							<th>user_num</th>
-							<th>hw_num</th>
 						</tr>
 					</tfoot>
 					<tbody>
@@ -71,8 +70,6 @@
 							<th>{{nickname}}</th>
 							<td>{{regdate}}</td>
 							<td>{{modidate}}</td>
-							<td>{{email}}</td>
-							<th>{{hw.num}}</th>
 						</tr>
 						{{/dohw}}
 					</tbody>
@@ -81,6 +78,7 @@
 		</div>
 	</div>
 </div>
+
 <!-- /.container-fluid -->
 
 <script type="text/javascript">

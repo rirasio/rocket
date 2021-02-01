@@ -1,50 +1,43 @@
 {{>layout/header_paging}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<h1>ex/read</h1>
-<div class="col-md-12">
-	<div class="col-md-4">
 
-		<form id="operForm" method="get">
-			<div class="form-group">
-				<label>ex_num</label>
-				<input type="text" class="form-control" name="num" value="{{ex.num}}" readonly="readonly">
-			</div>
-			<div class="form-group">
-				<label>title</label>
-				<input type="text" class="form-control" name="title" value="{{ex.title}}" readonly="readonly">
-			</div>
-			<div class="form-group">
-				<label>content</label>
-				<input type="text" class="form-control" name="content" value="{{ex.content}}" readonly="readonly">
-			</div>
-			<div class="form-group">
-				<label>answer</label>
-				<input type="text" class="form-control" name="answer" value="{{ex.answer}}" readonly="readonly">
-			</div>
-			<div class="form-group">
-				<label>lec_num</label>
-				<input type="text" class="form-control" name="lec_num" value="{{ex.lec_num}}" readonly="readonly">
-			</div>
-			<div class="form-group">
-				<label>file</label>
-				<br>
-				<input type="file" name="file" multiple="multiple">
-			</div>
-
-			<button class="btn btn-info" data-oper='update'>Update</button>
-			<button class="btn btn-info" data-oper='back'>Back</button>
-
-		</form>
+<p>&nbsp;</p>
+<div class="container">
+	<h1>연습문제</h1>
+	<div class="row justify-content-center">
+		<div class="col-xl-10 col-lg-12 col-md-9"">
+	
+			<form id="operForm" method="get">
+				<div class="form-group">
+					<label>ex_num</label>
+					<input type="text" class="form-control" name="num" value="{{ex.num}}" readonly="readonly">
+				</div>
+				<div class="form-group">
+					<label>title</label>
+					<input type="text" class="form-control" name="title" value="{{ex.title}}" readonly="readonly">
+				</div>
+				<div class="form-group">
+					<label>content</label>
+					<input type="text" class="form-control" name="content" value="{{ex.content}}" readonly="readonly">
+				</div>
+				<div class="form-group">
+					<label>file</label>
+					<br>
+					<input type="file" name="file" multiple="multiple">
+				</div>
+	
+				<button class="btn btn-info" data-oper='update'>Update</button>
+				<button class="btn btn-info" data-oper='back'>Back</button>
+	
+			</form>
+		</div>
 	</div>
 </div>
 
+<p>&nbsp;</p>
 <div class="container-fluid">
 	<!-- Page Heading -->
-	<h1 class="h3 mb-2 text-gray-800">Tables</h1>
-	<p class="mb-4">
-		DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a
-			target="_blank" href="https://datatables.net">official DataTables documentation</a>.
-	</p>
+	<h1 class="h3 mb-2 text-gray-800">학생이 푼 연습문제</h1>
 
 	<!-- DataTales Example -->
 	<div class="card shadow mb-4">

@@ -1,16 +1,20 @@
 {{>layout/header_paging}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+<p>&nbsp;</p>
 <div class="container">
 	<div class="row">
-		<div class="col-sm-4" style="height: 350px;">image box</div>
+		<div class="col-sm-4" style="height: 350px;">
+			<img src="/img/undraw_profile_3.svg">
+		</div>
 		<div class="col-sm-8">
-			<h3 class="text-primary">{{users.nickname}}</h3>
+			<p>&nbsp;</p>
+			<h2 class="text-primary">{{users.nickname}}</h2>
 			<p>{{users.intro}}</p>
 			<button class="btn btn-info" data-oper='update'>Update</button>
 		</div>
 	</div>
-
+	<p>&nbsp;</p>
 	
 	<a href="/classes/create" value="classes/create"><button class="btn btn-danger">class/create</button></a>
 	<br>
