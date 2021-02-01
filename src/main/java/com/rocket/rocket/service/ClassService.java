@@ -20,7 +20,7 @@ public interface ClassService {
 
 	public int getTotal(Criteria cri);
 	
-	public List<ClassVO> classList(Criteria cri);
+	public List<ClassVO> classList();
 	
 	public Long maxNum();
 	

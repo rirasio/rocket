@@ -27,7 +27,7 @@ public class MyPageController {
 
 	private MyService myService;
 
-	@GetMapping(value = { "/read", "update" })
+	@GetMapping(value = { "/read", "/update" })
 	public void read(Principal principal, Model model) {
 
 		model.addAttribute("users", myService.read(principal.getName()));
