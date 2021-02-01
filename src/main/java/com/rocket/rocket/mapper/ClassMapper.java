@@ -45,5 +45,9 @@ public interface ClassMapper {
 	@Select("select * from class where ctgy_title=#{ctgy_title} order by num")
 	@ResultType(ClassVO.class)
 	public List<ClassVO> classListCTGY(String ctgy_title);
-
+	
+	@Select("select avg(lec_sc_star) from lec_score where lec_num in (select num from lec where class_num = #{class_num})")
+	public Double classAvg(long num);
+	
+	
 }

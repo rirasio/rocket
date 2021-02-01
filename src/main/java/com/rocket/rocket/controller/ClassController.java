@@ -40,6 +40,7 @@ public class ClassController {
 		model.addAttribute("classlist", classService.classList());
 		model.addAttribute("ctgylist", classService.ctgyList());
 		
+		
 		return "classes/list";
 	}
 
@@ -109,6 +110,7 @@ public class ClassController {
 		model.addAttribute("class", classService.read(num));
 		model.addAttribute("list", lecService.getList(num));
 		model.addAttribute("class_num", num);
+		model.addAttribute("classAvg", Math.round((classService.classAvg(num)*100))/100.0);
 	}
 
 	

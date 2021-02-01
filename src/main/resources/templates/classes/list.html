@@ -39,38 +39,26 @@
 
 
 		<!-- Card Header - Dropdown -->
-		<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+		<div class="card-header py-3 d-flex flex-row align-items-center justify-content-center">
 			<a href="/classes/read?num={{num}}">
-				<img alt="" src="/img/th{{num}}.jpg" style="width: 350px; height: 350px">
+				<img alt="" src="/img/th{{num}}.jpg" style="width: 300px; height: 300px; object-fit: cover;">
 			</a>
 		</div>
 
 
 		<!-- Card Body -->
 		<div class="card-body">
-
-			<img alt="" src="/img/pr{{num}}.png" style="float: left; width: 40px">
-
-			<p>
+			
+				<img alt="" src="/img/pr{{num}}.png" style="float: left; width: 40px">
+			
+			<p style="overflow: hidden;">
 				<strong style="font-size: large;">&nbsp;&nbsp;{{title}}</strong>
 				<br>
 				<span style="font-size: small;">&nbsp;&nbsp;&nbsp;임포스터 선생님{{num}}</span>
 			</p>
 
-			<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-				aria-haspopup="true" aria-expanded="false">
-				<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-			</a>
-
-			<div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-				aria-labelledby="dropdownMenuLink" style="">
-				<div class="dropdown-header">Dropdown Header:</div>
-				<a class="dropdown-item" href="#">Action</a>
-				<a class="dropdown-item" href="#">Another action</a>
-				<div class="dropdown-divider"></div>
-				<a class="dropdown-item" href="#">Something else here</a>
-			</div>
-
+			
+			
 
 		</div>
 

@@ -26,13 +26,13 @@ public class ClassServiceImpl implements ClassService {
 		log.info("createClass............");
 		classMapper.insertClass(classVO);
 	}
-		
+
 	@Override
 	public List<CtgyVO> ctgyList() {
 		log.info("ctgy............");
 		return classMapper.ctgyList();
 	}
-	
+
 	@Override
 	public ClassVO read(Long num) {
 		log.info("read............");
@@ -55,24 +55,30 @@ public class ClassServiceImpl implements ClassService {
 	public int getTotal(Criteria cri) {
 		return classMapper.getTotalCount(cri);
 	}
-	
+
 	@Override
 	public List<ClassVO> classList() {
-		
+
 		log.info("get List !!!!!! ");
 		return classMapper.classList();
 	}
-	
+
 	@Override
 	public Long maxNum() {
-		
+
 		return classMapper.maxNum();
 	}
-	
+
 	@Override
 	public List<ClassVO> classListCTGY(String ctgy_title) {
-		
+
 		log.info("get filtered List  !!!!!! ");
 		return classMapper.classListCTGY(ctgy_title);
+	}
+
+	@Override
+	public Double classAvg(long num) {
+		
+		return classMapper.classAvg(num);
 	}
 }
