@@ -4,12 +4,11 @@
 	<!-- Page Heading -->
 	<h1 class="h3 mb-2 text-gray-800">Notice List</h1>
 
-<!--  mapper 에 이메일 insert 에 2222라고 했으므로, 스프링 서버 시작후 로그인 2222, 2222(요거 아이디 있는 상태에서) 로 해야함  -->
-
 	<!-- DataTales Example -->
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
-			<h6 class="m-0 font-weight-bold text-primary">{{userN.nickname}}쌤의 공지게시판</h6>
+			<h6 class="m-0 font-weight-bold text-primary">000 쌤의 공지게시판 : 000
+				= users _ nickname</h6>
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
@@ -20,7 +19,7 @@
 						<tr>
 							<th>공지 고유번호</th>
 							<th>공지 제목</th>
-							<th>공지 내용</th>	
+								<th>공지 내용</th>	
 							<th>등록 날짜</th>
 							<th>수정 날짜</th>
 							<th>삭제 날짜</th>
@@ -44,7 +43,7 @@
 							<td><a href="/notice/read?num={{num}}">{{num}}</a></td>
 							</a>
 							<td><a href="/notice/read?num={{num}}">{{title}}</td>
-						  	<td>{{content}}</td>	<!-- content 의 일부를 보여줄지 고민중,, -->
+					  	<td>{{content}}</td>	<!-- content 의 일부를 보여줄지 고민중,, -->
 							<td>{{regdate}}</td>
 							<td>{{modidate}}</td>
 							<td>{{deldate}}</td>  <!-- 선생님은 안보이게, 관리자는 보이도록 -->

@@ -2,27 +2,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>create</title>
+<title> sub create </title>
 </head>
 <body>
-<h1>create</h1>
+<h1> sub create </h1>
+
+<!-- 3. 아래 submit 버튼이 눌리면 post 방식으로 controller 의 /sub/create을 찾아간다  -->
 <form action="/sub/create" method="post">
 		<label>price</label>
-		<input type="text" name="price">
+		<input type="number" name="price"> <!-- orcle 에서는 number 이므로 input type number -->
 		<br>
 		<label>type</label>
-		<input type="text" name="type">
-		<br>
-		<br>
-		<label>sub_num</label>
-		<input type="text" name="sub_Num">
+		<input type="text" name="type">  <!-- orcle 에서는 varchar2 이므로 input type text -->
 		<br>
 		{{#_csrf}}
-		<input type="hidden" name="{{parameterName}}" value="{{token}}" />
+		<input type="hidden" name="{{parameterName}}" value="{{token}}" /> <!--: Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported-->
 		{{/_csrf}}
 		<input type="submit" value="submit">
 		<input type="reset" value="reset">
 	</form>
-
 </body>
 </html>

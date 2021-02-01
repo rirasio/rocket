@@ -1,0 +1,48 @@
+{{>layout/header_paging}}
+<!-- 관리자만 접근가능한 페이지 -->
+<div class="container-fluid">
+	<!-- Page Heading -->
+	<h1 class="h3 mb-2 text-gray-800">Sub List</h1>
+	// 이거 해야함
+	<!-- DataTales Example -->
+	<div class="card shadow mb-4">
+		<div class="card-header py-3">
+			<h6 class="m-0 font-weight-bold text-primary">가격표입니다 </h6>
+		</div>
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered" id="dataTable"
+					style="width: 100%; border-collapse: collapse;">
+					<!-- width="100%", cellspacing="0" 없애버림 참고 : https://devday.tistory.com/entry/cellspacing-cellpadding-in-HTML5-->
+					<thead>
+						<tr>
+						<th>sub고유번호</th>
+							<th>가격</th>
+							<th>기간</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th>sub고유번호</th>
+							<th>가격</th>
+							<th>기간</th>
+						</tr>
+					</tfoot>
+					<tbody>
+						{{#listlist}}
+						<tr>
+							<td><a href="/sub/read?num={{num}}">{{num}}</a></td>
+							</a>
+							<td>{{price}}</td> <!-- 이걸 굳이 {{subsub.price}} 을 붙여야할까 ?? ♣♣♣ -->
+							<td>{{type}}</td>
+						</tr>
+						{{/listlist}}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /.container-fluid -->
+
+{{>layout/footer_paging}}
