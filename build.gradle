@@ -39,6 +39,9 @@ dependencies {
 	compile group: 'net.coobird', name: 'thumbnailator', version: '0.4.8'
 	implementation 'commons-io:commons-io:2.6'
 	
+	
+	compile fileTree(dir: 'libs', include: ['*.jar']) //ojdbc8.jar를 사용해서 DB인코딩 세팅이 K016MSWIN949인데 이건 JDBC에서 지원하지 않는 인코딩 방식이라 에러가 발생
+
 }
 
 test {
