@@ -10059,7 +10059,7 @@ opacity
 	font-size: 1rem;
 	font-weight: 800;
 	padding: 1.5rem 1rem;
-	text-align: left;
+	text-align: center;
 	text-transform: uppercase;
 	letter-spacing: .05rem;
 	z-index: 1
@@ -10114,7 +10114,7 @@ opacity
 
 @media ( min-width :768px) {
 	.sidebar {
-		width: 14rem !important
+		width: 15rem !important
 	}
 	.sidebar .nav-item .collapse {
 		position: relative;
