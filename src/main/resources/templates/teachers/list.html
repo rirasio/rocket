@@ -1,0 +1,65 @@
+{{>layout/header_paging}}
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<style>
+.card {
+	width: 25%;
+	float: left;
+	overflow: hidden;
+}
+</style>
+
+
+
+<h3>Teacher List</h3>
+
+<div class="outer">
+
+
+
+	{{#teacherlist}}
+
+	<div class="card shadow mb-4">
+
+
+		<!-- Card Header - Dropdown -->
+		<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+			<a href="/teachers/read?name={{name}}">
+				<img alt="" src="/img/pr1.png" style="width: 350px; height: 350px">
+			</a>
+		</div>
+
+
+		<!-- Card Body -->
+		<div class="card-body">
+
+			<p>
+				<strong style="font-size: large;">{{name}} 선생님</strong>
+				<br>
+				<span style="font-size: small;">{{intro}}</span>
+			</p>
+
+			
+
+		</div>
+
+
+	</div>
+
+	{{/teacherlist}}
+
+
+
+
+
+
+
+
+
+</div>
+
+
+{{>layout/footer_paging}}
