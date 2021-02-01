@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rocket.rocket.domain.Criteria;
+import com.rocket.rocket.domain.DoHwDTO;
 import com.rocket.rocket.domain.DoHwVO;
 import com.rocket.rocket.mapper.DoHwMapper;
 
@@ -24,7 +25,7 @@ public class DoHwServiceImpl implements DoHwService {
 	}
 
 	@Override
-	public DoHwVO read(long num) {
+	public DoHwDTO read(long num) {
 		return dohwMapper.select(num);
 	}
 
@@ -39,7 +40,7 @@ public class DoHwServiceImpl implements DoHwService {
 	}
 
 	@Override
-	public List<DoHwVO> readList(long hw_num, Criteria cri) {
+	public List<DoHwDTO> readList(long hw_num, Criteria cri) {
 		return dohwMapper.readList(hw_num);
 	}
 

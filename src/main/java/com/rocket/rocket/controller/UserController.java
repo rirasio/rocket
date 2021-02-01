@@ -1,6 +1,9 @@
 
 package com.rocket.rocket.controller;
 
+import java.security.Principal;
+import java.util.List;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -18,6 +21,7 @@ import com.rocket.rocket.domain.HwVO;
 import com.rocket.rocket.domain.UserRoleVO;
 import com.rocket.rocket.domain.UsersVO;
 import com.rocket.rocket.service.HwService;
+import com.rocket.rocket.service.MyService;
 import com.rocket.rocket.service.UserService;
 
 import lombok.AllArgsConstructor;
@@ -30,6 +34,8 @@ import lombok.extern.slf4j.Slf4j;
 public class UserController {
 
 	private UserService usersService;
+
+	private MyService myService;
 
 	// 회원가입
 	@GetMapping(value = { "/userSign" })
@@ -71,4 +77,18 @@ public class UserController {
 		}
 		return "redirect:/";
 	}
+
+	@GetMapping(value = { "/introRead", "/introUpdate" })
+	public void read(String email, Model model) {
+
+		model.addAttribute("users", myService.read(email));
+		model.addAttribute("class", myService.myClass(email));
+	}
+
+	@PostMapping(value = { "/introUpdate" })
+	public String update(UsersVO users) {
+		myService.update(users);
+		return "redirect:/users/introRead?email=" + users.getEmail();
+	}
+
 }

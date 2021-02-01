@@ -1,0 +1,89 @@
+{{>layout/header}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<h1>read</h1>
+<div class="col-md-12">
+	<div class="col-md-4" style="display: block;"></div>
+	<div class="col-md-4" style="display: block;">
+
+		<form id="operForm" method="get">
+			<div class="form-group">
+				<label>nickname</label>
+				<input type="text" class="form-control" name="nickname" value="{{users.nickname}}" readonly="readonly">
+			</div>
+			<div class="form-group">
+				<label>phone</label>
+				<input type="text" class="form-control" name="phone" value="{{users.phone}}" readonly="readonly">
+			</div>
+			<div class="form-group">
+				<label>intro</label>
+				<textarea rows="" cols="" name="intro" readonly="readonly">{{users.intro}}</textarea>
+			</div>
+			<div class="form-group">
+				<label>mbti</label>
+				<input type="text" class="form-control" name="mbti" value="{{users.mbti}}" readonly="readonly">
+			</div>
+
+			<input type="hidden" class="form-control" name="email" value="{{users.email}}" readonly="readonly">
+			<input type="hidden" class="form-control" name="name" value="{{users.name}}" readonly="readonly">
+			<input type="hidden" class="form-control" name="birthday" value="{{users.birthday}}" readonly="readonly">
+			<button class="btn btn-info" data-oper='update'>Update</button>
+
+		</form>
+	</div>
+</div>
+<br>
+<button class="btn btn-info" data-oper='notice'>Notice</button>
+
+<br>
+<br>
+
+<div class="container-fluid">
+	<!-- Page Heading -->
+
+	<!-- DataTales Example -->
+	<div class="card shadow mb-4">
+		<div class="card-header py-3">
+			<h6 class="m-0 font-weight-bold text-primary">'{{users.nickname}}' 님이 강의중인 클래스</h6>
+		</div>
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered" id="dataTable" style="width: 100%; border-collapse: collapse;">
+					<thead>
+						<tr>
+							<th>분류</th>
+							<th>class</th>
+							<th>intro</th>
+							<th>평균별점</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#class}}
+						<tr>
+							<td>{{ctgy_title}}</td>
+							<td><a href="/classes/read?num={{num}}">{{title}}</a></td>
+							<td>{{intro}}</td>
+							<td>{{avgscore}}</td>
+						</tr>
+						{{/class}}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /.container-fluid -->
+
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		var operForm = $("#operForm");
+		$("button[data-oper='update']").on("click", function(e) {
+			operForm.attr("action", "/users/introUpdate").submit();
+		});
+		$("button[data-oper='notice']").on("click", function(e) {
+			operForm.attr("action", "/notice/list").submit();
+		});
+
+	});
+</script>
+{{>layout/footer}}
