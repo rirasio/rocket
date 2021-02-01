@@ -12,7 +12,10 @@
 				<label>content</label>
 				<input type="text" class="form-control" name="content">
 			</div>
-			
+<br>				
+				<input type="hidden" name="email" value="{{loginid}}" >
+				
+				
 			{{#_csrf}}
 			<input type="hidden" name="{{parameterName}}" value="{{token}}" />
 			{{/_csrf}}

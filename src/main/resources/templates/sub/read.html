@@ -2,23 +2,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>update</title>
+<title> sub update</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 	<h1>read</h1>
 	<form action="" method="get">
-		<label>title</label>
-		<input type="text" name="title" value="{{hw.title}}" readonly="readonly">
+		<label>num</label>
+		<input type="text" name="num" value="{{sub.num}}" readonly="readonly"> <!-- input 은 끝 태그가 없어서  -->
 		<br>
-		<label>content</label>
-		<textarea name="content" readonly="readonly">{{hw.content}}</textarea>
+		<label>price</label>
+<!-- 		<textarea name="price" >{{sub.price}}</textarea> textarea 는 끝태그가 있어서 태그 사이에 작성 -->
+		<input type="number" name="price">
 		<br>
-		<label>file</label>
-		<input type="file" name="file" multiple="multiple">
-		<br>
-		<label>lec_Num</label>
-		<input type="text" name="lec_Num" value="{{hw.lec_Num}}" readonly="readonly">
+		<label>type</label>
+		<input type="number" name="type" >
+		
 		<br>
 		{{#_csrf}}
 		<input type="hidden" name="{{parameterName}}" value="{{token}}" />
@@ -26,13 +25,9 @@
 	</form>
 	<button data-oper='update' id="up">Update</button>
 	<form id="operForm" action="/hw/update" method="get">
-		<input type="hidden" name="hw_Num" value="{{hw.hw_Num}}">
-		<input type="hidden" name="title" value="{{hw.title}}">
-		<input type="hidden" name="content" value="{{hw.content}}">
-		<input type="hidden" name="fileName" value="{{hw.fileName}}">
-		<input type="hidden" name="fileType" value="{{hw.fileType}}">
-		<input type="hidden" name="filePath" value="{{hw.Path}}">
-		<input type="hidden" name="lec_Num" value="{{hw.lec_Num}}">
+		<input type="hidden" name="num" value="{{sub.num}}">
+		<input type="hidden" name="price" value="{{sub.price}}">
+		<input type="hidden" name="type" value="{{sub.type}}">
 	</form>
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -41,7 +36,7 @@
 
 			$("button[data-oper='update']").on("click", function(e) {
 				console.log("data-oper='update']");
-				operForm.attr("action", "/hw/update").submit();
+				operForm.attr("action", "/sub/update").submit();
 			});
 
 		})

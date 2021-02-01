@@ -5,7 +5,6 @@ import java.util.List;
 import com.rocket.rocket.domain.ClassVO;
 import com.rocket.rocket.domain.Criteria;
 import com.rocket.rocket.domain.CtgyVO;
-import com.rocket.rocket.domain.NumberDTO;
 
 public interface ClassService {
 
