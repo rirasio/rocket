@@ -47,7 +47,6 @@ public class MyPageController {
 
 		model.addAttribute("take", myService.myTake(principal.getName()));
 		model.addAttribute("ctgy", myService.myCtgy(principal.getName()));
-
 		model.addAttribute("class", myService.myClass(principal.getName()));
 	}
 

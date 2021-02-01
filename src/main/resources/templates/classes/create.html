@@ -1,4 +1,4 @@
- {{>layout/header}}
+ {{>layout/header_paging}}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -9,17 +9,21 @@
 
 
 <form action="/classes/create" method="post" enctype="multipart/form-data" id="create">
+	
+	<input type="hidden" value="{{classVO.email}}">
+	
 	<label>클래스 명</label>
 	<input type="text" name="title">
 	<br>
-
+	
+	
 	<div>
 		{{#ctgylist}} <span>{{ctgy_title}}</span>
 		<input value="{{ctgy_title}}" type="checkbox" name="ctgy_title">
 		{{/ctgylist}}
 	</div>
-
-
+	
+	
 	<label>클래스 인트로</label>
 	<input type="text" name="intro">
 	<br>
@@ -105,4 +109,4 @@
 </script>
 
 
-{{>layout/footer}}
+{{>layout/footer_paging}}

@@ -28,7 +28,6 @@ public interface ClassMapper {
 	@Select("select MAX(NUM) from class")
 	public Long maxNum();
 
-
 	@Update("update class set title = #{title}, intro = #{intro}, modidate = sysdate where num = #{num}")
 	public int update(ClassVO classVO);
 
