@@ -13,7 +13,7 @@ public class LecScoreVO {
 	
 	private Long lec_num;
 	
-	private int lec_sc_star;
+	private Double lec_sc_star;
 	
 	private String email;
 }

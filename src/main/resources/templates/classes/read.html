@@ -1,9 +1,8 @@
- {{>layout/header}}
+ {{>layout/header_paging}}
 
 
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
 <div class="card-header py-3">
@@ -17,18 +16,21 @@
 		<div class="card-body">
 
 			<div style="float: left; margin: 40px 50px;">
-				<img alt="" src="/img/th{{class.num}}.jpg"
-					style="width: 400px; height: 400px">
+				<img alt="" src="/img/th{{class.num}}.jpg" style="width: 400px; height: 400px">
 			</div>
 
 			<div style="float: right; margin: 40px 50px; text-align: right;">
 
 				<h1 class="m-0 font-weight-bold text-primary">{{class.title}}</h1>
-				<h6>100만개의 평가</h6>
-
-
 				<h4>#{{class.ctgy_title}}#{{class.ctgy_title}}#{{class.ctgy_title}}</h4>
-
+				<br>
+				<h6>100만개의 평가</h6>
+				<h5>{{classAvg}}</h5>
+				<br>
+				
+				
+				
+				<br><br><br><br>
 				<form id="operForm" method="get">
 
 					<input type="hidden" name="num" value="{{class.num}}">
@@ -59,12 +61,14 @@
 		<br>
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
-				<span class="text float-left">강의 목록</span> <span class="float-right">
-					<a href="/lec/create?class_num={{class_num}}"
-					class="btn btn-primary btn-icon-split btn-sm"> <span
-						class="icon text-white-50"> <i class="fas fa-flag"></i>
-					</span> <span class="text">등록</span>
-				</a>
+				<span class="text float-left">강의 목록</span>
+				<span class="float-right">
+					<a href="/lec/create?class_num={{class_num}}" class="btn btn-primary btn-icon-split btn-sm">
+						<span class="icon text-white-50">
+							<i class="fas fa-flag"></i>
+						</span>
+						<span class="text">등록</span>
+					</a>
 
 				</span>
 			</div>
@@ -99,7 +103,9 @@
 						<tbody>
 							<tr>
 								<td>{{num}}</td>
-								<td><a href="/lec/read?num={{num}}">{{title}}</a></td>
+								<td>
+									<a href="/lec/read?num={{num}}">{{title}}</a>
+								</td>
 								<td>{{video}}</td>
 								<td>{{regdate}}</td>
 								<td>{{modidate}}</td>
@@ -125,7 +131,7 @@
 	$(document).ready(function() {
 
 		var operForm = $("#operForm");
-		
+
 		$("button[data-oper='update']").on("click", function(e) {
 			console.log("data-oper='update']");
 			operForm.attr("action", "/classes/update").submit();
@@ -138,5 +144,5 @@
 	});
 </script>
 
-{{>layout/footer}}
+{{>layout/footer_paging}}
 

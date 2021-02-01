@@ -1,12 +1,7 @@
- {{>layout/header}}
-<h1>Index</h1>
+ {{>layout/header_paging}}
 
 <div class="container">
-	<div class="row">
-		<h3>작업 공간으로 사용중입니다.</h3>
-	</div>
-	<p>&nbsp;</p>
-	<p>&nbsp;</p>
+
 	<div class="row">
 		<div class="col-md-4">
 			<h3>로이 작업</h3>
@@ -55,24 +50,22 @@
 			
 		</div>
 		<div class="col-md-4">
-			<h3>로사 작업들</h3>
-			<form action="classes/read">
+			<h3>최주기 작업</h3>
+			<form action="lec/list">
 				<fieldset>
-					<legend>Class</legend>
-					<label>class/create</label>
-					<input type="submit" formaction="classes/create" value="classes/create">
-					<br>
-					<label>class/read</label>
-					<input type="text" name="num">
-					<input type="submit" formaction="classes/read">
+					<legend>lec</legend>
+					<label>lec/list</label>
+					<input type="text" name="class_num" placeholder="class_num">
+					<input type="submit" value="submit">
+					<input type="submit" formaction="/lec/create" value="/lec/create">
 				</fieldset>
 			</form>
-			<a href="classes/list"> 클래스리스트</a>
 		</div>
+		<div class="col-md-4"></div>
+		<div class="col-md-4"></div>
 	</div>
-	<p>&nbsp;</p>
-	<p>&nbsp;</p>
-	<div class="row">
+
+	<!-- <div class="row">
 		<div class="col-md-4">
 			<h3>나옹 작업</h3>
 			<form action="hw/read">
@@ -131,25 +124,9 @@
 				</fieldset>
 			</form>
 		</div>
-	</div>
-	<p>&nbsp;</p>
-	<p>&nbsp;</p>
-	<div class="row">
-		<div class="col-md-4">
-			<h3>최주기 작업</h3>
-			<form action="lec/list">
-				<fieldset>
-					<legend>lec</legend>
-					<label>lec/list</label>
-					<input type="text" name="class_num" placeholder="class_num">
-					<input type="submit" value="submit">
-					<input type="submit" formaction="/lec/create" value="/lec/create">
-				</fieldset>
-			</form>
-		</div>
-		<div class="col-md-4"></div>
-		<div class="col-md-4"></div>
-	</div>
+	</div> -->
+
+
 </div>
 
-{{>layout/footer}}
+{{>layout/footer_paging}}

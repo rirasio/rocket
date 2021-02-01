@@ -15,6 +15,7 @@ import com.rocket.rocket.domain.Criteria;
 import com.rocket.rocket.domain.DoHwVO;
 
 import com.rocket.rocket.service.DoHwService;
+import com.rocket.rocket.service.HwService;
 
 import lombok.AllArgsConstructor;
 
@@ -24,6 +25,7 @@ import lombok.AllArgsConstructor;
 public class DoHwController {
 
 	private DoHwService dohwService;
+	private HwService hwService;
 
 	@GetMapping(value = { "/create" })
 
@@ -43,6 +45,7 @@ public class DoHwController {
 	public void read(@RequestParam("num") long num, @RequestAttribute(value = "cri", required = false) Criteria cri,
 			Model model) {
 		model.addAttribute("dohw", dohwService.read(num));
+		model.addAttribute("lec_num", hwService.read(dohwService.read(num).getHw_num()).getLec_num());
 	}
 
 	@PostMapping("/update")

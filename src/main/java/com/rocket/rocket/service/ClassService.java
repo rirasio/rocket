@@ -26,4 +26,6 @@ public interface ClassService {
 	
 	public List<ClassVO> classListCTGY(String ctgy_title);
 	
+	public Double classAvg(long num);
+	
 }

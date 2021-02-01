@@ -1,4 +1,4 @@
-{{>layout/header}}
+{{>layout/header_paging}}
 
 <h1>강의 등록</h1>
 
@@ -21,7 +21,7 @@
            </div>
            <div class="form-group">
                <label for="lorder">순번</label>
-               <textarea class="form-control" id="lorder" name="lorder" placeholder="강의 순서"></textarea>
+               <textarea class="form-control" id="lorder" name="lorder"></textarea>
            </div>
            <a href="/lec/list" role="button" class="btn btn-secondary">글 취소</a>
        	   <button type="submit" class="btn btn-default">등록</button>
@@ -33,4 +33,4 @@
    </div>
 </div>
 
-{{>layout/footer}}
+{{>layout/footer_paging}}
