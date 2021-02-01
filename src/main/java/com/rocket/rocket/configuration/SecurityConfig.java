@@ -2,11 +2,13 @@ package com.rocket.rocket.configuration;
 
 import javax.sql.DataSource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -20,11 +22,13 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
+import com.rocket.rocket.security.CustomAuthenticationProvider;
 import com.rocket.rocket.security.CustomLoginSuccessHandler;
 import com.rocket.rocket.security.CustomUserDetailsService;
+import com.rocket.rocket.service.AccountService;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
@@ -36,24 +40,31 @@ import lombok.extern.slf4j.Slf4j;
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 @AllArgsConstructor // 클래스에 존재하는 모든 필드에 대한 생성자를 자동
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
+	
 	@Setter(onMethod_ = { @Autowired })
 	private DataSource dataSource;
-
+	
 	@Bean
 	public UserDetailsService customUserService() {
-		return new CustomUserDetailsService();
+//		return new CustomUserDetailsService();
+		return new AccountService();
 	}
 
+//	@Bean
+//	public AuthenticationSuccessHandler loginSuccessHandler() {
+//		return new CustomLoginSuccessHandler();// loginSuccess사용하기위함
+//	}
+	
 	@Bean
-	public AuthenticationSuccessHandler loginSuccessHandler() {
-		return new CustomLoginSuccessHandler();// loginSuccess사용하기위함
+	public AuthenticationProvider customAuthProvider() {
+		return new CustomAuthenticationProvider();
 	}
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+	
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
@@ -64,11 +75,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	// 필터들
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-
+		
+		//http.csrf().disable();
+		
 		http.authorizeRequests()
 		// 페이지 권한 설정(큰권한이 제일 상단에 있어야됨)
 
-//				.antMatchers("/users/admin/**").hasRole("ADMIN")// 관리자
+				.antMatchers("/**").permitAll()// 비회원
+				.antMatchers("/users/admin/**").hasRole("ADMIN")// 관리자
 //				.antMatchers("/users/admin/**").access("hasRole('ADMIN')")// 관리자
 //				.antMatchers("/users/admin/**").access("hasRole('9')")// 관리자
 //				.antMatchers("/users/admin/**").access("hasRole('ROLE_9')")// 관리자
@@ -77,21 +91,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/users/teacher/**").hasRole("2")// 선생님
 				.antMatchers("/users/subs/**").hasRole("1")// 구독회원
 				.antMatchers("/users/student/**").hasRole("0")// 일반회원
-				.antMatchers("/**").permitAll()// 비회원까지
 				.anyRequest().authenticated();
 
 		// 로그인 설정
-		http.formLogin().loginPage("/users/login")// 로그인 컨트롤러와 일치
-				.loginProcessingUrl("/users/login")// form action이랑 일치
-//				.defaultSuccessUrl("/")
-//				.usernameParameter("email")
-//				.passwordParameter("pw")
-		// .successHandler(loginSuccessHandler())//@Bean loginSuccessHandler를 의존성 주입해서
-		// 가져왔음
+		http.formLogin()
+				.loginPage("/users/login")// 로그인 컨트롤러와 일치
+				.loginProcessingUrl("/login")// form action이랑 일치
+				.defaultSuccessUrl("/")
+				.usernameParameter("username")
+				.passwordParameter("password")
+		// .successHandler(loginSuccessHandler())//@Bean loginSuccessHandler를 의존성 주입해서 가져왔음
 		// .defaultSuccessUrl("/users/logout")
 		;
 		// 로그아웃 설정
-		http.logout().logoutUrl("/users/logout")// 로그아웃을 요청할 경로이고 기본값은 /logout
+		http.logout()
+				.logoutUrl("/users/logout")// 로그아웃을 요청할 경로이고 기본값은 /logout
 				.invalidateHttpSession(true);
 
 		// 403 예외처리 핸들링
@@ -115,6 +129,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		log.info("권한 읽기 시작--------");
 
 //		auth.userDetailsService(customUserService()).passwordEncoder(passwordEncoder());
+//		auth.authenticationProvider(customAuthProvider(userDetailsService()));
+//		auth.userDetailsService(customUserService());
+		auth.authenticationProvider(customAuthProvider());
 
 //		try {
 //			String queryUser = "select email, pw,enabled from users where email = ?";
@@ -131,11 +148,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		// test용 임시 계정
 		// 하드코딩 비밀번호는 1111입니다.
-		String epassword = new BCryptPasswordEncoder().encode("1111");
-		auth.inMemoryAuthentication().withUser("9999").password(epassword).roles("9");
-		auth.inMemoryAuthentication().withUser("1111").password(epassword).roles("1");
-		auth.inMemoryAuthentication().withUser("2222").password(epassword).roles("2");
-		auth.inMemoryAuthentication().withUser("0000").password(epassword).roles("0");
+//		String epassword = new BCryptPasswordEncoder().encode("1111");
+//		auth.inMemoryAuthentication().withUser("9999").password(epassword).roles("9");
+//		auth.inMemoryAuthentication().withUser("1111").password(epassword).roles("1");
+//		auth.inMemoryAuthentication().withUser("2222").password(epassword).roles("2");
+//		auth.inMemoryAuthentication().withUser("0000").password(epassword).roles("0");
 
 //		auth.inMemoryAuthentication().withUser("rocketbot1").password("{noop}rocketbot1").roles("9");
 //		auth.inMemoryAuthentication().withUser("rocketbot1").password("$2a$10$kmCUFCNxf0LDqy2OKKdGkuKY7dnZTk.X9/y9vAYtTl8vp9VT4gzs6").roles("9");

@@ -41,15 +41,15 @@ public class ClassController {
 //	}
 
 
-	@GetMapping(value = { "/list" })
-	public String list(Model model) {
-
-		log.info("list page");
-		model.addAttribute("classlist", classService.classList());
-		model.addAttribute("ctgylist", classService.ctgyList());
-
-		return "classes/list";
-	}
+//	@GetMapping(value = { "/list" })
+//	public String list(Model model) {
+//
+//		log.info("list page");
+//		model.addAttribute("classlist", classService.classList());
+//		model.addAttribute("ctgylist", classService.ctgyList());
+//
+//		return "classes/list";
+//	}
 
 
 	

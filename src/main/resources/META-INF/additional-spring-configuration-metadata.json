@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "server.servlet.encoding.charset",
+    "type": "java.lang.String",
+    "description": "A description for 'server.servlet.encoding.charset'"
+  },
+  {
+    "name": "server.servlet.encoding.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'server.servlet.encoding.enabled'"
+  },
+  {
+    "name": "server.servlet.encoding.force",
+    "type": "java.lang.String",
+    "description": "A description for 'server.servlet.encoding.force'"
+  }
+]}

@@ -6,6 +6,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.rocket.rocket.domain.Account;
+import com.rocket.rocket.domain.AccountRole;
 import com.rocket.rocket.domain.Criteria;
 import com.rocket.rocket.domain.HwVO;
 import com.rocket.rocket.domain.UserRoleVO;
@@ -27,13 +29,19 @@ public class UserServiceImpl implements UserService {
 	private PasswordEncoder pwencoder;
 
 	@Transactional
+//	@Override
+//	public void create(UsersVO usersvo, UserRoleVO userrolevo) {
+//		usersvo.setPw(pwencoder.encode("password"));
+//		userMapper.insert(usersvo);
+//		userMapper.insert2(userrolevo);
+//	}
 	@Override
-	public void create(UsersVO usersvo, UserRoleVO userrolevo) {
-		usersvo.setPw(pwencoder.encode("password"));
-		userMapper.insert(usersvo);
-		userMapper.insert2(userrolevo);
+	public void create(Account account, AccountRole accountrole) {
+		account.setPassword(pwencoder.encode("password"));
+		userMapper.insert(account);
+		userMapper.insert2(accountrole);
 	}
-
+	
 	@Transactional
 	@Override
 	public boolean update(UsersVO usersvo, UserRoleVO userrolevo) {

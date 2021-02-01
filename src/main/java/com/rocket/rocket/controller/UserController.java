@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.rocket.rocket.domain.Account;
+import com.rocket.rocket.domain.AccountRole;
 import com.rocket.rocket.domain.Criteria;
 import com.rocket.rocket.domain.HwVO;
 import com.rocket.rocket.domain.UserRoleVO;
@@ -37,10 +39,17 @@ public class UserController {
 		return "users/userSign";
 	}
 
+//	@PostMapping(value = { "/userSign" })
+//	public String create(UsersVO usersvo, UserRoleVO userrolevo, RedirectAttributes rttr) {
+//		usersService.create(usersvo, userrolevo);
+//		rttr.addFlashAttribute("result", usersvo.getEmail());
+//		return "/users/login";
+//	}
+
 	@PostMapping(value = { "/userSign" })
-	public String create(UsersVO usersvo, UserRoleVO userrolevo, RedirectAttributes rttr) {
-		usersService.create(usersvo, userrolevo);
-		rttr.addFlashAttribute("result", usersvo.getEmail());
+	public String create(Account account, AccountRole accountrole, RedirectAttributes rttr) {
+		usersService.create(account, accountrole);
+		rttr.addFlashAttribute("result", account.getId());
 		return "/users/login";
 	}
 
