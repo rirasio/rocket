@@ -35,9 +35,9 @@
 
 			<!-- Sidebar - Brand -->
 			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-				<div class="sidebar-brand-icon rotate-n-15">
+				<div class="sidebar-brand-icon">
 					<i class="fas fa-laugh-wink" style="display: none;"></i>
-					<img alt="" src="/img/undraw_rocket.svg" style="width: 40px">
+					<img alt="" src="/img/rocket.png" style="width: 40px">
 				</div>
 				<div class="sidebar-brand-text mx-3">
 					Rocket
@@ -49,10 +49,10 @@
 			<hr class="sidebar-divider my-0">
 
 			<!-- MY PAGE -->
-			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-				<div class="sidebar-brand-icon rotate-n-15">
+			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="/myPage/read">
+				<div class="sidebar-brand-icon">
 					<i class="fas fa-laugh-wink" style="display: none;"></i>
-					<img alt="" src="/img/undraw_rocket.svg" style="width: 40px">
+					<img alt="" src="/img/myPage.png" style="width: 40px">
 				</div>
 				<div class="sidebar-brand-text mx-3">
 					My Page
@@ -66,9 +66,9 @@
 
 			<!-- ROCKET CLASS -->
 			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="/classes/list">
-				<div class="sidebar-brand-icon rotate-n-15">
+				<div class="sidebar-brand-icon">
 					<i class="fas fa-laugh-wink" style="display: none;"></i>
-					<img alt="" src="/img/undraw_rocket.svg" style="width: 40px">
+					<img alt="" src="/img/class.png" style="width: 40px">
 				</div>
 				<div class="sidebar-brand-text mx-3">
 					Class
@@ -81,25 +81,20 @@
 
 			<!-- TEACHERS -->
 			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="/teachers/list">
-				<div class="sidebar-brand-icon rotate-n-15">
+				<div class="sidebar-brand-icon">
 					<i class="fas fa-laugh-wink" style="display: none;"></i>
-					<img alt="" src="/img/undraw_rocket.svg" style="width: 40px">
+					<img alt="" src="/img/teacher.png" style="width: 40px">
 				</div>
 				<div class="sidebar-brand-text mx-3">
 					Teachers
 					<sup>2</sup>
 				</div>
 			</a>
+			
+			
 
 			
 
-			<!-- Nav Item - Utilities Collapse Menu -->
-			<li class="nav-item">
-				<a class="nav-link" href="/teachers/list">
-					<i class="fas fa-fw fa-folder"></i>
-					<span>로켓선생님</span>
-				</a>
-			</li>
 
 			
 
@@ -279,33 +274,8 @@
 						<div class="topbar-divider d-none d-sm-block"></div>
 
 						<!-- Nav Item - User Information -->
-						<li class="nav-item dropdown no-arrow">
-							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<span class="mr-2 d-none d-lg-inline text-gray-600 small"><a href="users/login"> 로그인</a></span>
-								<img class="img-profile rounded-circle" src="/img/undraw_profile.svg">
-							</a>
-							<!-- Dropdown - User Information -->
-							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-								aria-labelledby="userDropdown">
-								<a class="dropdown-item" href="#">
-									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-									Profile
-								</a>
-								<a class="dropdown-item" href="#">
-									<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-									Settings
-								</a>
-								<a class="dropdown-item" href="#">
-									<i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-									Activity Log
-								</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-									Logout
-								</a>
-							</div>
+						<li class="nav-item dropdown no-arrow mx-1">
+							<a class="nav-link dropdown-toggle text-primary" href="users/login">로그인</a>
 						</li>
 
 					</ul>
