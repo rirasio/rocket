@@ -29,6 +29,7 @@ public class ClassController {
 	private LecService lecService;
 
 	
+
 		//디폴트 리스트 
 	@GetMapping(value = { "/list" })
 	public String list(Model model) {
@@ -39,6 +40,7 @@ public class ClassController {
 
 		return "classes/list";
 	}
+
 
 
 

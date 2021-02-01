@@ -10,6 +10,10 @@
 				<input type="text" class="form-control" name="num" value="{{dohw.num}}" readonly="readonly">
 			</div>
 			<div class="form-group">
+				<label>nickname</label>
+				<input type="text" class="form-control" name="nickname" value="{{dohw.nickname}}" readonly="readonly">
+			</div>
+			<div class="form-group">
 				<label>dohw_regDate</label>
 				<input type="text" class="form-control" name="regDate" value="{{dohw.regdate}}" readonly="readonly">
 			</div>
@@ -32,6 +36,9 @@
 			</div>
 
 			<button class="btn btn-info" data-oper='update'>Update</button>
+			<a href="/hw/read?lec_num={{lec_num}}">
+				<button type="button" class="btn btn-info" data-oper='back'>Back</button>
+			</a>
 
 		</form>
 	</div>

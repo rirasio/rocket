@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.rocket.rocket.domain.Criteria;
 import com.rocket.rocket.domain.HwVO;
+import com.rocket.rocket.service.DoHwService;
 import com.rocket.rocket.service.HwService;
 
 import lombok.AllArgsConstructor;
@@ -26,6 +27,8 @@ public class HwController {
 
 	private HwService hwService;
 
+	private DoHwService dohwService;
+
 	@GetMapping(value = { "/create" })
 	public void create() {
 	}
@@ -38,9 +41,10 @@ public class HwController {
 	}
 
 	@GetMapping({ "/read", "/update" })
-	public void read(@RequestParam("lec_num") long num,
-			@RequestAttribute(value = "cri", required = false) Criteria cri, Model model) {
+	public void read(@RequestParam("lec_num") long num, @RequestAttribute(value = "cri", required = false) Criteria cri,
+			Model model) {
 		model.addAttribute("hw", hwService.read(num));
+		model.addAttribute("dohw", dohwService.readList(hwService.read(num).getNum(), cri));
 	}
 
 	@PostMapping("/update")
@@ -54,8 +58,7 @@ public class HwController {
 	}
 
 	@PostMapping("/delete")
-	public String delete(@RequestParam("num") long num, @ModelAttribute("cri") Criteria cri,
-			RedirectAttributes rttr) {
+	public String delete(@RequestParam("num") long num, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 		if (hwService.delete(num)) {
 			rttr.addFlashAttribute("result", "success");
 		}

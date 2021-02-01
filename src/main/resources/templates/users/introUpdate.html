@@ -1,0 +1,53 @@
+{{>layout/header}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<h1>update</h1>
+<div class="col-md-12">
+	<div class="col-md-4" style="display: block;"></div>
+	<div class="col-md-4" style="display: block;">
+
+		<form id="operForm" method="post">
+
+			<input type="hidden" class="form-control" name="email" value="{{users.email}}" readonly="readonly">
+
+			<input type="hidden" class="form-control" name="name" value="{{users.name}}" readonly="readonly">
+
+			<div class="form-group">
+				<label>nickname</label>
+				<input type="text" class="form-control" name="nickname" value="{{users.nickname}}">
+			</div>
+
+			<input type="hidden" class="form-control" name="birthday" value="{{users.birthday}}">
+
+			<div class="form-group">
+				<label>phone</label>
+				<input type="text" class="form-control" name="phone" value="{{users.phone}}" readonly="readonly">
+			</div>
+			<div class="form-group">
+				<label>intro</label>
+				<textarea rows="" cols="" name="intro">{{users.intro}}</textarea>
+			</div>
+			<div class="form-group">
+				<label>mbti</label>
+				<input type="text" class="form-control" name="mbti" value="{{users.mbti}}">
+			</div>
+
+			{{#_csrf}}
+			<input type="hidden" name="{{parameterName}}" value="{{token}}" />
+			{{/_csrf}}
+
+			<button class="btn btn-info" data-oper='update'>Update</button>
+
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		var operForm = $("#operForm");
+		$("button[data-oper='update']").on("click", function(e) {
+			operForm.attr("action", "/users/introUpdate").submit();
+		});
+
+	});
+</script>
+{{>layout/footer}}
