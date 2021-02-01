@@ -1,5 +1,7 @@
 package com.rocket.rocket.controller;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,11 +35,11 @@ public class ClassController {
 		//디폴트 리스트 
 	@GetMapping(value = { "/list" })
 	public String list(Model model) {
-
+		
 		log.info("list page");
 		model.addAttribute("classlist", classService.classList());
 		model.addAttribute("ctgylist", classService.ctgyList());
-
+		
 		return "classes/list";
 	}
 
@@ -64,8 +66,13 @@ public class ClassController {
 	
 	//	클래스 개설
 	@GetMapping(value = { "/create" })
-	public String create(Model model) {
+	public String create(ClassVO classVO, Model model) {
 		log.info("create page");
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String email = authentication.getName();
+		classVO.setEmail(email);
+		model.addAttribute("classVO", classVO);
 		model.addAttribute("ctgylist", classService.ctgyList());
 		return "classes/create";
 	}

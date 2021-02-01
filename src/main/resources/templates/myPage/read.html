@@ -1,134 +1,143 @@
-{{>layout/header}}
+{{>layout/header_paging}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <div class="container">
 	<div class="row">
-		<div class="col-sm-4" style="height:350px;">
-			image box
-		</div>
+		<div class="col-sm-4" style="height: 350px;">image box</div>
 		<div class="col-sm-8">
 			<h3 class="text-primary">{{users.nickname}}</h3>
 			<p>{{users.intro}}</p>
 			<button class="btn btn-info" data-oper='update'>Update</button>
 		</div>
 	</div>
+
+	
+	<a href="/classes/create" value="classes/create"><button class="btn btn-danger">class/create</button></a>
+	<br>
+
 	<div class="row">
 		<div class="col-sm-12">
 			{{#role_stu}}
-			
-				<!-- Page Heading -->
-			
-				<!-- DataTales Example -->
-				<div class="card shadow mb-4">
-					<div class="card-header py-3">
-						<h6 class="m-0 font-weight-bold text-primary">'{{users.nickname}}' 님이 수강중인 클래스</h6>
-					</div>
-					<div class="card-body">
-						<div class="table-responsive">
-							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-								<thead>
-									<tr>
-										<th>분류</th>
-										<th>class</th>
-										<th>선생님</th>
-										<th>수강 시작 날짜</th>
-									</tr>
-								</thead>
-								<tbody>
-									{{#take}}
-									<tr>
-										<td>{{ctgy_title}}</td>
-										<td><a href="/classes/read?num={{num}}">{{title}}</a></td>
-										<td>{{nickname}}</td>
-										<td>{{regdate}}</td>
-									</tr>
-									{{/take}}
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
 
-			
-			<br>
-			<br>
-			
-			
-				<!-- Page Heading -->
-			
-				<!-- DataTales Example -->
-				<div class="card shadow mb-4">
-					<div class="card-header py-3">
-						<h6 class="m-0 font-weight-bold text-primary">'{{users.nickname}}' 님이 구독한 카테고리</h6>
-					</div>
-					<div class="card-body">
-						<div class="table-responsive">
-							<table class="table table-bordered" id="dataTable" style="width: 100%; border-collapse: collapse;">
-								<thead>
-									<tr>
-										<th>분류</th>
-										<th>class</th>
-										<th>선생님</th>
-									</tr>
-								</thead>
-								<tbody>
-									{{#ctgy}}
-									<tr>
-										<td>{{ctgy_title}}</td>
-										<td><a href="/classes/read?num={{num}}">{{title}}</a></td>
-										<td>{{nickname}}</td>
-									</tr>
-									{{/ctgy}}
-								</tbody>
-							</table>
-						</div>
+			<!-- Page Heading -->
+
+			<!-- DataTales Example -->
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">'{{users.nickname}}' 님이 수강중인 클래스</h6>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+							<thead>
+								<tr>
+									<th>분류</th>
+									<th>class</th>
+									<th>선생님</th>
+									<th>수강 시작 날짜</th>
+								</tr>
+							</thead>
+							<tbody>
+								{{#take}}
+								<tr>
+									<td>{{ctgy_title}}</td>
+									<td>
+										<a href="/classes/read?num={{num}}">{{title}}</a>
+									</td>
+									<td>{{nickname}}</td>
+									<td>{{regdate}}</td>
+								</tr>
+								{{/take}}
+							</tbody>
+						</table>
 					</div>
 				</div>
-			
+			</div>
+
+
+			<br>
+			<br>
+
+
+			<!-- Page Heading -->
+
+			<!-- DataTales Example -->
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">'{{users.nickname}}' 님이 구독한 카테고리</h6>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-bordered" id="dataTable"
+							style="width: 100%; border-collapse: collapse;">
+							<thead>
+								<tr>
+									<th>분류</th>
+									<th>class</th>
+									<th>선생님</th>
+								</tr>
+							</thead>
+							<tbody>
+								{{#ctgy}}
+								<tr>
+									<td>{{ctgy_title}}</td>
+									<td>
+										<a href="/classes/read?num={{num}}">{{title}}</a>
+									</td>
+									<td>{{nickname}}</td>
+								</tr>
+								{{/ctgy}}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
 			<!-- /.container-fluid -->
 			{{/role_stu}} {{#role_tea}}
-			
-				<!-- Page Heading -->
-			
-				<!-- DataTales Example -->
-				<div class="card shadow mb-4">
-					<div class="card-header py-3">
-						<h6 class="m-0 font-weight-bold text-primary">'{{users.nickname}}' 님이 강의중인 클래스</h6>
-					</div>
-					<div class="card-body">
-						<div class="table-responsive">
-							<table class="table table-bordered" id="dataTable" style="width: 100%; border-collapse: collapse;">
-								<thead>
-									<tr>
-										<th>분류</th>
-										<th>class</th>
-										<th>intro</th>
-										<th>평균별점</th>
-									</tr>
-								</thead>
-								<tbody>
-									{{#class}}
-									<tr>
-										<td>{{ctgy_title}}</td>
-										<td><a href="/classes/read?num={{num}}">{{title}}</a></td>
-										<td>{{intro}}</td>
-										<td>{{avgscore}}</td>
-									</tr>
-									{{/class}}
-								</tbody>
-							</table>
-						</div>
+
+			<!-- Page Heading -->
+
+			<!-- DataTales Example -->
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">'{{users.nickname}}' 님이 강의중인 클래스</h6>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-bordered" id="dataTable"
+							style="width: 100%; border-collapse: collapse;">
+							<thead>
+								<tr>
+									<th>분류</th>
+									<th>class</th>
+									<th>intro</th>
+									<th>평균별점</th>
+								</tr>
+							</thead>
+							<tbody>
+								{{#class}}
+								<tr>
+									<td>{{ctgy_title}}</td>
+									<td>
+										<a href="/classes/read?num={{num}}">{{title}}</a>
+									</td>
+									<td>{{intro}}</td>
+									<td>{{avgscore}}</td>
+								</tr>
+								{{/class}}
+							</tbody>
+						</table>
 					</div>
 				</div>
-			
+			</div>
+
 			<!-- /.container-fluid -->
 			{{/role_tea}}
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-12">
-			
-		</div>
+		<div class="col-sm-12"></div>
 	</div>
 </div>
 
@@ -142,4 +151,4 @@
 
 	});
 </script>
-{{>layout/footer}}
+{{>layout/footer_paging}}
