@@ -1,29 +1,32 @@
 {{>layout/header}}
 
-<h1>Login prototype</h1>
 
-<h3>Login with Username and Password</h3>
-<form role="form" action="/users/login" method="post">
-	<table>
-		<tbody>
-			<tr>
-				<td>User:</td>
-				<td><input type="text" name="username" value=""></td>
-				<!-- username,password default값 지정안됨 -->
-			</tr>
-			<tr>
-				<td>Password:</td>
-				<td><input type="password" name="password"></td>
-			</tr>
-			<tr>
-				<td colspan="2"><input name="submit" type="submit" value="Login"></td>
-			</tr>
-		</tbody>
-	</table>
-	{{#_csrf}}
-	<input type="hidden" name="{{parameterName}}" value="{{token}}" />
-	{{/_csrf}}
-</form>
-<a href="/users/userSign">회원가입</a>
+<div class="container">
+	<h1>Login</h1>
+	<div class="row justify-content-center">
+		<div class="col-xl-10 col-lg-12 col-md-9">
+	
+			<form class="user" role="form" action="/users/login" method="post">
+				<div class="form-group">
+					<input type="text" name="username" value="" class="form-control form-control-user" placeholder="이메일을 입력해주세요...">
+				</div>
+				<div class="form-group">
+					<input type="password" name="password" class="form-control form-control-user" placeholder="비밀번호를 입력해주세요...">
+				</div>
+				<div class="form-group">
+					<input name="submit" type="submit" value="Login" class="btn btn-primary btn-user btn-block">
+				</div>
+				<div class="small">
+					<a href="/users/userSign">회원가입</a>
+				</div>
+				{{#_csrf}}
+				<input type="hidden" name="{{parameterName}}" value="{{token}}" />
+				{{/_csrf}}
+			</form>
+		
+		</div>
+	</div>	
+</div>
+
 
 {{>layout/footer}}
