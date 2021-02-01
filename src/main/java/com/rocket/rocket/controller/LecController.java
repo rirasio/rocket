@@ -8,7 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.rocket.rocket.domain.DoHwVO;
+import com.rocket.rocket.domain.ExVO;
 import com.rocket.rocket.domain.LecVO;
+import com.rocket.rocket.service.DoHwService;
+import com.rocket.rocket.service.ExService;
+import com.rocket.rocket.service.LecScoreService;
 import com.rocket.rocket.service.LecService;
 
 import lombok.AllArgsConstructor;
@@ -19,6 +24,7 @@ import lombok.AllArgsConstructor;
 public class LecController {
 
 	private final LecService service;
+	private final LecScoreService scoreService;
 	
 	@GetMapping("/list")
 	public String list(@RequestParam("class_num") Long class_num, Model model) {
@@ -60,10 +66,5 @@ public class LecController {
 		}
 		return "redirect:/classes/read?num=" + class_num;
 	}
-	
-//	@GetMapping("/autocreate")
-//	public void auto(LecVO lecvo) {
-//		service.autoCreate(lecvo);
-//	}
 
 }
