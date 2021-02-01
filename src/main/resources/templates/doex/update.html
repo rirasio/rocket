@@ -1,0 +1,56 @@
+{{>layout/header}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<h1>update</h1>
+<div class="col-md-12">
+	<div class="col-md-4">
+
+		<form id="operForm" action="/doex/update" method="post">
+
+			<div class="form-group">
+				<label>doex_num</label>
+				<input type="text" class="form-control" name="num" value="{{doex.num}}" readonly="readonly">
+			</div>
+			<div class="form-group">
+				<label>nickname</label>
+				<input type="text" class="form-control" name="nickname" value="{{doex.nickname}}" readonly="readonly">
+			</div>
+			<div class="form-group">
+				<label>content</label>
+				<input type="text" class="form-control" name="content" value="{{doex.content}}">
+			</div>
+			<div class="form-group">
+				<label>score</label>
+				<input type="text" class="form-control" name="score" value="{{doex.score}}" readonly="readonly">
+			</div>
+			<div class="form-group">
+				<label>ex_num</label>
+				<input type="text" class="form-control" name="ex_num" value="{{doex.ex_num}}" readonly="readonly">
+			</div>
+			<div class="form-group">
+				<label>email</label>
+				<input type="text" class="form-control" name="email" value="{{doex.email}}" readonly="readonly">
+			</div>
+			
+
+			{{#_csrf}}
+			<input type="hidden" name="{{parameterName}}" value="{{token}}" />
+			{{/_csrf}}
+
+			<input type="submit" class="btn btn-info" value="submit">
+			<input type="reset" class="btn btn-warning" value="reset">
+			<button class="btn btn-danger" data-oper='delete'>delete</button>
+
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		var operForm = $("#operForm");
+		$("button[data-oper='delete']").on("click", function(e) {
+			operForm.attr("action", "/doex/delete").submit();
+		});
+
+	});
+</script>
+{{>layout/footer}}
