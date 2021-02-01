@@ -1,0 +1,59 @@
+{{>layout/header_paging}}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+	<!-- Page Heading -->
+	<h1 class="h3 mb-2 text-gray-800">Tables</h1>
+	<p class="mb-4">
+		DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a
+			target="_blank" href="https://datatables.net">official DataTables documentation</a>.
+	</p>
+
+	<!-- DataTales Example -->
+	<div class="card shadow mb-4">
+		<div class="card-header py-3">
+			<h6 class="m-0 font-weight-bold text-primary">{{ex_num}}</h6>
+		</div>
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+					<thead>
+						<tr>
+							<th>num</th>
+							<th>content</th>
+							<th>score</th>
+							<th>ex_num</th>
+							<th>nickname</th>
+							<th>email</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th>num</th>
+							<th>content</th>
+							<th>score</th>
+							<th>ex_num</th>
+							<th>nickname</th>
+							<th>email</th>
+						</tr>
+					</tfoot>
+					<tbody>
+						{{#list}}
+						<tr>
+							<td><a href="/doex/read?num={{num}}">{{num}}</td>
+							</a>
+							<td>{{content}}</td>
+							<td>{{score}}</td>
+							<td>{{ex_num}}</td>
+							<td>{{nickname}}</td>
+							<td>{{eamil}}</td>
+						</tr>
+						{{/list}}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /.container-fluid -->
+
+{{>layout/footer_paging}}

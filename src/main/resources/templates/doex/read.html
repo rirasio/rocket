@@ -1,0 +1,57 @@
+{{>layout/header}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<h1>read</h1>
+<div class="col-md-12">
+	<div class="col-md-4">
+
+		<form id="operForm" method="get">
+			<div class="form-group">
+				<label>doex_num</label>
+				<input type="text" class="form-control" name="num" value="{{doex.num}}" readonly="readonly">
+			</div>
+			<div class="form-group">
+				<label>nickname</label>
+				<input type="text" class="form-control" name="nickname" value="{{doex.nickname}}" readonly="readonly">
+			</div>
+			<div class="form-group">
+				<label>content</label>
+				<input type="text" class="form-control" name="content" value="{{doex.content}}" readonly="readonly">
+			</div>
+			<div class="form-group">
+				<label>score</label>
+				<input type="text" class="form-control" name="nickname" value="{{doex.score}}" readonly="readonly">
+			</div>
+			<div class="form-group">
+				<label>ex_num</label>
+				<input type="text" class="form-control" name="ex_num" value="{{doex.ex_num}}" readonly="readonly">
+			</div>
+			<div class="form-group">
+				<label>email</label>
+				<input type="text" class="form-control" name="email" value="{{doex.email}}" readonly="readonly">
+			</div>
+			<div class="form-group">
+				<label>file</label>
+				<br>
+				<input type="file" name="file" multiple="multiple">
+			</div>
+
+			<button class="btn btn-info" data-oper='update'>Update</button>
+			<a href="/ex/read?num={{lec_num}}">
+				<button type="button" class="btn btn-info" data-oper='back'>Back</button>
+			</a>
+
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		var operForm = $("#operForm");
+		$("button[data-oper='update']").on("click", function(e) {
+			console.log("data-oper='update']");
+			operForm.attr("action", "/doex/update").submit();
+		});
+
+	});
+</script>
+{{>layout/footer}}

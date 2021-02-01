@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.rocket.rocket.domain.Criteria;
 import com.rocket.rocket.domain.ExVO;
+import com.rocket.rocket.service.DoExService;
 import com.rocket.rocket.service.ExService;
 
 import lombok.AllArgsConstructor;
@@ -26,6 +27,7 @@ public class ExController {
 
 
 	private ExService exService;
+	private DoExService doexService;
 
 	@GetMapping(value = { "/create" })
 	public void create(ExVO ex, Model model) {
@@ -40,9 +42,9 @@ public class ExController {
 	}
 
 	@GetMapping({ "/read", "/update" })
-	public void read(@RequestParam("num") long num, @RequestAttribute(value = "cri", required = false) Criteria cri,
-			Model model) {
+	public void read(@RequestParam("num") long num, Model model) {
 		model.addAttribute("ex", exService.read(num));
+		model.addAttribute("doex", doexService.readList(num));
 	}
 
 	@PostMapping("/update")
