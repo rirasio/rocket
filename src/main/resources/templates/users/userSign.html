@@ -1,47 +1,70 @@
 {{>layout/header}}
 
 
-<h1>Sign Up ProtoType</h1>
-<form action="/users/userSign" method="post">
-	<label>이메일(id)</label>
-	<input type="text" name="email" placeholder="email">
-	<br>
-	<label>패스워드</label>
-	<input type="password" name="pw" placeholder="pw">
-	<br>
-	<label>이름</label>
-	<input type="text" name="name" placeholder="이름">
-	<br>
-	<label>닉네임</label>
-	<input type="text" name="nickname" placeholder="별명">
-	<br>
-	<label>생년월일</label>
-	<input type="text" name="birthday" placeholder="ex) 19990102">
-	<br>
-	<label>전화번호(폰번호)</label>
-	<input type="text" name="phone">
-	<br>
-	<label>필수정보</label>
-	<input type="radio" name="agree_e" value="1">
-	<label>선택정보정보</label>
-	<input type="radio" name="agree_ue" value="1">
-	<br>
-	<label>자기소개</label>
-	<textarea name="intro">자기소개를 해주세요</textarea>
-	<br>
-	<label>권한선택</label> <select name="auth_num">
-		<option value="0">일반회원</option>
-		<option value="1">구독회원</option>
-		<option value="2">선생님</option>
-		<option value="9">관리자</option>
-	</select>
-	<br>
-	<input type="submit" value="submit">
-	<input type="reset" value="reset">
-	{{#_csrf}}
-	<input type="hidden" name="{{parameterName}}" value="{{token}}" />
-	{{/_csrf}}
-</form>
+<div class="container">
+	<h1>Sign up</h1>
+	<p>&nbsp;</p>
+	<div class="row justify-content-center">
+		<div class="col-xl-10 col-lg-12 col-md-9">
+			<form class="user" role="form" action="/users/userSign" method="post">
+				<div class="form-group">
+					<input type="text" name="email" class="form-control form-control-user" placeholder="이메일">
+				</div>
+				<div class="form-group">
+					<input type="password" name="pw" class="form-control form-control-user" placeholder="비밀번호">
+				</div>
+				<div class="form-group">
+					<input type="text" name="name" class="form-control form-control-user" placeholder="성함">
+				</div>
+				<div class="form-group">
+					<input type="text" name="nickname" class="form-control form-control-user" placeholder="별명">
+				</div>
+				<div class="form-group">
+					<input type="text" name="birthday" class="form-control form-control-user" placeholder="생년월일 예)19990101">
+				</div>
+				<div class="form-group">
+					<input type="text" name="phone" class="form-control form-control-user" placeholder="000-0000-0000">
+				</div>
+				<div class="row form-group">
+					<div class="col-sm-4">
+						<label>필수정보</label>
+						<input type="radio" name="agree_e" value="1">
+					</div>
+					<div class="col-sm-4">
+						<label>선택정보정보</label>
+						<input type="radio" name="agree_ue" value="1">
+					</div>
+					<div class="col-sm-4">
+						<label>권한선택</label>
+						<select name="auth_num" class="form-control dropdown-toggle">
+							<option value="0">일반회원</option>
+							<option value="1">구독회원</option>
+							<option value="2">선생님</option>
+							<option value="9">관리자</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label>자기소개</label>
+					<textarea name="intro" class="form-control form-control-user" placeholder="간단한 자기소개를 써주세요."></textarea>
+				</div>
+				<div class="form-group row">
+					<div class="col-sm-8">
+						<input name="submit" type="submit" value="Join" class="btn btn-primary btn-user btn-block">
+					</div>
+					<div class="col-sm-4">
+						<input name="reset" type="reset" value="reset" class="btn btn-warning btn-user btn-block">
+					</div>
+				</div>
+				{{#_csrf}}
+				<input type="hidden" name="{{parameterName}}" value="{{token}}" />
+				{{/_csrf}}
+			</form>
+		</div>
+	</div>	
+</div>
+
+
 
 
 {{>layout/footer}}
