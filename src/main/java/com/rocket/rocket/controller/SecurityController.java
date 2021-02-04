@@ -1,6 +1,7 @@
 package com.rocket.rocket.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,23 +27,24 @@ public class SecurityController {
 //	SecurityMapper securityMapper;
 
 	// 유저권한별 마이페이지-------------------
+	@PreAuthorize("isAuthenticated()")
 	@RequestMapping("/admin")
-	public @ResponseBody String user() {
+	public String user() {
 		return "/users/adminPage";
 	}
-
+	@PreAuthorize("hasRole('ROLE_TEACHER')")
 	@RequestMapping("/teacher")
-	public @ResponseBody  String teacher() {
+	public String teacher() {
 		return "/users/teacherPage";
 	}
 
 	@RequestMapping("/subs")
-	public @ResponseBody  String subs() {
+	public String subs() {
 		return "/users/subsPage";
 	}
 
 	@RequestMapping("/student")
-	public @ResponseBody  String student() {
+	public String student() {
 		return "/users/studentPage";
 	}
 

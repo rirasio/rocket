@@ -12,7 +12,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Data
 public class Account implements UserDetails {
 		
@@ -52,6 +54,7 @@ public class Account implements UserDetails {
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
+		//log.info("auth from account :: "+getAuthorities().toString());
 		return this.authorities;
 	}
 	

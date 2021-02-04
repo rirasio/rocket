@@ -11,8 +11,7 @@
 	</select>
 	
 		<select id="readAuthorites"  parameterType="String" resultType="String">
-		SELECT *
-		FROM USER_ROLE2 WHERE USERNAME=#{username}
+		SELECT authority_name FROM USER_ROLE2 WHERE USERNAME=#{username}
 	</select>
  
  </mapper>

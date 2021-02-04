@@ -15,6 +15,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -25,12 +26,15 @@ import com.rocket.rocket.service.AccountService;
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
 	
+	private final PasswordEncoder pwencoder =  new BCryptPasswordEncoder();
+	
 	@Autowired
 //	private AccountService accountService;
 	private AccountService accountService;
 	
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+//	@Autowired
+//	private PasswordEncoder passwordEncoder;
+//	private BCryptPasswordEncoder bcencoder;
 
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -38,19 +42,24 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
 		log.info("### authenticate ### ");
-
-		String username =  authentication.getName();
-//		String username =  (String) authentication.getPrincipal();
-//		String password = (String) authentication.getCredentials();
+//		String username =  authentication.getName();
+		String username =  (String) authentication.getPrincipal();
+		String password = (String) authentication.getCredentials();
 //		String password = (String) authentication.getCredentials().toString();
-		String password = (String) passwordEncoder.encode(authentication.getCredentials().toString());
-		
+//		String password = (String) passwordEncoder.encode(authentication.getCredentials().toString());
+
 		Account account = (Account) accountService.loadUserByUsername(username);
+
+		log.info("그냥 패스워드::::::::::"+password);
+		log.info("오라클 패스워드::::::::::"+account.getPassword());
 		
 		// 검증.
-		if ( !passwordEncoder.matches(password,account.getPassword())) {
+		if (!pwencoder.matches(password, account.getPassword())) {
+//			log.info("username : "+authentication.getName());
+			log.info("getPrincipal : "+authentication.getPrincipal());
 			log.info("authprovider password ::: "+ password);
 			log.info("가져오는 password ::: "+ account.getPassword());
+			log.info("권한 : "+ account.getAuthorities().toString());
 			log.info("아이디 혹은 패스워드불일치");
 			throw new BadCredentialsException(username);
 		}else if(!account.isEnabled()) { // 계정 활성화여부 확인
@@ -75,6 +84,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 	public boolean supports(Class<?> authentication) {
 		return (UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication));
 	}
+	
 
 
 }

@@ -2,6 +2,7 @@
 package com.rocket.rocket.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +28,9 @@ public class UserServiceImpl implements UserService {
 
 	@Setter(onMethod_ = @Autowired)
 	private PasswordEncoder pwencoder;
+	
+//	@Setter(onMethod_ = @Autowired)
+//	private BCryptPasswordEncoder bcencoder;
 
 	@Transactional
 //	@Override
@@ -37,7 +41,8 @@ public class UserServiceImpl implements UserService {
 //	}
 	@Override
 	public void create(Account account, AccountRole accountrole) {
-		account.setPassword(pwencoder.encode("password"));
+		account.setPassword(pwencoder.encode(account.getPassword()));
+//		account.setPassword(bcencoder.encode("password"));
 		userMapper.insert(account);
 		userMapper.insert2(accountrole);
 	}

@@ -20,11 +20,12 @@ public class AccountRepository {
 	AccountMapper accountMapper;
 	
 	public Account findById(String username) {
-		log.info("Repository"+username);
+		log.info("find id :: "+username);
 		return accountMapper.readAccount(username);
 	}
 	
 	public List<String>findauthoritiesbyid(String username){
+		log.info("auth id :: "+username);
 		return (List<String>)accountMapper.readAuthorites(username);
 	}
 }

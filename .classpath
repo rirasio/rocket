@@ -25,5 +25,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
+	<classpathentry kind="lib" path="C:/RocketSpace/orai18n.jar"/>
 	<classpathentry kind="output" path="bin/default"/>
 </classpath>
