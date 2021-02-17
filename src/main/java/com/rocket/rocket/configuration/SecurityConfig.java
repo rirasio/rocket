@@ -78,20 +78,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		//http.csrf().disable();
 		
-		http.authorizeRequests()
-		// 페이지 권한 설정(큰권한이 제일 상단에 있어야됨)
-
-				.antMatchers("/**").permitAll()// 비회원
-				.antMatchers("/users/admin/**").hasRole("ADMIN")// 관리자
-//				.antMatchers("/users/admin/**").access("hasRole('ADMIN')")// 관리자
-//				.antMatchers("/users/admin/**").access("hasRole('9')")// 관리자
-//				.antMatchers("/users/admin/**").access("hasRole('ROLE_9')")// 관리자
-//				.antMatchers("/users/admin/**").access("hasRole('ROLE_ADMIN')")// 관리자
-				.antMatchers("/users/admin/**").hasRole("9")// 관리자
-				.antMatchers("/users/teacher/**").hasRole("2")// 선생님
-				.antMatchers("/users/subs/**").hasRole("1")// 구독회원
-				.antMatchers("/users/student/**").hasRole("0")// 일반회원
-				.anyRequest().authenticated();
+//		http.authorizeRequests()
+//		// 페이지 권한 설정(큰권한이 제일 상단에 있어야됨)
+//
+//				.antMatchers("/users/admin/**").hasRole("ADMIN")// 관리자
+////				.antMatchers("/users/admin/**").access("hasRole('ADMIN')")// 관리자
+////				.antMatchers("/users/admin/**").access("hasRole('9')")// 관리자
+////				.antMatchers("/users/admin/**").access("hasRole('ROLE_9')")// 관리자
+////				.antMatchers("/users/admin/**").access("hasRole('ROLE_ADMIN')")// 관리자
+//				.antMatchers("/**").permitAll()// 비회원
+//				.antMatchers("/users/admin/**").hasRole("9")// 관리자
+//				.antMatchers("/users/teacher/**").hasRole("2")// 선생님
+//				.antMatchers("/users/subs/**").hasRole("1")// 구독회원
+//				.antMatchers("/users/student/**").hasRole("0")// 일반회원
+//				.anyRequest().authenticated();
 
 		// 로그인 설정
 		http.formLogin()

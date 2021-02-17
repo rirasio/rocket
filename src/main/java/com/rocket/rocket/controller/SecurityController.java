@@ -27,9 +27,9 @@ public class SecurityController {
 //	SecurityMapper securityMapper;
 
 	// 유저권한별 마이페이지-------------------
-	@PreAuthorize("isAuthenticated()")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping("/admin")
-	public String user() {
+	public String admin() {
 		return "/users/adminPage";
 	}
 	@PreAuthorize("hasRole('ROLE_TEACHER')")

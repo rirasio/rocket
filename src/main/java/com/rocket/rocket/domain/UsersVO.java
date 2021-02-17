@@ -15,9 +15,9 @@ public class UsersVO {
 
 	private String pw;
 	
-	//private String userid;
+	private String userid;
 	
-	//private String password;
+	private String password;
 
 	private String name;
 
